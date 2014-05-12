@@ -2,12 +2,15 @@ package agents;
 
 import java.util.ArrayList;
 
-import jade.core.AID;
+
 import jade.core.Agent;
+import jade.core.behaviours.CyclicBehaviour;
 import jade.domain.DFService;
 import jade.domain.FIPAException;
 import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.domain.FIPAAgentManagement.ServiceDescription;
+import jade.lang.acl.ACLMessage;
+import jade.lang.acl.MessageTemplate;
 import support.Descuento;
 
 
@@ -16,8 +19,9 @@ public class Lugar extends Agent {
 	//parametros del lugar
 	//el formato de los parametros es ciudad tipo categoria precio Decuento1 descuentoN --- Agencia1 AgenciaN ---
 	//donde descuento es un string del tipo cant-min-max y agencia un string con el aid.
-	
-	private String ciudad, tipo, categoria;
+
+	private String ciudad, tipo;
+	private Integer categoria;
 	private float precio;
 	private ArrayList<Descuento> descuentos;
 	private ArrayList<String> agencias;
@@ -35,19 +39,19 @@ public class Lugar extends Agent {
 			tipo = (String) args[1];
 			System.out.println("El tipo es "+ tipo);
 
-			categoria = (String) args[2];
+			categoria = Integer.parseInt((String) args[2]);
 			System.out.println("La categoria es "+categoria);
 
 			precio = Float.parseFloat((String)args[3]);
 			System.out.println("El precio es "+precio);
-			
+
 			descuentos = new ArrayList<Descuento>();
 
 			//se asume que los parametros desde la posicion 4 hasta una marca --- son los descuentos
-			
+
 			int i=4;
 			while (!args[i].equals("---")){
-				
+
 				//obteninedo los valores de cant, menor descuento y mayor descuento
 				String descuentoString = (String) args[i];
 				String[] descuentoArray = descuentoString.split("-");
@@ -58,51 +62,52 @@ public class Lugar extends Agent {
 				Descuento descuento = new Descuento(cant, menorDescuento, mayorDescuento);
 
 				descuentos.add(descuento);
-				
+
 				i++;
 			}
-			
+
 			//luego de la marca de fin de descuento vienen los AID de las agencias con las que trabaja
-			
+
 			agencias = new ArrayList<String>();
-			
+
 			i++;
 			while (!args[i].equals("---")){
-				
+
 				//obteninedo el AID
 				String idAgencia = (String) args[i];
 				agencias.add(idAgencia);
 				i++;
 			}
-			
+
 		}
 
 		// Registrando el vendedor en las paginas amarillas
-				DFAgentDescription dfd = new DFAgentDescription();
-				dfd.setName(getAID());
-				
-				//se debe agregar un sd por cada agencia con la que va a trabajar. En principio se va a probar con todas
-				
-				for (String elem: this.agencias){
-					ServiceDescription sd = new ServiceDescription();
-					String tipo = "alquiler-"+this.ciudad+"-"+elem;
-					sd.setType(tipo);
-					sd.setName("JADE-alquiler-"+elem);
-					dfd.addServices(sd);
-				}
-				
-				try {
-					DFService.register(this, dfd);
-				}
-				catch (FIPAException fe) {
-					fe.printStackTrace();
-				}
+		DFAgentDescription dfd = new DFAgentDescription();
+		dfd.setName(getAID());
 
-					
-		//aqui se agregan los comporatimientos
+		//se debe agregar un sd por cada agencia con la que va a trabajar. En principio se va a probar con todas
+
+		for (String elem: this.agencias){
+			ServiceDescription sd = new ServiceDescription();
+			String tipo = "alquiler-"+this.ciudad+"-"+elem;
+			sd.setType(tipo);
+			sd.setName("JADE-alquiler-"+elem);
+			dfd.addServices(sd);
+		}
+
+		try {
+			DFService.register(this, dfd);
+		}
+		catch (FIPAException fe) {
+			fe.printStackTrace();
+		}
+
+
+		//agregando comportamiento para servir ofertas
+		addBehaviour(new ServidorDeOfertas());
 	}
 
-	
+
 	protected void takeDown() {
 		// Desregistrando de las paginas amarillas.
 		try {
@@ -113,5 +118,35 @@ public class Lugar extends Agent {
 		}
 		System.out.println("Agente Lugar "+getAID().getName()+" finalizado.");
 	}
+
+	private class ServidorDeOfertas extends CyclicBehaviour {
+		public void action() {
+
+			//filtramos solo mensajes CFP
+			MessageTemplate mt = MessageTemplate.MatchPerformative(ACLMessage.CFP);
+			ACLMessage msg = myAgent.receive(mt);
+			if (msg != null) {
+				// Mensaje CFP recibido, se lo procesa. Se supone que viene tipo@categoria
+				String requerimiento = msg.getContent();
+				String[] requerimientoArray = requerimiento.split("@");
+				ACLMessage reply = msg.createReply();
+
+				if (tipo.equals(requerimientoArray[0]) && categoria>=(Integer.parseInt(requerimientoArray[1]))) {
+					//El lugar cumple con el tipo (hotel, cabaña, etc) y la categoria deseada, proponer precio.
+					reply.setPerformative(ACLMessage.PROPOSE);
+					reply.setContent(String.valueOf(precio));
+				}
+				else {
+					// El lugar no cumple con la categoria o tipo de lugar.
+					reply.setPerformative(ACLMessage.REFUSE);
+					reply.setContent("lugar-no-adecuado");
+				}
+				myAgent.send(reply);
+			}
+			else {
+				block();
+			}
+		}
+	}  
 
 }
