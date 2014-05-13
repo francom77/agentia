@@ -3,6 +3,7 @@ package agents;
 import java.util.ArrayList;
 
 
+
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.domain.DFService;
@@ -108,6 +109,9 @@ public class Lugar extends Agent {
 
 		//agregando comportamiento para realizar renegociaciones
 		addBehaviour(new ServidorDeRenegociaciones());
+		
+		//agregando comportamiento para realizar confirmaciones
+		addBehaviour(new ServidorDeConfirmaciones());
 	}
 
 
@@ -199,7 +203,7 @@ public class Lugar extends Agent {
 				if (precioNuevo!=Float.MAX_VALUE) {
 					//Se encontro un descuento que encuadra y supera al precio a superar
 					reply.setPerformative(ACLMessage.PROPOSE);
-					reply.setContent(String.valueOf(precioNuevo));
+					reply.setContent(String.valueOf(precioNuevo)+"@"+tipo+"@"+categoria);
 				}
 				else {
 					// No se puede superar el precio para esa cantidad de personas.
@@ -212,5 +216,28 @@ public class Lugar extends Agent {
 				block();
 			}
 		}
-	}  
+	}
+	
+	private class ServidorDeConfirmaciones extends CyclicBehaviour {
+		public void action() {
+			MessageTemplate mt = MessageTemplate.MatchPerformative(ACLMessage.ACCEPT_PROPOSAL);
+			ACLMessage msg = myAgent.receive(mt);
+			if (msg != null) {
+				// la oferta fue aceptada
+				String ofertaAceptada = msg.getContent();
+				ACLMessage reply = msg.createReply();
+
+				if (ofertaAceptada != null) {
+					reply.setPerformative(ACLMessage.INFORM);
+					//aqui iria un corrimiento de los descuentos (implementar si queda tiempo)
+					System.out.println(ofertaAceptada);
+					reply.setContent("Gracias");
+				}
+				myAgent.send(reply);
+			}
+			else {
+				block();
+			}
+		}
+	}
 }
