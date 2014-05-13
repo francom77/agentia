@@ -105,6 +105,9 @@ public class Lugar extends Agent {
 
 		//agregando comportamiento para servir ofertas
 		addBehaviour(new ServidorDeOfertas());
+
+		//agregando comportamiento para realizar renegociaciones
+		addBehaviour(new ServidorDeRenegociaciones());
 	}
 
 
@@ -131,10 +134,14 @@ public class Lugar extends Agent {
 				String[] requerimientoArray = requerimiento.split("@");
 				ACLMessage reply = msg.createReply();
 
-				if (tipo.equals(requerimientoArray[0]) && categoria>=(Integer.parseInt(requerimientoArray[1]))) {
+				boolean tipoCond = tipo.equals(requerimientoArray[0]) || requerimientoArray[0].equals("indefinido");
+				boolean categoriaCond=  requerimientoArray[1].equals("indefinido") || categoria>=Integer.parseInt(requerimientoArray[1]);
+
+
+				if (tipoCond && categoriaCond) {
 					//El lugar cumple con el tipo (hotel, cabaña, etc) y la categoria deseada, proponer precio.
 					reply.setPerformative(ACLMessage.PROPOSE);
-					reply.setContent(String.valueOf(precio));
+					reply.setContent(String.valueOf(precio) +"@"+tipo+"@"+categoria);
 				}
 				else {
 					// El lugar no cumple con la categoria o tipo de lugar.
@@ -149,4 +156,61 @@ public class Lugar extends Agent {
 		}
 	}  
 
+	private class ServidorDeRenegociaciones extends CyclicBehaviour {
+		public void action() {
+
+			//filtramos solo mensajes REJECT_PROPOSAL
+			MessageTemplate mt = MessageTemplate.MatchPerformative(ACLMessage.REJECT_PROPOSAL);
+			ACLMessage msg = myAgent.receive(mt);
+			if (msg != null) {
+				//La propuesta fue rechazada. Se supone que viene el precioasuperar@cantidaddedias
+				String requerimiento = msg.getContent();
+				String[] requerimientoArray = requerimiento.split("@");
+				Float precioASuperar = Float.parseFloat(requerimientoArray[0]);
+				Integer cantidadDias = Integer.parseInt(requerimientoArray[1]);
+				ACLMessage reply = msg.createReply();
+
+				Float precioNuevo = Float.MAX_VALUE;
+				float precioConDescuento;
+				float porcentajeDescuento;
+
+				//se recorren todos los descuentos y se ve cual es el primero que encaja con la cantidad
+				//de personas y que supera el precio que le ofrecieron a la agencia.
+				for (Descuento elem : descuentos){
+					if (cantidadDias >= elem.getCantidad()){
+						int i = elem.getMenorDescuento();
+
+						while ( i<=elem.getMayorDescuento()){
+							porcentajeDescuento = (float) (1 - (i/100.00));
+							precioConDescuento = precio*porcentajeDescuento;
+
+							if (precioASuperar>precioConDescuento){
+								precioNuevo = precioConDescuento;
+								break;
+							}
+							i++;
+						}
+						if (precioNuevo!=Float.MAX_VALUE){
+							break;
+						}
+					}
+				}
+
+				if (precioNuevo!=Float.MAX_VALUE) {
+					//Se encontro un descuento que encuadra y supera al precio a superar
+					reply.setPerformative(ACLMessage.PROPOSE);
+					reply.setContent(String.valueOf(precioNuevo));
+				}
+				else {
+					// No se puede superar el precio para esa cantidad de personas.
+					reply.setPerformative(ACLMessage.REFUSE);
+					reply.setContent("no-se-puede-superar");
+				}
+				myAgent.send(reply);
+			}
+			else {
+				block();
+			}
+		}
+	}  
 }
