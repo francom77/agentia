@@ -88,7 +88,7 @@ public class Principal extends javax.swing.JFrame {
         jToolBar1.setMaximumSize(new java.awt.Dimension(250, 32769));
         jToolBar1.add(jSeparator3);
 
-        jButtonTurista.setIcon(new javax.swing.ImageIcon("C:\\Users\\Cecilia\\Desktop\\Icons\\mimi-deep-colour-png\\png\\User24.png")); // NOI18N
+        jButtonTurista.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/User24.png"))); // NOI18N
         jButtonTurista.setSelected(true);
         jButtonTurista.setText("Turista");
         jButtonTurista.setFocusable(false);
@@ -102,7 +102,7 @@ public class Principal extends javax.swing.JFrame {
         jToolBar1.add(jButtonTurista);
         jToolBar1.add(jSeparator1);
 
-        jButtonAgencia.setIcon(new javax.swing.ImageIcon("C:\\Users\\Cecilia\\Desktop\\Icons\\mimi-deep-colour-png\\png\\Shoppingcart24.png")); // NOI18N
+        jButtonAgencia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/User24.png"))); // NOI18N
         jButtonAgencia.setText("Agencia");
         jButtonAgencia.setEnabled(false);
         jButtonAgencia.setFocusable(false);
@@ -115,7 +115,7 @@ public class Principal extends javax.swing.JFrame {
         });
         jToolBar1.add(jButtonAgencia);
 
-        jButtonTransporte.setIcon(new javax.swing.ImageIcon("C:\\Users\\Cecilia\\Desktop\\Icons\\mimi-deep-colour-png\\png\\Telephone24.png")); // NOI18N
+        jButtonTransporte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/User24.png"))); // NOI18N
         jButtonTransporte.setText("Transporte");
         jButtonTransporte.setEnabled(false);
         jButtonTransporte.setFocusable(false);
@@ -128,7 +128,7 @@ public class Principal extends javax.swing.JFrame {
         });
         jToolBar1.add(jButtonTransporte);
 
-        jButtonAlojamiento.setIcon(new javax.swing.ImageIcon("C:\\Users\\Cecilia\\Desktop\\Icons\\mimi-deep-colour-png\\png\\Home24.png")); // NOI18N
+        jButtonAlojamiento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Home24.png"))); // NOI18N
         jButtonAlojamiento.setText("Alojamiento");
         jButtonAlojamiento.setEnabled(false);
         jButtonAlojamiento.setFocusable(false);
@@ -161,45 +161,45 @@ public class Principal extends javax.swing.JFrame {
         jLabel5.setText("Precio a pagar");
 
         jButtonAEstrella1.setSelected(true);
-        jButtonAEstrella1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Cecilia\\Desktop\\Icons\\mimi-deep-colour-png\\png\\Star_empty16.png")); // NOI18N
+        jButtonAEstrella1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_empty16.png"))); // NOI18N
         jButtonAEstrella1.setRolloverEnabled(false);
-        jButtonAEstrella1.setSelectedIcon(new javax.swing.ImageIcon("C:\\Users\\Cecilia\\Desktop\\Icons\\mimi-deep-colour-png\\png\\Star_full16.png")); // NOI18N
+        jButtonAEstrella1.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_full16.png"))); // NOI18N
         jButtonAEstrella1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAEstrella1ActionPerformed(evt);
             }
         });
 
-        jButtonAEstrella2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Cecilia\\Desktop\\Icons\\mimi-deep-colour-png\\png\\Star_empty16.png")); // NOI18N
+        jButtonAEstrella2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_empty16.png"))); // NOI18N
         jButtonAEstrella2.setRolloverEnabled(false);
-        jButtonAEstrella2.setSelectedIcon(new javax.swing.ImageIcon("C:\\Users\\Cecilia\\Desktop\\Icons\\mimi-deep-colour-png\\png\\Star_full16.png")); // NOI18N
+        jButtonAEstrella2.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_full16.png"))); // NOI18N
         jButtonAEstrella2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAEstrella2ActionPerformed(evt);
             }
         });
 
-        jButtonAEstrella3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Cecilia\\Desktop\\Icons\\mimi-deep-colour-png\\png\\Star_empty16.png")); // NOI18N
+        jButtonAEstrella3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_empty16.png"))); // NOI18N
         jButtonAEstrella3.setRolloverEnabled(false);
-        jButtonAEstrella3.setSelectedIcon(new javax.swing.ImageIcon("C:\\Users\\Cecilia\\Desktop\\Icons\\mimi-deep-colour-png\\png\\Star_full16.png")); // NOI18N
+        jButtonAEstrella3.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_full16.png"))); // NOI18N
         jButtonAEstrella3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAEstrella3ActionPerformed(evt);
             }
         });
 
-        jButtonAEstrella4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Cecilia\\Desktop\\Icons\\mimi-deep-colour-png\\png\\Star_empty16.png")); // NOI18N
+        jButtonAEstrella4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_empty16.png"))); // NOI18N
         jButtonAEstrella4.setRolloverEnabled(false);
-        jButtonAEstrella4.setSelectedIcon(new javax.swing.ImageIcon("C:\\Users\\Cecilia\\Desktop\\Icons\\mimi-deep-colour-png\\png\\Star_full16.png")); // NOI18N
+        jButtonAEstrella4.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_full16.png"))); // NOI18N
         jButtonAEstrella4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAEstrella4ActionPerformed(evt);
             }
         });
 
-        jButtonAEstrella5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Cecilia\\Desktop\\Icons\\mimi-deep-colour-png\\png\\Star_empty16.png")); // NOI18N
+        jButtonAEstrella5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_empty16.png"))); // NOI18N
         jButtonAEstrella5.setRolloverEnabled(false);
-        jButtonAEstrella5.setSelectedIcon(new javax.swing.ImageIcon("C:\\Users\\Cecilia\\Desktop\\Icons\\mimi-deep-colour-png\\png\\Star_full16.png")); // NOI18N
+        jButtonAEstrella5.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_full16.png"))); // NOI18N
         jButtonAEstrella5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAEstrella5ActionPerformed(evt);
@@ -213,45 +213,45 @@ public class Principal extends javax.swing.JFrame {
         jLabel9.setText("Precio a pagar");
 
         jButtonTEstrella1.setSelected(true);
-        jButtonTEstrella1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Cecilia\\Desktop\\Icons\\mimi-deep-colour-png\\png\\Star_empty16.png")); // NOI18N
+        jButtonTEstrella1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_empty16.png"))); // NOI18N
         jButtonTEstrella1.setRolloverEnabled(false);
-        jButtonTEstrella1.setSelectedIcon(new javax.swing.ImageIcon("C:\\Users\\Cecilia\\Desktop\\Icons\\mimi-deep-colour-png\\png\\Star_full16.png")); // NOI18N
+        jButtonTEstrella1.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_full16.png"))); // NOI18N
         jButtonTEstrella1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonTEstrella1ActionPerformed(evt);
             }
         });
 
-        jButtonTEstrella2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Cecilia\\Desktop\\Icons\\mimi-deep-colour-png\\png\\Star_empty16.png")); // NOI18N
+        jButtonTEstrella2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_empty16.png"))); // NOI18N
         jButtonTEstrella2.setRolloverEnabled(false);
-        jButtonTEstrella2.setSelectedIcon(new javax.swing.ImageIcon("C:\\Users\\Cecilia\\Desktop\\Icons\\mimi-deep-colour-png\\png\\Star_full16.png")); // NOI18N
+        jButtonTEstrella2.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_full16.png"))); // NOI18N
         jButtonTEstrella2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonTEstrella2ActionPerformed(evt);
             }
         });
 
-        jButtonTEstrella3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Cecilia\\Desktop\\Icons\\mimi-deep-colour-png\\png\\Star_empty16.png")); // NOI18N
+        jButtonTEstrella3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_empty16.png"))); // NOI18N
         jButtonTEstrella3.setRolloverEnabled(false);
-        jButtonTEstrella3.setSelectedIcon(new javax.swing.ImageIcon("C:\\Users\\Cecilia\\Desktop\\Icons\\mimi-deep-colour-png\\png\\Star_full16.png")); // NOI18N
+        jButtonTEstrella3.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_full16.png"))); // NOI18N
         jButtonTEstrella3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonTEstrella3ActionPerformed(evt);
             }
         });
 
-        jButtonTEstrella4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Cecilia\\Desktop\\Icons\\mimi-deep-colour-png\\png\\Star_empty16.png")); // NOI18N
+        jButtonTEstrella4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_empty16.png"))); // NOI18N
         jButtonTEstrella4.setRolloverEnabled(false);
-        jButtonTEstrella4.setSelectedIcon(new javax.swing.ImageIcon("C:\\Users\\Cecilia\\Desktop\\Icons\\mimi-deep-colour-png\\png\\Star_full16.png")); // NOI18N
+        jButtonTEstrella4.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_full16.png"))); // NOI18N
         jButtonTEstrella4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonTEstrella4ActionPerformed(evt);
             }
         });
 
-        jButtonTEstrella5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Cecilia\\Desktop\\Icons\\mimi-deep-colour-png\\png\\Star_empty16.png")); // NOI18N
+        jButtonTEstrella5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_empty16.png"))); // NOI18N
         jButtonTEstrella5.setRolloverEnabled(false);
-        jButtonTEstrella5.setSelectedIcon(new javax.swing.ImageIcon("C:\\Users\\Cecilia\\Desktop\\Icons\\mimi-deep-colour-png\\png\\Star_full16.png")); // NOI18N
+        jButtonTEstrella5.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_full16.png"))); // NOI18N
         jButtonTEstrella5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonTEstrella5ActionPerformed(evt);
@@ -265,7 +265,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        jButtonCrearAgente.setIcon(new javax.swing.ImageIcon("C:\\Users\\Cecilia\\Desktop\\Icons\\mimi-deep-colour-png\\png\\Add_user16.png")); // NOI18N
+        jButtonCrearAgente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Add_user16.png"))); // NOI18N
         jButtonCrearAgente.setText("Crear Agente");
         jButtonCrearAgente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -288,16 +288,16 @@ public class Principal extends javax.swing.JFrame {
         jLabel14.setFocusable(false);
         jLabel14.setOpaque(true);
 
-        jButtonInfoAlojamiento.setIcon(new javax.swing.ImageIcon("C:\\Users\\Cecilia\\Desktop\\Icons\\mimi-deep-colour-png\\png\\Info16.png")); // NOI18N
+        jButtonInfoAlojamiento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Info16.png"))); // NOI18N
         jButtonInfoAlojamiento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonInfoAlojamientoActionPerformed(evt);
             }
         });
 
-        jButtonInfoTranporte.setIcon(new javax.swing.ImageIcon("C:\\Users\\Cecilia\\Desktop\\Icons\\mimi-deep-colour-png\\png\\Info16.png")); // NOI18N
+        jButtonInfoTranporte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Info16.png"))); // NOI18N
 
-        jButtonInfoTranporte1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Cecilia\\Desktop\\Icons\\mimi-deep-colour-png\\png\\Search16.png")); // NOI18N
+        jButtonInfoTranporte1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Search16.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanelTuristaLayout = new javax.swing.GroupLayout(jPanelTurista);
         jPanelTurista.setLayout(jPanelTuristaLayout);
