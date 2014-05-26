@@ -17,7 +17,7 @@ public class Principal extends javax.swing.JFrame {
     public Principal() {
         initComponents();
     }
-    private String argumentosTurista;
+  
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,7 +27,6 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroupACategoria = new javax.swing.ButtonGroup();
         jToolBar1 = new javax.swing.JToolBar();
         jSeparator3 = new javax.swing.JToolBar.Separator();
         jButtonTurista = new javax.swing.JToggleButton();
@@ -41,7 +40,6 @@ public class Principal extends javax.swing.JFrame {
         jComboTipoAlojamiento = new javax.swing.JComboBox();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextPrecioAlojamiento = new javax.swing.JTextField();
         jButtonAEstrella1 = new javax.swing.JRadioButton();
         jButtonAEstrella2 = new javax.swing.JRadioButton();
         jButtonAEstrella3 = new javax.swing.JRadioButton();
@@ -51,7 +49,6 @@ public class Principal extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jTextPrecioTransporte = new javax.swing.JTextField();
         jButtonTEstrella1 = new javax.swing.JRadioButton();
         jButtonTEstrella2 = new javax.swing.JRadioButton();
         jButtonTEstrella3 = new javax.swing.JRadioButton();
@@ -65,11 +62,24 @@ public class Principal extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jButtonInfoAlojamiento = new javax.swing.JButton();
         jButtonInfoTranporte = new javax.swing.JButton();
-        jButtonInfoTranporte1 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jSpinnerCantPersonas = new javax.swing.JSpinner();
+        jLabel15 = new javax.swing.JLabel();
+        jSpinnerCantDias = new javax.swing.JSpinner();
+        jButtonCrearAgente1 = new javax.swing.JButton();
+        jTextPrecioAlojamiento = new javax.swing.JFormattedTextField();
+        jTextPrecioTransporte = new javax.swing.JFormattedTextField();
+        jLabelAdvertenciaDestino = new javax.swing.JLabel();
+        jLabelAdvertenciaPrecioA = new javax.swing.JLabel();
+        jLabelAdvertenciaPrecioT = new javax.swing.JLabel();
         jPanelAgencia = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
+        jSliderPonderacion = new javax.swing.JSlider();
+        jButtonCrearAgencia = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
         jPanelTransporte = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
         jPanelAlojamiento = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         jMenuBar = new javax.swing.JMenuBar();
@@ -141,6 +151,8 @@ public class Principal extends javax.swing.JFrame {
         });
         jToolBar1.add(jButtonAlojamiento);
 
+        jPanelTurista.setPreferredSize(new java.awt.Dimension(264, 472));
+
         jTextDestino.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextDestinoActionPerformed(evt);
@@ -148,6 +160,7 @@ public class Principal extends javax.swing.JFrame {
         });
 
         jLabel2.setText("Tipo");
+        jLabel2.setFocusable(false);
 
         jComboTipoAlojamiento.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Hotel", "Hostel", "Departamento", "Cabaña" }));
         jComboTipoAlojamiento.addActionListener(new java.awt.event.ActionListener() {
@@ -157,11 +170,17 @@ public class Principal extends javax.swing.JFrame {
         });
 
         jLabel3.setText("Categoría");
+        jLabel3.setFocusable(false);
 
         jLabel5.setText("Precio a pagar");
+        jLabel5.setFocusable(false);
+        jLabel5.setMaximumSize(new java.awt.Dimension(70, 14));
+        jLabel5.setMinimumSize(new java.awt.Dimension(70, 14));
+        jLabel5.setName(""); // NOI18N
 
         jButtonAEstrella1.setSelected(true);
         jButtonAEstrella1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_empty16.png"))); // NOI18N
+        jButtonAEstrella1.setName(""); // NOI18N
         jButtonAEstrella1.setRolloverEnabled(false);
         jButtonAEstrella1.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_full16.png"))); // NOI18N
         jButtonAEstrella1.addActionListener(new java.awt.event.ActionListener() {
@@ -207,10 +226,17 @@ public class Principal extends javax.swing.JFrame {
         });
 
         jLabel7.setText("Tipo");
+        jLabel7.setFocusable(false);
 
         jLabel8.setText("Categoría");
+        jLabel8.setFocusable(false);
+        jLabel8.setMaximumSize(new java.awt.Dimension(70, 14));
+        jLabel8.setMinimumSize(new java.awt.Dimension(70, 14));
 
         jLabel9.setText("Precio a pagar");
+        jLabel9.setFocusable(false);
+        jLabel9.setMaximumSize(new java.awt.Dimension(70, 14));
+        jLabel9.setMinimumSize(new java.awt.Dimension(70, 14));
 
         jButtonTEstrella1.setSelected(true);
         jButtonTEstrella1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_empty16.png"))); // NOI18N
@@ -265,8 +291,9 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        jButtonCrearAgente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Add_user16.png"))); // NOI18N
-        jButtonCrearAgente.setText("Crear Agente");
+        jButtonCrearAgente.setText("Consultar agencias");
+        jButtonCrearAgente.setPreferredSize(new java.awt.Dimension(155, 25));
+        jButtonCrearAgente.setRequestFocusEnabled(false);
         jButtonCrearAgente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCrearAgenteActionPerformed(evt);
@@ -289,6 +316,9 @@ public class Principal extends javax.swing.JFrame {
         jLabel14.setOpaque(true);
 
         jButtonInfoAlojamiento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Info16.png"))); // NOI18N
+        jButtonInfoAlojamiento.setMaximumSize(new java.awt.Dimension(40, 25));
+        jButtonInfoAlojamiento.setMinimumSize(new java.awt.Dimension(40, 25));
+        jButtonInfoAlojamiento.setPreferredSize(new java.awt.Dimension(40, 25));
         jButtonInfoAlojamiento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonInfoAlojamientoActionPerformed(evt);
@@ -296,8 +326,62 @@ public class Principal extends javax.swing.JFrame {
         });
 
         jButtonInfoTranporte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Info16.png"))); // NOI18N
+        jButtonInfoTranporte.setMaximumSize(new java.awt.Dimension(40, 25));
+        jButtonInfoTranporte.setMinimumSize(new java.awt.Dimension(40, 25));
+        jButtonInfoTranporte.setPreferredSize(new java.awt.Dimension(40, 25));
+        jButtonInfoTranporte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonInfoTranporteActionPerformed(evt);
+            }
+        });
 
-        jButtonInfoTranporte1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Search16.png"))); // NOI18N
+        jLabel4.setText("Cantidad de personas");
+        jLabel4.setFocusable(false);
+
+        jSpinnerCantPersonas.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(1), Integer.valueOf(1), null, Integer.valueOf(1)));
+        jSpinnerCantPersonas.setName(""); // NOI18N
+
+        jLabel15.setText("Cantidad de días");
+        jLabel15.setFocusable(false);
+
+        jSpinnerCantDias.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(1), Integer.valueOf(1), null, Integer.valueOf(1)));
+        jSpinnerCantDias.setName(""); // NOI18N
+
+        jButtonCrearAgente1.setText("Respuesta");
+        jButtonCrearAgente1.setToolTipText("");
+        jButtonCrearAgente1.setActionCommand("Respuesta");
+        jButtonCrearAgente1.setEnabled(false);
+        jButtonCrearAgente1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCrearAgente1ActionPerformed(evt);
+            }
+        });
+
+        jTextPrecioAlojamiento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#,##0.00"))));
+        jTextPrecioAlojamiento.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jTextPrecioAlojamiento.setToolTipText("");
+        jTextPrecioAlojamiento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextPrecioAlojamientoActionPerformed(evt);
+            }
+        });
+
+        jTextPrecioTransporte.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#,##0.00"))));
+        jTextPrecioTransporte.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jTextPrecioTransporte.setToolTipText("");
+
+        jLabelAdvertenciaDestino.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Alert16.png"))); // NOI18N
+        jLabelAdvertenciaDestino.setToolTipText("");
+        jLabelAdvertenciaDestino.setPreferredSize(new java.awt.Dimension(16, 16));
+        jLabelAdvertenciaDestino.setVisible(false);
+
+        jLabelAdvertenciaPrecioA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Alert16.png"))); // NOI18N
+        jLabelAdvertenciaPrecioA.setPreferredSize(new java.awt.Dimension(16, 16));
+        jLabelAdvertenciaPrecioA.setVisible(false);
+
+        jLabelAdvertenciaPrecioT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Alert16.png"))); // NOI18N
+        jLabelAdvertenciaPrecioT.setPreferredSize(new java.awt.Dimension(16, 16));
+        jLabelAdvertenciaPrecioT.setVisible(false);
 
         javax.swing.GroupLayout jPanelTuristaLayout = new javax.swing.GroupLayout(jPanelTurista);
         jPanelTurista.setLayout(jPanelTuristaLayout);
@@ -305,141 +389,179 @@ public class Principal extends javax.swing.JFrame {
             jPanelTuristaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelTuristaLayout.createSequentialGroup()
                 .addGroup(jPanelTuristaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 11, Short.MAX_VALUE)
+                .addGroup(jPanelTuristaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jComboTipoTransporte, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanelTuristaLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel14)
-                        .addGap(28, 28, 28)
-                        .addComponent(jTextDestino, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButtonInfoTranporte1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelTuristaLayout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addGroup(jPanelTuristaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelTuristaLayout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addGap(67, 67, 67)
-                                .addComponent(jComboTipoTransporte, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanelTuristaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jButtonCrearAgente)
-                                .addGroup(jPanelTuristaLayout.createSequentialGroup()
-                                    .addGroup(jPanelTuristaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel9)
-                                        .addComponent(jLabel8))
-                                    .addGap(18, 18, 18)
-                                    .addGroup(jPanelTuristaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanelTuristaLayout.createSequentialGroup()
-                                            .addComponent(jButtonTEstrella1)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(jButtonTEstrella2)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(jButtonTEstrella3)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(jButtonTEstrella4)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(jButtonTEstrella5)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(jButtonInfoTranporte, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addComponent(jTextPrecioTransporte, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                    .addGroup(jPanelTuristaLayout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addGroup(jPanelTuristaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanelTuristaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanelTuristaLayout.createSequentialGroup()
-                                .addComponent(jButtonAEstrella1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonAEstrella2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonAEstrella3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonAEstrella4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonAEstrella5))
-                            .addComponent(jComboTipoAlojamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextPrecioAlojamiento))
-                        .addGap(18, 18, 18)
-                        .addComponent(jButtonInfoAlojamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jButtonTEstrella1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonTEstrella2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonTEstrella3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonTEstrella4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonTEstrella5))
+                    .addComponent(jTextPrecioTransporte, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelTuristaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelAdvertenciaPrecioT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonInfoTranporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(12, Short.MAX_VALUE))
             .addGroup(jPanelTuristaLayout.createSequentialGroup()
-                .addContainerGap()
+                .addComponent(jLabel13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSeparator7))
+            .addGroup(jPanelTuristaLayout.createSequentialGroup()
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSeparator6))
+            .addGroup(jPanelTuristaLayout.createSequentialGroup()
+                .addGap(2, 2, 2)
+                .addComponent(jButtonCrearAgente, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonCrearAgente1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanelTuristaLayout.createSequentialGroup()
                 .addGroup(jPanelTuristaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelTuristaLayout.createSequentialGroup()
-                        .addComponent(jLabel13)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator7))
+                        .addGroup(jPanelTuristaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(jPanelTuristaLayout.createSequentialGroup()
+                                .addComponent(jLabel14)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                                .addComponent(jTextDestino, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelTuristaLayout.createSequentialGroup()
+                                .addComponent(jLabel15)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jSpinnerCantDias, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanelTuristaLayout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jSpinnerCantPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabelAdvertenciaDestino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanelTuristaLayout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator6))))
+                        .addGroup(jPanelTuristaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanelTuristaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jComboTipoAlojamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanelTuristaLayout.createSequentialGroup()
+                                .addGroup(jPanelTuristaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanelTuristaLayout.createSequentialGroup()
+                                        .addComponent(jButtonAEstrella1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jButtonAEstrella2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jButtonAEstrella3)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jButtonAEstrella4)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jButtonAEstrella5))
+                                    .addComponent(jTextPrecioAlojamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanelTuristaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButtonInfoAlojamiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabelAdvertenciaPrecioA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelTuristaLayout.setVerticalGroup(
             jPanelTuristaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelTuristaLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanelTuristaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelTuristaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextDestino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel14))
-                    .addComponent(jButtonInfoTranporte1))
-                .addGap(18, 18, 18)
-                .addGroup(jPanelTuristaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel13))
-                .addGap(18, 18, 18)
-                .addGroup(jPanelTuristaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jComboTipoAlojamiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11)
+                .addGroup(jPanelTuristaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jLabel14)
+                    .addComponent(jTextDestino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelAdvertenciaDestino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelTuristaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanelTuristaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jButtonAEstrella1)
-                        .addComponent(jButtonAEstrella2)
-                        .addComponent(jButtonAEstrella3)
-                        .addComponent(jButtonAEstrella4)
-                        .addComponent(jButtonAEstrella5)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
-                    .addComponent(jButtonInfoAlojamiento))
-                .addGap(18, 18, 18)
                 .addGroup(jPanelTuristaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jTextPrecioAlojamiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel4)
+                    .addComponent(jSpinnerCantPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelTuristaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel15)
+                    .addComponent(jSpinnerCantDias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanelTuristaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel6)
-                    .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel13)
+                    .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelTuristaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboTipoAlojamiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelTuristaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jLabel3)
+                    .addComponent(jButtonAEstrella1)
+                    .addComponent(jButtonAEstrella2)
+                    .addComponent(jButtonAEstrella3)
+                    .addComponent(jButtonAEstrella4)
+                    .addComponent(jButtonAEstrella5)
+                    .addComponent(jButtonInfoAlojamiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelTuristaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextPrecioAlojamiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelAdvertenciaPrecioA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanelTuristaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelTuristaLayout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addGroup(jPanelTuristaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(jComboTipoTransporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanelTuristaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButtonTEstrella2)
-                            .addComponent(jButtonTEstrella3)
-                            .addComponent(jButtonTEstrella4)
-                            .addComponent(jButtonTEstrella1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelTuristaLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanelTuristaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButtonTEstrella5, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButtonInfoTranporte, javax.swing.GroupLayout.Alignment.TRAILING))))
-                .addGap(18, 18, 18)
+                    .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelTuristaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jComboTipoTransporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelTuristaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonTEstrella1)
+                    .addComponent(jButtonTEstrella2)
+                    .addComponent(jButtonTEstrella3)
+                    .addComponent(jButtonTEstrella4)
+                    .addComponent(jButtonTEstrella5)
+                    .addComponent(jButtonInfoTranporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelTuristaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jLabelAdvertenciaPrecioT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextPrecioTransporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(jPanelTuristaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(jTextPrecioTransporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jButtonCrearAgente, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(102, 102, 102))
+                    .addComponent(jButtonCrearAgente, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonCrearAgente1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         jPanelAgencia.setVisible(false);
+        jPanelAgencia.setName(""); // NOI18N
+        jPanelAgencia.setPreferredSize(new java.awt.Dimension(264, 472));
 
-        jLabel10.setText("Panel Agencia, en principio no visible");
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel10.setText("Ponderación");
+
+        jSliderPonderacion.setMajorTickSpacing(1);
+        jSliderPonderacion.setMaximum(10);
+        jSliderPonderacion.setMinorTickSpacing(1);
+        jSliderPonderacion.setPaintTicks(true);
+        jSliderPonderacion.setValue(5);
+        jSliderPonderacion.setName(""); // NOI18N
+
+        jButtonCrearAgencia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Wheel16.png"))); // NOI18N
+        jButtonCrearAgencia.setText("Crear Agencia");
+        jButtonCrearAgencia.setToolTipText("");
+        jButtonCrearAgencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCrearAgenciaActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Precio");
+
+        jLabel16.setText("Categoría");
 
         javax.swing.GroupLayout jPanelAgenciaLayout = new javax.swing.GroupLayout(jPanelAgencia);
         jPanelAgencia.setLayout(jPanelAgenciaLayout);
@@ -447,19 +569,39 @@ public class Principal extends javax.swing.JFrame {
             jPanelAgenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelAgenciaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel10)
-                .addContainerGap(150, Short.MAX_VALUE))
+                .addGroup(jPanelAgenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSliderPonderacion, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
+                    .addComponent(jButtonCrearAgencia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanelAgenciaLayout.createSequentialGroup()
+                        .addComponent(jLabel10)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanelAgenciaLayout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel16)))
+                .addContainerGap())
         );
         jPanelAgenciaLayout.setVerticalGroup(
             jPanelAgenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelAgenciaLayout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jLabel10)
-                .addGap(0, 22, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelAgenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel16))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSliderPonderacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 337, Short.MAX_VALUE)
+                .addComponent(jButtonCrearAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         jPanelTransporte.setVisible(false);
+        jPanelTransporte.setPreferredSize(new java.awt.Dimension(264, 472));
 
-        jLabel11.setText("Panel Transporte, en principio no visible");
+        jLabel17.setText("Panel  Transporte, en principio no visible");
+        jLabel17.setPreferredSize(new java.awt.Dimension(280, 430));
 
         javax.swing.GroupLayout jPanelTransporteLayout = new javax.swing.GroupLayout(jPanelTransporte);
         jPanelTransporte.setLayout(jPanelTransporteLayout);
@@ -467,19 +609,23 @@ public class Principal extends javax.swing.JFrame {
             jPanelTransporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelTransporteLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel11)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         jPanelTransporteLayout.setVerticalGroup(
             jPanelTransporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelTransporteLayout.createSequentialGroup()
-                .addComponent(jLabel11)
-                .addGap(0, 22, Short.MAX_VALUE))
+                .addGap(64, 64, 64)
+                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanelAlojamiento.setVisible(false);
+        jPanelAlojamiento.setPreferredSize(new java.awt.Dimension(264, 472));
+        jPanelAlojamiento.setRequestFocusEnabled(false);
 
         jLabel12.setText("Panel  Alojamiento, en principio no visible");
+        jLabel12.setPreferredSize(new java.awt.Dimension(280, 430));
 
         javax.swing.GroupLayout jPanelAlojamientoLayout = new javax.swing.GroupLayout(jPanelAlojamiento);
         jPanelAlojamiento.setLayout(jPanelAlojamientoLayout);
@@ -487,14 +633,15 @@ public class Principal extends javax.swing.JFrame {
             jPanelAlojamientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelAlojamientoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel12)
-                .addContainerGap(109, Short.MAX_VALUE))
+                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         jPanelAlojamientoLayout.setVerticalGroup(
             jPanelAlojamientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelAlojamientoLayout.createSequentialGroup()
-                .addComponent(jLabel12)
-                .addGap(0, 22, Short.MAX_VALUE))
+                .addGap(64, 64, 64)
+                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jMenu.setText("Opciones");
@@ -508,6 +655,11 @@ public class Principal extends javax.swing.JFrame {
         jMenu.add(jMenuItemAdmin);
 
         jMenuItemJADE.setText("Iniciar Jade GUI");
+        jMenuItemJADE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemJADEActionPerformed(evt);
+            }
+        });
         jMenu.add(jMenuItemJADE);
         jMenu.add(jSeparator2);
 
@@ -529,31 +681,27 @@ public class Principal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanelTurista, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addComponent(jPanelTransporte, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanelAgencia, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanelAlojamiento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(15, Short.MAX_VALUE)
+                .addComponent(jPanelTurista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanelAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanelAlojamiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanelTransporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanelTurista, javax.swing.GroupLayout.PREFERRED_SIZE, 431, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanelAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(4, 4, 4)
-                .addComponent(jPanelAlojamiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanelTransporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanelTransporte, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelAlojamiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanelTurista, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         getAccessibleContext().setAccessibleName("");
@@ -679,16 +827,47 @@ public class Principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonAlojamientoActionPerformed
 
+    private void jButtonInfoAlojamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInfoAlojamientoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonInfoAlojamientoActionPerformed
+
     private void jButtonCrearAgenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCrearAgenteActionPerformed
+// Imprime por consola destino-cantPersonas-cantDias-
+//                     tipoAlojamiento-categoriaAlojamiento-precioAlojamiento
+//                     tipoTransporte-categoriaTransporte-precioTransporte
         
-        argumentosTurista = jTextDestino.getText()+"-"+
+        if ((!"".equals(jTextDestino.getText()))&&(jTextPrecioAlojamiento.getValue()!=null)&&(jTextPrecioTransporte.getValue()!=null)) {
+            System.out.println(
+                jTextDestino.getText()+"-"+
+                jSpinnerCantPersonas.getValue()+"-"+
+                jSpinnerCantDias.getValue()+"-"+
                 jComboTipoAlojamiento.getSelectedItem()+"-"+
                 categoriaAlojamiento()+"-"+
-                jTextPrecioAlojamiento.getText()+"-"+
+                jTextPrecioAlojamiento.getValue()+"-"+
                 jComboTipoTransporte.getSelectedItem()+"-"+
                 categoriaTransporte()+"-"+
-                jTextPrecioTransporte.getText();
-        System.out.println(argumentosTurista);
+                jTextPrecioTransporte.getValue()
+            );
+            jLabelAdvertenciaDestino.setVisible(false);
+            jLabelAdvertenciaPrecioA.setVisible(false);
+            jLabelAdvertenciaPrecioT.setVisible(false);
+        } else {
+            if ("".equals(jTextDestino.getText())){
+                jLabelAdvertenciaDestino.setVisible(true);
+            } else {
+                jLabelAdvertenciaDestino.setVisible(false);
+            }
+            if (jTextPrecioAlojamiento.getValue()==null){
+                jLabelAdvertenciaPrecioA.setVisible(true);
+            } else {
+                 jLabelAdvertenciaPrecioA.setVisible(false);
+            }
+            if (jTextPrecioTransporte.getValue()==null){
+                jLabelAdvertenciaPrecioT.setVisible(true);
+            } else {
+                jLabelAdvertenciaPrecioT.setVisible(false);
+            }
+        }
     }//GEN-LAST:event_jButtonCrearAgenteActionPerformed
 
     private void jComboTipoTransporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboTipoTransporteActionPerformed
@@ -733,7 +912,7 @@ public class Principal extends javax.swing.JFrame {
         jButtonTEstrella3.setSelected(false);
         jButtonTEstrella4.setSelected(false);
         jButtonTEstrella5.setSelected(false);
-        
+
     }//GEN-LAST:event_jButtonTEstrella1ActionPerformed
 
     private void jButtonAEstrella5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAEstrella5ActionPerformed
@@ -784,9 +963,26 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextDestinoActionPerformed
 
-    private void jButtonInfoAlojamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInfoAlojamientoActionPerformed
+    private void jButtonInfoTranporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInfoTranporteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonInfoAlojamientoActionPerformed
+    }//GEN-LAST:event_jButtonInfoTranporteActionPerformed
+
+    private void jButtonCrearAgente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCrearAgente1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonCrearAgente1ActionPerformed
+
+    private void jTextPrecioAlojamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextPrecioAlojamientoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextPrecioAlojamientoActionPerformed
+
+    private void jMenuItemJADEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemJADEActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemJADEActionPerformed
+
+    private void jButtonCrearAgenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCrearAgenciaActionPerformed
+        // Imprime por consola ponderacPrecio-ponderacCategoría
+        System.out.println((jSliderPonderacion.getValue()/10.0)+"-"+((10-jSliderPonderacion.getValue())/10.0));
+    }//GEN-LAST:event_jButtonCrearAgenciaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -824,7 +1020,6 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.ButtonGroup buttonGroupACategoria;
     private javax.swing.JRadioButton jButtonAEstrella1;
     private javax.swing.JRadioButton jButtonAEstrella2;
     private javax.swing.JRadioButton jButtonAEstrella3;
@@ -832,10 +1027,11 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JRadioButton jButtonAEstrella5;
     private javax.swing.JToggleButton jButtonAgencia;
     private javax.swing.JToggleButton jButtonAlojamiento;
+    private javax.swing.JButton jButtonCrearAgencia;
     private javax.swing.JButton jButtonCrearAgente;
+    private javax.swing.JButton jButtonCrearAgente1;
     private javax.swing.JButton jButtonInfoAlojamiento;
     private javax.swing.JButton jButtonInfoTranporte;
-    private javax.swing.JButton jButtonInfoTranporte1;
     private javax.swing.JRadioButton jButtonTEstrella1;
     private javax.swing.JRadioButton jButtonTEstrella2;
     private javax.swing.JRadioButton jButtonTEstrella3;
@@ -845,18 +1041,25 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JToggleButton jButtonTurista;
     private javax.swing.JComboBox jComboTipoAlojamiento;
     private javax.swing.JComboBox jComboTipoTransporte;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelAdvertenciaDestino;
+    private javax.swing.JLabel jLabelAdvertenciaPrecioA;
+    private javax.swing.JLabel jLabelAdvertenciaPrecioT;
     private javax.swing.JMenu jMenu;
     private javax.swing.JMenuBar jMenuBar;
     private javax.swing.JCheckBoxMenuItem jMenuItemAdmin;
@@ -871,9 +1074,12 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JToolBar.Separator jSeparator3;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
+    private javax.swing.JSlider jSliderPonderacion;
+    private javax.swing.JSpinner jSpinnerCantDias;
+    private javax.swing.JSpinner jSpinnerCantPersonas;
     private javax.swing.JTextField jTextDestino;
-    private javax.swing.JTextField jTextPrecioAlojamiento;
-    private javax.swing.JTextField jTextPrecioTransporte;
+    private javax.swing.JFormattedTextField jTextPrecioAlojamiento;
+    private javax.swing.JFormattedTextField jTextPrecioTransporte;
     private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
 }
