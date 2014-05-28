@@ -156,13 +156,13 @@ public class Agencia extends Agent {
 						fe.printStackTrace();
 					}
 
-					//---------------- desde aca es propio de lugar hasta el paso 4
+					
 					if (lugares.length == 0 || transportes.length == 0){
 						//se setea el paso 4 (no se encontaron lugares) y se rompe el case
 						step = 9;
 						break;
 					}
-
+					//---------------- desde aca es propio de lugar hasta el paso 4
 					//enviar los cfp a los lugares
 					ACLMessage cfpLugar = new ACLMessage(ACLMessage.CFP);
 					for (AID elem : lugares) {
