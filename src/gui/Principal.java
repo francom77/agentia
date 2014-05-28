@@ -5,6 +5,14 @@
  */
 
 package gui;
+
+import javax.swing.DefaultListModel;
+import javax.swing.JRadioButton;
+import jade.core.Runtime; 
+import jade.core.Profile; 
+import jade.core.ProfileImpl; 
+import jade.wrapper.*; 
+
 /**
  *
  * @author Cecilia
@@ -27,6 +35,9 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDialogAgenciaCreada = new javax.swing.JDialog();
+        jLabelAgenciaCreada = new javax.swing.JLabel();
+        jButtonAceptarAgenciaCreada = new javax.swing.JButton();
         jToolBar1 = new javax.swing.JToolBar();
         jSeparator3 = new javax.swing.JToolBar.Separator();
         jButtonTurista = new javax.swing.JToggleButton();
@@ -40,20 +51,20 @@ public class Principal extends javax.swing.JFrame {
         jComboTipoAlojamiento = new javax.swing.JComboBox();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jButtonAEstrella1 = new javax.swing.JRadioButton();
-        jButtonAEstrella2 = new javax.swing.JRadioButton();
-        jButtonAEstrella3 = new javax.swing.JRadioButton();
-        jButtonAEstrella4 = new javax.swing.JRadioButton();
-        jButtonAEstrella5 = new javax.swing.JRadioButton();
+        jButtonEstrella1A = new javax.swing.JRadioButton();
+        jButtonEstrella2A = new javax.swing.JRadioButton();
+        jButtonEstrella3A = new javax.swing.JRadioButton();
+        jButtonEstrella4A = new javax.swing.JRadioButton();
+        jButtonEstrella5A = new javax.swing.JRadioButton();
         jSeparator6 = new javax.swing.JSeparator();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jButtonTEstrella1 = new javax.swing.JRadioButton();
-        jButtonTEstrella2 = new javax.swing.JRadioButton();
-        jButtonTEstrella3 = new javax.swing.JRadioButton();
-        jButtonTEstrella4 = new javax.swing.JRadioButton();
-        jButtonTEstrella5 = new javax.swing.JRadioButton();
+        jButtonEstrella1T = new javax.swing.JRadioButton();
+        jButtonEstrella2T = new javax.swing.JRadioButton();
+        jButtonEstrella3T = new javax.swing.JRadioButton();
+        jButtonEstrella4T = new javax.swing.JRadioButton();
+        jButtonEstrella5T = new javax.swing.JRadioButton();
         jComboTipoTransporte = new javax.swing.JComboBox();
         jButtonCrearAgente = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
@@ -66,7 +77,6 @@ public class Principal extends javax.swing.JFrame {
         jSpinnerCantPersonas = new javax.swing.JSpinner();
         jLabel15 = new javax.swing.JLabel();
         jSpinnerCantDias = new javax.swing.JSpinner();
-        jButtonCrearAgente1 = new javax.swing.JButton();
         jTextPrecioAlojamiento = new javax.swing.JFormattedTextField();
         jTextPrecioTransporte = new javax.swing.JFormattedTextField();
         jLabelAdvertenciaDestino = new javax.swing.JLabel();
@@ -81,13 +91,96 @@ public class Principal extends javax.swing.JFrame {
         jPanelTransporte = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         jPanelAlojamiento = new javax.swing.JPanel();
+        jButtonCrearAlojamiento = new javax.swing.JButton();
+        jLabel18 = new javax.swing.JLabel();
+        jTextCiudad = new javax.swing.JTextField();
+        jLabelAdvertenciaCiudad = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jComboTipoCrearAlojamiento = new javax.swing.JComboBox();
+        jLabel19 = new javax.swing.JLabel();
+        jButtonCrearEstrella1A = new javax.swing.JRadioButton();
+        jButtonCrearEstrella2A = new javax.swing.JRadioButton();
+        jButtonCrearEstrella3A = new javax.swing.JRadioButton();
+        jButtonCrearEstrella4A = new javax.swing.JRadioButton();
+        jButtonCrearEstrella5A = new javax.swing.JRadioButton();
+        jTextPrecioDiaA = new javax.swing.JFormattedTextField();
+        jLabel20 = new javax.swing.JLabel();
+        jLabelAdvertenciaCrearPrecioA = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jSeparator8 = new javax.swing.JSeparator();
+        jSpinnerCantDiasA = new javax.swing.JSpinner();
+        jLabel22 = new javax.swing.JLabel();
+        jSpinnerDescuentoMinA = new javax.swing.JSpinner();
+        jSpinnerDescuentoMaxA = new javax.swing.JSpinner();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jPanelDescuentosA = new javax.swing.JScrollPane();
+        jListDescuentosA = new javax.swing.JList();
+        jButtonAñadirDescA = new javax.swing.JButton();
+        jButtonRemoverDescA = new javax.swing.JButton();
+        jLabel25 = new javax.swing.JLabel();
+        jSeparator9 = new javax.swing.JSeparator();
+        jPanelAgenciasDisponiblesA = new javax.swing.JScrollPane();
+        jListAgenciasDisponiblesA = new javax.swing.JList();
+        jPanelAgenciasAñadidas = new javax.swing.JScrollPane();
+        jListAgenciasAñadidasA = new javax.swing.JList();
+        jButtonAñadirAgenciaA = new javax.swing.JButton();
+        jButtonRemoverAgenciaA = new javax.swing.JButton();
+        jLabelAdvertenciaDescuentoA = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+        jTextNombreA = new javax.swing.JTextField();
+        jLabelAdvertenciaNombreA = new javax.swing.JLabel();
+        jLabelAdvertenciaSinAgenciasA = new javax.swing.JLabel();
         jMenuBar = new javax.swing.JMenuBar();
         jMenu = new javax.swing.JMenu();
         jMenuItemAdmin = new javax.swing.JCheckBoxMenuItem();
         jMenuItemJADE = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         jMenuItemSalir = new javax.swing.JMenuItem();
+
+        jDialogAgenciaCreada.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        jDialogAgenciaCreada.setTitle("Información");
+        jDialogAgenciaCreada.setMaximumSize(new java.awt.Dimension(300, 130));
+        jDialogAgenciaCreada.setMinimumSize(new java.awt.Dimension(300, 130));
+        jDialogAgenciaCreada.setModal(true);
+        jDialogAgenciaCreada.setPreferredSize(new java.awt.Dimension(300, 130));
+        jDialogAgenciaCreada.setResizable(false);
+
+        jLabelAgenciaCreada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Accept24.png"))); // NOI18N
+        jLabelAgenciaCreada.setText("Agencia creada con éxito");
+
+        jButtonAceptarAgenciaCreada.setText("Aceptar");
+        jButtonAceptarAgenciaCreada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAceptarAgenciaCreadaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jDialogAgenciaCreadaLayout = new javax.swing.GroupLayout(jDialogAgenciaCreada.getContentPane());
+        jDialogAgenciaCreada.getContentPane().setLayout(jDialogAgenciaCreadaLayout);
+        jDialogAgenciaCreadaLayout.setHorizontalGroup(
+            jDialogAgenciaCreadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialogAgenciaCreadaLayout.createSequentialGroup()
+                .addGroup(jDialogAgenciaCreadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDialogAgenciaCreadaLayout.createSequentialGroup()
+                        .addGap(111, 111, 111)
+                        .addComponent(jButtonAceptarAgenciaCreada))
+                    .addGroup(jDialogAgenciaCreadaLayout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jLabelAgenciaCreada)))
+                .addGap(118, 118, 118))
+        );
+        jDialogAgenciaCreadaLayout.setVerticalGroup(
+            jDialogAgenciaCreadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialogAgenciaCreadaLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jLabelAgenciaCreada)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonAceptarAgenciaCreada)
+                .addGap(45, 45, 45))
+        );
+
+        jDialogAgenciaCreada.getAccessibleContext().setAccessibleParent(this);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SMA Agentes de Turismo");
@@ -162,7 +255,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel2.setText("Tipo");
         jLabel2.setFocusable(false);
 
-        jComboTipoAlojamiento.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Hotel", "Hostel", "Departamento", "Cabaña" }));
+        jComboTipoAlojamiento.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Indefinido", "Hotel", "Hostel", "Departamento", "Cabaña" }));
         jComboTipoAlojamiento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboTipoAlojamientoActionPerformed(evt);
@@ -178,50 +271,49 @@ public class Principal extends javax.swing.JFrame {
         jLabel5.setMinimumSize(new java.awt.Dimension(70, 14));
         jLabel5.setName(""); // NOI18N
 
-        jButtonAEstrella1.setSelected(true);
-        jButtonAEstrella1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_empty16.png"))); // NOI18N
-        jButtonAEstrella1.setName(""); // NOI18N
-        jButtonAEstrella1.setRolloverEnabled(false);
-        jButtonAEstrella1.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_full16.png"))); // NOI18N
-        jButtonAEstrella1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonEstrella1A.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_empty16.png"))); // NOI18N
+        jButtonEstrella1A.setName(""); // NOI18N
+        jButtonEstrella1A.setRolloverEnabled(false);
+        jButtonEstrella1A.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_full16.png"))); // NOI18N
+        jButtonEstrella1A.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAEstrella1ActionPerformed(evt);
+                jButtonEstrella1AActionPerformed(evt);
             }
         });
 
-        jButtonAEstrella2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_empty16.png"))); // NOI18N
-        jButtonAEstrella2.setRolloverEnabled(false);
-        jButtonAEstrella2.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_full16.png"))); // NOI18N
-        jButtonAEstrella2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonEstrella2A.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_empty16.png"))); // NOI18N
+        jButtonEstrella2A.setRolloverEnabled(false);
+        jButtonEstrella2A.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_full16.png"))); // NOI18N
+        jButtonEstrella2A.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAEstrella2ActionPerformed(evt);
+                jButtonEstrella2AActionPerformed(evt);
             }
         });
 
-        jButtonAEstrella3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_empty16.png"))); // NOI18N
-        jButtonAEstrella3.setRolloverEnabled(false);
-        jButtonAEstrella3.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_full16.png"))); // NOI18N
-        jButtonAEstrella3.addActionListener(new java.awt.event.ActionListener() {
+        jButtonEstrella3A.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_empty16.png"))); // NOI18N
+        jButtonEstrella3A.setRolloverEnabled(false);
+        jButtonEstrella3A.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_full16.png"))); // NOI18N
+        jButtonEstrella3A.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAEstrella3ActionPerformed(evt);
+                jButtonEstrella3AActionPerformed(evt);
             }
         });
 
-        jButtonAEstrella4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_empty16.png"))); // NOI18N
-        jButtonAEstrella4.setRolloverEnabled(false);
-        jButtonAEstrella4.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_full16.png"))); // NOI18N
-        jButtonAEstrella4.addActionListener(new java.awt.event.ActionListener() {
+        jButtonEstrella4A.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_empty16.png"))); // NOI18N
+        jButtonEstrella4A.setRolloverEnabled(false);
+        jButtonEstrella4A.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_full16.png"))); // NOI18N
+        jButtonEstrella4A.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAEstrella4ActionPerformed(evt);
+                jButtonEstrella4AActionPerformed(evt);
             }
         });
 
-        jButtonAEstrella5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_empty16.png"))); // NOI18N
-        jButtonAEstrella5.setRolloverEnabled(false);
-        jButtonAEstrella5.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_full16.png"))); // NOI18N
-        jButtonAEstrella5.addActionListener(new java.awt.event.ActionListener() {
+        jButtonEstrella5A.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_empty16.png"))); // NOI18N
+        jButtonEstrella5A.setRolloverEnabled(false);
+        jButtonEstrella5A.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_full16.png"))); // NOI18N
+        jButtonEstrella5A.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAEstrella5ActionPerformed(evt);
+                jButtonEstrella5AActionPerformed(evt);
             }
         });
 
@@ -238,61 +330,62 @@ public class Principal extends javax.swing.JFrame {
         jLabel9.setMaximumSize(new java.awt.Dimension(70, 14));
         jLabel9.setMinimumSize(new java.awt.Dimension(70, 14));
 
-        jButtonTEstrella1.setSelected(true);
-        jButtonTEstrella1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_empty16.png"))); // NOI18N
-        jButtonTEstrella1.setRolloverEnabled(false);
-        jButtonTEstrella1.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_full16.png"))); // NOI18N
-        jButtonTEstrella1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonEstrella1T.setToolTipText("");
+        jButtonEstrella1T.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_empty16.png"))); // NOI18N
+        jButtonEstrella1T.setRolloverEnabled(false);
+        jButtonEstrella1T.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_full16.png"))); // NOI18N
+        jButtonEstrella1T.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonTEstrella1ActionPerformed(evt);
+                jButtonEstrella1TActionPerformed(evt);
             }
         });
 
-        jButtonTEstrella2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_empty16.png"))); // NOI18N
-        jButtonTEstrella2.setRolloverEnabled(false);
-        jButtonTEstrella2.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_full16.png"))); // NOI18N
-        jButtonTEstrella2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonEstrella2T.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_empty16.png"))); // NOI18N
+        jButtonEstrella2T.setRolloverEnabled(false);
+        jButtonEstrella2T.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_full16.png"))); // NOI18N
+        jButtonEstrella2T.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonTEstrella2ActionPerformed(evt);
+                jButtonEstrella2TActionPerformed(evt);
             }
         });
 
-        jButtonTEstrella3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_empty16.png"))); // NOI18N
-        jButtonTEstrella3.setRolloverEnabled(false);
-        jButtonTEstrella3.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_full16.png"))); // NOI18N
-        jButtonTEstrella3.addActionListener(new java.awt.event.ActionListener() {
+        jButtonEstrella3T.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_empty16.png"))); // NOI18N
+        jButtonEstrella3T.setRolloverEnabled(false);
+        jButtonEstrella3T.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_full16.png"))); // NOI18N
+        jButtonEstrella3T.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonTEstrella3ActionPerformed(evt);
+                jButtonEstrella3TActionPerformed(evt);
             }
         });
 
-        jButtonTEstrella4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_empty16.png"))); // NOI18N
-        jButtonTEstrella4.setRolloverEnabled(false);
-        jButtonTEstrella4.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_full16.png"))); // NOI18N
-        jButtonTEstrella4.addActionListener(new java.awt.event.ActionListener() {
+        jButtonEstrella4T.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_empty16.png"))); // NOI18N
+        jButtonEstrella4T.setRolloverEnabled(false);
+        jButtonEstrella4T.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_full16.png"))); // NOI18N
+        jButtonEstrella4T.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonTEstrella4ActionPerformed(evt);
+                jButtonEstrella4TActionPerformed(evt);
             }
         });
 
-        jButtonTEstrella5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_empty16.png"))); // NOI18N
-        jButtonTEstrella5.setRolloverEnabled(false);
-        jButtonTEstrella5.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_full16.png"))); // NOI18N
-        jButtonTEstrella5.addActionListener(new java.awt.event.ActionListener() {
+        jButtonEstrella5T.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_empty16.png"))); // NOI18N
+        jButtonEstrella5T.setRolloverEnabled(false);
+        jButtonEstrella5T.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_full16.png"))); // NOI18N
+        jButtonEstrella5T.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonTEstrella5ActionPerformed(evt);
+                jButtonEstrella5TActionPerformed(evt);
             }
         });
 
-        jComboTipoTransporte.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Colectivo", "Avión" }));
+        jComboTipoTransporte.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Indefinido", "Colectivo", "Avión" }));
         jComboTipoTransporte.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboTipoTransporteActionPerformed(evt);
             }
         });
 
+        jButtonCrearAgente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Communicate16.png"))); // NOI18N
         jButtonCrearAgente.setText("Consultar agencias");
-        jButtonCrearAgente.setPreferredSize(new java.awt.Dimension(155, 25));
+        jButtonCrearAgente.setPreferredSize(new java.awt.Dimension(155, 36));
         jButtonCrearAgente.setRequestFocusEnabled(false);
         jButtonCrearAgente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -347,16 +440,6 @@ public class Principal extends javax.swing.JFrame {
         jSpinnerCantDias.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(1), Integer.valueOf(1), null, Integer.valueOf(1)));
         jSpinnerCantDias.setName(""); // NOI18N
 
-        jButtonCrearAgente1.setText("Respuesta");
-        jButtonCrearAgente1.setToolTipText("");
-        jButtonCrearAgente1.setActionCommand("Respuesta");
-        jButtonCrearAgente1.setEnabled(false);
-        jButtonCrearAgente1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCrearAgente1ActionPerformed(evt);
-            }
-        });
-
         jTextPrecioAlojamiento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#,##0.00"))));
         jTextPrecioAlojamiento.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         jTextPrecioAlojamiento.setToolTipText("");
@@ -371,16 +454,15 @@ public class Principal extends javax.swing.JFrame {
         jTextPrecioTransporte.setToolTipText("");
 
         jLabelAdvertenciaDestino.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Alert16.png"))); // NOI18N
-        jLabelAdvertenciaDestino.setToolTipText("");
-        jLabelAdvertenciaDestino.setPreferredSize(new java.awt.Dimension(16, 16));
+        jLabelAdvertenciaDestino.setToolTipText("Este campo no puede ser vacío");
         jLabelAdvertenciaDestino.setVisible(false);
 
         jLabelAdvertenciaPrecioA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Alert16.png"))); // NOI18N
-        jLabelAdvertenciaPrecioA.setPreferredSize(new java.awt.Dimension(16, 16));
+        jLabelAdvertenciaPrecioA.setToolTipText("Este campo no puede ser vacío");
         jLabelAdvertenciaPrecioA.setVisible(false);
 
         jLabelAdvertenciaPrecioT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Alert16.png"))); // NOI18N
-        jLabelAdvertenciaPrecioT.setPreferredSize(new java.awt.Dimension(16, 16));
+        jLabelAdvertenciaPrecioT.setToolTipText("Este campo no puede ser vacío");
         jLabelAdvertenciaPrecioT.setVisible(false);
 
         javax.swing.GroupLayout jPanelTuristaLayout = new javax.swing.GroupLayout(jPanelTurista);
@@ -395,19 +477,19 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(jPanelTuristaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jComboTipoTransporte, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanelTuristaLayout.createSequentialGroup()
-                        .addComponent(jButtonTEstrella1)
+                        .addComponent(jButtonEstrella1T)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonTEstrella2)
+                        .addComponent(jButtonEstrella2T)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonTEstrella3)
+                        .addComponent(jButtonEstrella3T)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonTEstrella4)
+                        .addComponent(jButtonEstrella4T)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonTEstrella5))
+                        .addComponent(jButtonEstrella5T))
                     .addComponent(jTextPrecioTransporte, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelTuristaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelAdvertenciaPrecioT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelAdvertenciaPrecioT)
                     .addComponent(jButtonInfoTranporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(12, Short.MAX_VALUE))
             .addGroup(jPanelTuristaLayout.createSequentialGroup()
@@ -418,11 +500,6 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator6))
-            .addGroup(jPanelTuristaLayout.createSequentialGroup()
-                .addGap(2, 2, 2)
-                .addComponent(jButtonCrearAgente, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonCrearAgente1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanelTuristaLayout.createSequentialGroup()
                 .addGroup(jPanelTuristaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelTuristaLayout.createSequentialGroup()
@@ -440,7 +517,7 @@ public class Principal extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jSpinnerCantPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
-                        .addComponent(jLabelAdvertenciaDestino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabelAdvertenciaDestino))
                     .addGroup(jPanelTuristaLayout.createSequentialGroup()
                         .addGroup(jPanelTuristaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -452,22 +529,26 @@ public class Principal extends javax.swing.JFrame {
                             .addGroup(jPanelTuristaLayout.createSequentialGroup()
                                 .addGroup(jPanelTuristaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanelTuristaLayout.createSequentialGroup()
-                                        .addComponent(jButtonAEstrella1)
+                                        .addComponent(jButtonEstrella1A)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButtonAEstrella2)
+                                        .addComponent(jButtonEstrella2A)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButtonAEstrella3)
+                                        .addComponent(jButtonEstrella3A)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButtonAEstrella4)
+                                        .addComponent(jButtonEstrella4A)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButtonAEstrella5))
+                                        .addComponent(jButtonEstrella5A))
                                     .addComponent(jTextPrecioAlojamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanelTuristaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jButtonInfoAlojamiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabelAdvertenciaPrecioA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(jLabelAdvertenciaPrecioA)))))
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(6, 6, Short.MAX_VALUE))
+            .addGroup(jPanelTuristaLayout.createSequentialGroup()
+                .addGap(2, 2, 2)
+                .addComponent(jButtonCrearAgente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanelTuristaLayout.setVerticalGroup(
             jPanelTuristaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -476,7 +557,7 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(jPanelTuristaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel14)
                     .addComponent(jTextDestino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelAdvertenciaDestino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelAdvertenciaDestino))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelTuristaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -486,9 +567,9 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(jLabel15)
                     .addComponent(jSpinnerCantDias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanelTuristaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel13)
-                    .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanelTuristaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelTuristaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboTipoAlojamiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -496,20 +577,20 @@ public class Principal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelTuristaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel3)
-                    .addComponent(jButtonAEstrella1)
-                    .addComponent(jButtonAEstrella2)
-                    .addComponent(jButtonAEstrella3)
-                    .addComponent(jButtonAEstrella4)
-                    .addComponent(jButtonAEstrella5)
+                    .addComponent(jButtonEstrella1A)
+                    .addComponent(jButtonEstrella2A)
+                    .addComponent(jButtonEstrella3A)
+                    .addComponent(jButtonEstrella4A)
+                    .addComponent(jButtonEstrella5A)
                     .addComponent(jButtonInfoAlojamiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelTuristaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextPrecioAlojamiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelAdvertenciaPrecioA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelAdvertenciaPrecioA))
                 .addGap(18, 18, 18)
                 .addGroup(jPanelTuristaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSeparator6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelTuristaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
@@ -518,21 +599,19 @@ public class Principal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelTuristaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonTEstrella1)
-                    .addComponent(jButtonTEstrella2)
-                    .addComponent(jButtonTEstrella3)
-                    .addComponent(jButtonTEstrella4)
-                    .addComponent(jButtonTEstrella5)
+                    .addComponent(jButtonEstrella1T)
+                    .addComponent(jButtonEstrella2T)
+                    .addComponent(jButtonEstrella3T)
+                    .addComponent(jButtonEstrella4T)
+                    .addComponent(jButtonEstrella5T)
                     .addComponent(jButtonInfoTranporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelTuristaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jLabelAdvertenciaPrecioT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelAdvertenciaPrecioT)
                     .addComponent(jTextPrecioTransporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, Short.MAX_VALUE)
-                .addGroup(jPanelTuristaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonCrearAgente, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonCrearAgente1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 127, Short.MAX_VALUE)
+                .addComponent(jButtonCrearAgente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -553,6 +632,7 @@ public class Principal extends javax.swing.JFrame {
         jButtonCrearAgencia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Wheel16.png"))); // NOI18N
         jButtonCrearAgencia.setText("Crear Agencia");
         jButtonCrearAgencia.setToolTipText("");
+        jButtonCrearAgencia.setPreferredSize(new java.awt.Dimension(155, 36));
         jButtonCrearAgencia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCrearAgenciaActionPerformed(evt);
@@ -592,8 +672,8 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(jLabel16))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSliderPonderacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 337, Short.MAX_VALUE)
-                .addComponent(jButtonCrearAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonCrearAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -624,24 +704,347 @@ public class Principal extends javax.swing.JFrame {
         jPanelAlojamiento.setPreferredSize(new java.awt.Dimension(264, 472));
         jPanelAlojamiento.setRequestFocusEnabled(false);
 
-        jLabel12.setText("Panel  Alojamiento, en principio no visible");
-        jLabel12.setPreferredSize(new java.awt.Dimension(280, 430));
+        jButtonCrearAlojamiento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Home16.png"))); // NOI18N
+        jButtonCrearAlojamiento.setText("Crear Alojamiento");
+        jButtonCrearAlojamiento.setToolTipText("");
+        jButtonCrearAlojamiento.setPreferredSize(new java.awt.Dimension(155, 36));
+        jButtonCrearAlojamiento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCrearAlojamientoActionPerformed(evt);
+            }
+        });
+
+        jLabel18.setText("Ciudad");
+        jLabel18.setFocusable(false);
+        jLabel18.setOpaque(true);
+
+        jTextCiudad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextCiudadActionPerformed(evt);
+            }
+        });
+
+        jLabelAdvertenciaCiudad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Alert16.png"))); // NOI18N
+        jLabelAdvertenciaCiudad.setToolTipText("Este campo no puede ser vacío");
+        jLabelAdvertenciaCiudad.setVisible(false);
+
+        jLabel11.setText("Tipo");
+        jLabel11.setFocusable(false);
+
+        jComboTipoCrearAlojamiento.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Hotel", "Hostel", "Departamento", "Cabaña" }));
+        jComboTipoCrearAlojamiento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboTipoCrearAlojamientoActionPerformed(evt);
+            }
+        });
+
+        jLabel19.setText("Categoría");
+        jLabel19.setFocusable(false);
+
+        jButtonCrearEstrella1A.setSelected(true);
+        jButtonCrearEstrella1A.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_empty16.png"))); // NOI18N
+        jButtonCrearEstrella1A.setName(""); // NOI18N
+        jButtonCrearEstrella1A.setRolloverEnabled(false);
+        jButtonCrearEstrella1A.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_full16.png"))); // NOI18N
+        jButtonCrearEstrella1A.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCrearEstrella1AActionPerformed(evt);
+            }
+        });
+
+        jButtonCrearEstrella2A.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_empty16.png"))); // NOI18N
+        jButtonCrearEstrella2A.setRolloverEnabled(false);
+        jButtonCrearEstrella2A.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_full16.png"))); // NOI18N
+        jButtonCrearEstrella2A.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCrearEstrella2AActionPerformed(evt);
+            }
+        });
+
+        jButtonCrearEstrella3A.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_empty16.png"))); // NOI18N
+        jButtonCrearEstrella3A.setRolloverEnabled(false);
+        jButtonCrearEstrella3A.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_full16.png"))); // NOI18N
+        jButtonCrearEstrella3A.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCrearEstrella3AActionPerformed(evt);
+            }
+        });
+
+        jButtonCrearEstrella4A.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_empty16.png"))); // NOI18N
+        jButtonCrearEstrella4A.setRolloverEnabled(false);
+        jButtonCrearEstrella4A.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_full16.png"))); // NOI18N
+        jButtonCrearEstrella4A.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCrearEstrella4AActionPerformed(evt);
+            }
+        });
+
+        jButtonCrearEstrella5A.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_empty16.png"))); // NOI18N
+        jButtonCrearEstrella5A.setRolloverEnabled(false);
+        jButtonCrearEstrella5A.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Star_full16.png"))); // NOI18N
+        jButtonCrearEstrella5A.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCrearEstrella5AActionPerformed(evt);
+            }
+        });
+
+        jTextPrecioDiaA.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#,##0.00"))));
+        jTextPrecioDiaA.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jTextPrecioDiaA.setToolTipText("");
+        jTextPrecioDiaA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextPrecioDiaAActionPerformed(evt);
+            }
+        });
+
+        jLabel20.setText("Precio por día");
+        jLabel20.setFocusable(false);
+        jLabel20.setMaximumSize(new java.awt.Dimension(70, 14));
+        jLabel20.setMinimumSize(new java.awt.Dimension(70, 14));
+        jLabel20.setName(""); // NOI18N
+
+        jLabelAdvertenciaCrearPrecioA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Alert16.png"))); // NOI18N
+        jLabelAdvertenciaCrearPrecioA.setToolTipText("Este campo no puede ser vacío");
+        jLabelAdvertenciaCrearPrecioA.setVisible(false);
+
+        jLabel21.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel21.setText("Descuentos");
+        jLabel21.setFocusable(false);
+        jLabel21.setOpaque(true);
+
+        jSpinnerCantDiasA.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(1), Integer.valueOf(1), null, Integer.valueOf(1)));
+        jSpinnerCantDiasA.setName(""); // NOI18N
+
+        jLabel22.setText("Cantidad de días");
+        jLabel22.setFocusable(false);
+
+        jSpinnerDescuentoMinA.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(1), Integer.valueOf(1), null, Integer.valueOf(1)));
+        jSpinnerDescuentoMinA.setName(""); // NOI18N
+
+        jSpinnerDescuentoMaxA.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(1), Integer.valueOf(1), null, Integer.valueOf(1)));
+        jSpinnerDescuentoMaxA.setName(""); // NOI18N
+
+        jLabel23.setText("Desc. mínimo (%)");
+        jLabel23.setFocusable(false);
+
+        jLabel24.setText("Desc. máximo (%)");
+        jLabel24.setFocusable(false);
+
+        jPanelDescuentosA.setViewportView(jListDescuentosA);
+
+        jButtonAñadirDescA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Add16.png"))); // NOI18N
+        jButtonAñadirDescA.setMaximumSize(new java.awt.Dimension(40, 25));
+        jButtonAñadirDescA.setMinimumSize(new java.awt.Dimension(40, 25));
+        jButtonAñadirDescA.setPreferredSize(new java.awt.Dimension(30, 25));
+        jButtonAñadirDescA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAñadirDescAActionPerformed(evt);
+            }
+        });
+
+        jButtonRemoverDescA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Delete16.png"))); // NOI18N
+        jButtonRemoverDescA.setMaximumSize(new java.awt.Dimension(40, 25));
+        jButtonRemoverDescA.setMinimumSize(new java.awt.Dimension(40, 25));
+        jButtonRemoverDescA.setPreferredSize(new java.awt.Dimension(30, 25));
+        jButtonRemoverDescA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRemoverDescAActionPerformed(evt);
+            }
+        });
+
+        jLabel25.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel25.setText("Agencias asociadas");
+        jLabel25.setFocusable(false);
+        jLabel25.setOpaque(true);
+
+        jListAgenciasDisponiblesA.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jPanelAgenciasDisponiblesA.setViewportView(jListAgenciasDisponiblesA);
+
+        jListAgenciasAñadidasA.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jPanelAgenciasAñadidas.setViewportView(jListAgenciasAñadidasA);
+
+        jButtonAñadirAgenciaA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Add16.png"))); // NOI18N
+        jButtonAñadirAgenciaA.setMaximumSize(new java.awt.Dimension(40, 25));
+        jButtonAñadirAgenciaA.setMinimumSize(new java.awt.Dimension(40, 25));
+        jButtonAñadirAgenciaA.setPreferredSize(new java.awt.Dimension(30, 25));
+        jButtonAñadirAgenciaA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAñadirAgenciaAActionPerformed(evt);
+            }
+        });
+
+        jButtonRemoverAgenciaA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Delete16.png"))); // NOI18N
+        jButtonRemoverAgenciaA.setMaximumSize(new java.awt.Dimension(40, 25));
+        jButtonRemoverAgenciaA.setMinimumSize(new java.awt.Dimension(40, 25));
+        jButtonRemoverAgenciaA.setPreferredSize(new java.awt.Dimension(30, 25));
+        jButtonRemoverAgenciaA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRemoverAgenciaAActionPerformed(evt);
+            }
+        });
+
+        jLabelAdvertenciaDescuentoA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Alert16.png"))); // NOI18N
+        jLabelAdvertenciaDescuentoA.setVisible(false);
+
+        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel12.setText("Nombre");
+
+        jTextNombreA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextNombreAActionPerformed(evt);
+            }
+        });
+
+        jLabelAdvertenciaNombreA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Alert16.png"))); // NOI18N
+        jLabelAdvertenciaNombreA.setToolTipText("Este campo no puede ser vacío");
+        jLabelAdvertenciaNombreA.setVisible(false);
+
+        jLabelAdvertenciaSinAgenciasA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Alert16.png"))); // NOI18N
+        jLabelAdvertenciaSinAgenciasA.setToolTipText("Debe asociarse con al menos una agencia");
+        jLabelAdvertenciaSinAgenciasA.setVisible(false);
 
         javax.swing.GroupLayout jPanelAlojamientoLayout = new javax.swing.GroupLayout(jPanelAlojamiento);
         jPanelAlojamiento.setLayout(jPanelAlojamientoLayout);
         jPanelAlojamientoLayout.setHorizontalGroup(
             jPanelAlojamientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelAlojamientoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addGap(92, 92, 92)
+                .addComponent(jSeparator8))
+            .addGroup(jPanelAlojamientoLayout.createSequentialGroup()
+                .addComponent(jLabel25)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator9))
+            .addGroup(jPanelAlojamientoLayout.createSequentialGroup()
+                .addGroup(jPanelAlojamientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelAlojamientoLayout.createSequentialGroup()
+                        .addGroup(jPanelAlojamientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel19)
+                            .addComponent(jLabel18)
+                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanelAlojamientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextPrecioDiaA, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAlojamientoLayout.createSequentialGroup()
+                                .addComponent(jButtonCrearEstrella1A)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonCrearEstrella2A)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonCrearEstrella3A)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonCrearEstrella4A)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonCrearEstrella5A))
+                            .addComponent(jComboTipoCrearAlojamiento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextCiudad, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextNombreA, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanelAlojamientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelAdvertenciaCrearPrecioA, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabelAdvertenciaNombreA, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabelAdvertenciaCiudad, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jButtonCrearAlojamiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanelAlojamientoLayout.createSequentialGroup()
+                        .addGroup(jPanelAlojamientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel21)
+                            .addComponent(jLabel22)
+                            .addComponent(jLabel23)
+                            .addComponent(jLabel24))
+                        .addGap(3, 3, 3)
+                        .addGroup(jPanelAlojamientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jSpinnerDescuentoMaxA, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
+                            .addComponent(jSpinnerCantDiasA, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
+                            .addComponent(jSpinnerDescuentoMinA))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanelAlojamientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(jLabelAdvertenciaDescuentoA)
+                            .addComponent(jButtonRemoverDescA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonAñadirDescA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanelDescuentosA, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addGroup(jPanelAlojamientoLayout.createSequentialGroup()
+                        .addComponent(jPanelAgenciasDisponiblesA, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanelAlojamientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(jLabelAdvertenciaSinAgenciasA)
+                            .addComponent(jButtonRemoverAgenciaA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonAñadirAgenciaA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanelAgenciasAñadidas, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanelAlojamientoLayout.setVerticalGroup(
             jPanelAlojamientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelAlojamientoLayout.createSequentialGroup()
-                .addGap(64, 64, 64)
-                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(jPanelAlojamientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jLabelAdvertenciaNombreA)
+                    .addComponent(jTextNombreA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelAlojamientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jLabelAdvertenciaCiudad)
+                    .addComponent(jTextCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel18))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelAlojamientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jComboTipoCrearAlojamiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelAlojamientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jButtonCrearEstrella5A)
+                    .addComponent(jButtonCrearEstrella4A)
+                    .addComponent(jButtonCrearEstrella3A)
+                    .addComponent(jButtonCrearEstrella2A)
+                    .addComponent(jButtonCrearEstrella1A)
+                    .addComponent(jLabel19))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelAlojamientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jTextPrecioDiaA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelAdvertenciaCrearPrecioA))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelAlojamientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel21, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelAlojamientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanelAlojamientoLayout.createSequentialGroup()
+                        .addGroup(jPanelAlojamientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(jButtonAñadirDescA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSpinnerCantDiasA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel22))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanelAlojamientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(jButtonRemoverDescA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSpinnerDescuentoMinA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel23))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanelAlojamientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanelAlojamientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jSpinnerDescuentoMaxA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel24))
+                            .addComponent(jLabelAdvertenciaDescuentoA)))
+                    .addComponent(jPanelDescuentosA, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelAlojamientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel25, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelAlojamientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanelAlojamientoLayout.createSequentialGroup()
+                        .addComponent(jButtonAñadirAgenciaA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonRemoverAgenciaA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabelAdvertenciaSinAgenciasA))
+                    .addComponent(jPanelAgenciasDisponiblesA, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jPanelAgenciasAñadidas, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonCrearAlojamiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         jMenu.setText("Opciones");
@@ -681,7 +1084,7 @@ public class Principal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(15, Short.MAX_VALUE)
+                .addGap(15, 15, 15)
                 .addComponent(jPanelTurista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanelAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -689,7 +1092,7 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(jPanelAlojamiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanelTransporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -697,10 +1100,10 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanelTransporte, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanelAlojamiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanelAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanelTurista, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanelTransporte, javax.swing.GroupLayout.DEFAULT_SIZE, 529, Short.MAX_VALUE)
+                    .addComponent(jPanelTurista, javax.swing.GroupLayout.DEFAULT_SIZE, 529, Short.MAX_VALUE)
+                    .addComponent(jPanelAlojamiento, javax.swing.GroupLayout.DEFAULT_SIZE, 529, Short.MAX_VALUE)
+                    .addComponent(jPanelAgencia, javax.swing.GroupLayout.DEFAULT_SIZE, 529, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -709,39 +1112,104 @@ public class Principal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    // Get a hold on JADE runtime 
+//    Runtime rt = Runtime.instance(); 
+    // Create a default profile 
+ //   Profile p = new ProfileImpl(); 
+    // Create a new non-main container, connecting to the default 
+    // main container (i.e. on this host, port 1099) 
+ //   ContainerController cc = rt.createAgentContainer(p); 
+    
+    //Definición de List Models para los Scroll Panels de agencias
+    private final DefaultListModel descuentosA = new DefaultListModel();
+    private DefaultListModel agenciasDisponiblesA;
+    private final DefaultListModel agenciasAñadidasA = new DefaultListModel();
+    
+         
+    //Acá se buscan las agencias disponibles en el DF
+    //Agencia.getAID.getLocalName();
+    private void agregarAgenciasDisponibles(DefaultListModel agenciasDisponibles){
+        agenciasDisponibles.addElement("Agencia 1");
+        agenciasDisponibles.addElement("Agencia 2");
+        agenciasDisponibles.addElement("Agencia 3");
+        agenciasDisponibles.addElement("Agencia 4");
+    }
+    
+    
+    
+    //Se lista el contenido de los Scroll panels de Agencias y Descuentos, separados por "," u con marca final "---"
+    private String listar(DefaultListModel lista){
+    String listado = new String();  
+    if (!lista.isEmpty()){
+        int i=0;
+        while (i<lista.size()){
+            listado += lista.get(i).toString();
+            listado += ",";
+            i++;
+        }
+    }
+    listado += "---";
+    return listado;
+    }
+      /**        
+                
+    if (args != null && args.length > 0) {
 
-    private int categoriaAlojamiento(){
-        if (jButtonAEstrella5.isSelected()){
-            return 5;
-        }
-        if (jButtonAEstrella4.isSelected()){
-            return 4;
-        }
-        if (jButtonAEstrella3.isSelected()){
-            return 3;
-        }
-        if (jButtonAEstrella2.isSelected()){
-            return 2;
-        }
-        return 1;
-    }     
+			ciudad = (String) args[0];
+			System.out.println("La ciudad es "+ciudad);
+
+			tipo = (String) args[1];
+			System.out.println("El tipo es "+ tipo);
+
+			categoria = Integer.parseInt((String) args[2]);
+			System.out.println("La categoria es "+categoria);
+
+			precio = Float.parseFloat((String)args[3]);
+			System.out.println("El precio es "+precio);
+
+			descuentos = new ArrayList<Descuento>();
+
+			//se asume que los parametros desde la posicion 4 hasta una marca --- son los descuentos
+
+			int i=4;
+			while (!args[i].equals("---")){
+
+				//obteninedo los valores de cant, menor descuento y mayor descuento
+				String descuentoString = (String) args[i];
+				String[] descuentoArray = descuentoString.split("-");
+				int cant = Integer.parseInt(descuentoArray[0]);
+				int menorDescuento = Integer.parseInt(descuentoArray[1]);
+				int mayorDescuento = Integer.parseInt(descuentoArray[2]);
+
+				Descuento descuento = new Descuento(cant, menorDescuento, mayorDescuento);
+
+				descuentos.add(descuento);
+
+				i++;
+			}
+                        **/
     
-    private int categoriaTransporte(){
-        if (jButtonTEstrella5.isSelected()){
-            return 5;
-        }
-        if (jButtonTEstrella4.isSelected()){
-            return 4;
-        }
-        if (jButtonTEstrella3.isSelected()){
-            return 3;
-        }
-        if (jButtonTEstrella2.isSelected()){
-            return 2;
-        }
-        return 1;
-    } 
     
+    
+    //Obtener categoría de los Radio Button de las estrellas.
+    private String obtenerCategoria(JRadioButton estrella5, JRadioButton estrella4, JRadioButton estrella3, JRadioButton estrella2, JRadioButton estrella1){
+        if (estrella5.isSelected()){
+            return "5";
+        }
+        if (estrella4.isSelected()){
+            return "4";
+        }
+        if (estrella3.isSelected()){
+            return "3";
+        }
+        if (estrella2.isSelected()){
+            return "2";
+        }
+        if (estrella1.isSelected()){
+            return "1";
+        }
+        return "Indefinido";
+    }  
     
     private void jMenuItemAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAdminActionPerformed
     if (jMenuItemAdmin.getState()){
@@ -813,6 +1281,7 @@ public class Principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonTransporteActionPerformed
 
+    //Acá actualiza la lista de agencias disponibles, en el toolbar Alojamiento.
     private void jButtonAlojamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlojamientoActionPerformed
         if (jButtonAlojamiento.isSelected()&& (!jPanelAlojamiento.isVisible())){
             jPanelAlojamiento.setVisible(true);
@@ -822,6 +1291,10 @@ public class Principal extends javax.swing.JFrame {
             jButtonTurista.setSelected(false);
             jButtonTransporte.setSelected(false);
             jButtonAgencia.setSelected(false);
+            agenciasDisponiblesA = new DefaultListModel();
+            agregarAgenciasDisponibles(agenciasDisponiblesA);
+            jListAgenciasDisponiblesA.setModel(agenciasDisponiblesA);
+            agenciasAñadidasA.clear();
         } else {
         jButtonAlojamiento.setSelected(true);    
         }
@@ -838,14 +1311,14 @@ public class Principal extends javax.swing.JFrame {
         
         if ((!"".equals(jTextDestino.getText()))&&(jTextPrecioAlojamiento.getValue()!=null)&&(jTextPrecioTransporte.getValue()!=null)) {
             System.out.println(
-                jTextDestino.getText()+"-"+
-                jSpinnerCantPersonas.getValue()+"-"+
-                jSpinnerCantDias.getValue()+"-"+
-                jComboTipoAlojamiento.getSelectedItem()+"-"+
-                categoriaAlojamiento()+"-"+
-                jTextPrecioAlojamiento.getValue()+"-"+
-                jComboTipoTransporte.getSelectedItem()+"-"+
-                categoriaTransporte()+"-"+
+                jTextDestino.getText()+","+
+                jSpinnerCantPersonas.getValue()+","+
+                jSpinnerCantDias.getValue()+","+
+                jComboTipoAlojamiento.getSelectedItem()+","+
+                obtenerCategoria(jButtonEstrella5A,jButtonEstrella4A, jButtonEstrella3A,jButtonEstrella2A,jButtonEstrella1A)+","+
+                jTextPrecioAlojamiento.getValue()+","+
+                jComboTipoTransporte.getSelectedItem()+","+
+                obtenerCategoria(jButtonEstrella5T,jButtonEstrella4T, jButtonEstrella3T,jButtonEstrella2T,jButtonEstrella1T)+","+
                 jTextPrecioTransporte.getValue()
             );
             jLabelAdvertenciaDestino.setVisible(false);
@@ -868,92 +1341,91 @@ public class Principal extends javax.swing.JFrame {
                 jLabelAdvertenciaPrecioT.setVisible(false);
             }
         }
+
     }//GEN-LAST:event_jButtonCrearAgenteActionPerformed
 
     private void jComboTipoTransporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboTipoTransporteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboTipoTransporteActionPerformed
 
-    private void jButtonTEstrella5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTEstrella5ActionPerformed
-        jButtonTEstrella1.setSelected(true);
-        jButtonTEstrella2.setSelected(true);
-        jButtonTEstrella3.setSelected(true);
-        jButtonTEstrella4.setSelected(true);
-        jButtonTEstrella5.setSelected(true);
-    }//GEN-LAST:event_jButtonTEstrella5ActionPerformed
+    private void jButtonEstrella5TActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEstrella5TActionPerformed
+        jButtonEstrella1T.setSelected(true);
+        jButtonEstrella2T.setSelected(true);
+        jButtonEstrella3T.setSelected(true);
+        jButtonEstrella4T.setSelected(true);
+        jButtonEstrella5T.setSelected(true);
+    }//GEN-LAST:event_jButtonEstrella5TActionPerformed
 
-    private void jButtonTEstrella4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTEstrella4ActionPerformed
-        jButtonTEstrella1.setSelected(true);
-        jButtonTEstrella2.setSelected(true);
-        jButtonTEstrella3.setSelected(true);
-        jButtonTEstrella4.setSelected(true);
-        jButtonTEstrella5.setSelected(false);
-    }//GEN-LAST:event_jButtonTEstrella4ActionPerformed
+    private void jButtonEstrella4TActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEstrella4TActionPerformed
+        jButtonEstrella1T.setSelected(true);
+        jButtonEstrella2T.setSelected(true);
+        jButtonEstrella3T.setSelected(true);
+        jButtonEstrella4T.setSelected(true);
+        jButtonEstrella5T.setSelected(false);
+    }//GEN-LAST:event_jButtonEstrella4TActionPerformed
 
-    private void jButtonTEstrella3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTEstrella3ActionPerformed
-        jButtonTEstrella1.setSelected(true);
-        jButtonTEstrella2.setSelected(true);
-        jButtonTEstrella3.setSelected(true);
-        jButtonTEstrella4.setSelected(false);
-        jButtonTEstrella5.setSelected(false);
-    }//GEN-LAST:event_jButtonTEstrella3ActionPerformed
+    private void jButtonEstrella3TActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEstrella3TActionPerformed
+        jButtonEstrella1T.setSelected(true);
+        jButtonEstrella2T.setSelected(true);
+        jButtonEstrella3T.setSelected(true);
+        jButtonEstrella4T.setSelected(false);
+        jButtonEstrella5T.setSelected(false);
+    }//GEN-LAST:event_jButtonEstrella3TActionPerformed
 
-    private void jButtonTEstrella2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTEstrella2ActionPerformed
-        jButtonTEstrella1.setSelected(true);
-        jButtonTEstrella2.setSelected(true);
-        jButtonTEstrella3.setSelected(false);
-        jButtonTEstrella4.setSelected(false);
-        jButtonTEstrella5.setSelected(false);
-    }//GEN-LAST:event_jButtonTEstrella2ActionPerformed
+    private void jButtonEstrella2TActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEstrella2TActionPerformed
+        jButtonEstrella1T.setSelected(true);
+        jButtonEstrella2T.setSelected(true);
+        jButtonEstrella3T.setSelected(false);
+        jButtonEstrella4T.setSelected(false);
+        jButtonEstrella5T.setSelected(false);
+    }//GEN-LAST:event_jButtonEstrella2TActionPerformed
 
-    private void jButtonTEstrella1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTEstrella1ActionPerformed
-        jButtonTEstrella1.setSelected(true);
-        jButtonTEstrella2.setSelected(false);
-        jButtonTEstrella3.setSelected(false);
-        jButtonTEstrella4.setSelected(false);
-        jButtonTEstrella5.setSelected(false);
+    private void jButtonEstrella1TActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEstrella1TActionPerformed
+        jButtonEstrella2T.setSelected(false);
+        jButtonEstrella3T.setSelected(false);
+        jButtonEstrella4T.setSelected(false);
+        jButtonEstrella5T.setSelected(false);
 
-    }//GEN-LAST:event_jButtonTEstrella1ActionPerformed
+    }//GEN-LAST:event_jButtonEstrella1TActionPerformed
 
-    private void jButtonAEstrella5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAEstrella5ActionPerformed
-        jButtonAEstrella1.setSelected(true);
-        jButtonAEstrella2.setSelected(true);
-        jButtonAEstrella3.setSelected(true);
-        jButtonAEstrella4.setSelected(true);
-        jButtonAEstrella5.setSelected(true);
-    }//GEN-LAST:event_jButtonAEstrella5ActionPerformed
+    private void jButtonEstrella5AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEstrella5AActionPerformed
+        jButtonEstrella1A.setSelected(true);
+        jButtonEstrella2A.setSelected(true);
+        jButtonEstrella3A.setSelected(true);
+        jButtonEstrella4A.setSelected(true);
+        jButtonEstrella5A.setSelected(true);
+    }//GEN-LAST:event_jButtonEstrella5AActionPerformed
 
-    private void jButtonAEstrella4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAEstrella4ActionPerformed
-        jButtonAEstrella1.setSelected(true);
-        jButtonAEstrella2.setSelected(true);
-        jButtonAEstrella3.setSelected(true);
-        jButtonAEstrella4.setSelected(true);
-        jButtonAEstrella5.setSelected(false);
-    }//GEN-LAST:event_jButtonAEstrella4ActionPerformed
+    private void jButtonEstrella4AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEstrella4AActionPerformed
+        jButtonEstrella1A.setSelected(true);
+        jButtonEstrella2A.setSelected(true);
+        jButtonEstrella3A.setSelected(true);
+        jButtonEstrella4A.setSelected(true);
+        jButtonEstrella5A.setSelected(false);
+    }//GEN-LAST:event_jButtonEstrella4AActionPerformed
 
-    private void jButtonAEstrella3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAEstrella3ActionPerformed
-        jButtonAEstrella1.setSelected(true);
-        jButtonAEstrella2.setSelected(true);
-        jButtonAEstrella3.setSelected(true);
-        jButtonAEstrella4.setSelected(false);
-        jButtonAEstrella5.setSelected(false);
-    }//GEN-LAST:event_jButtonAEstrella3ActionPerformed
+    private void jButtonEstrella3AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEstrella3AActionPerformed
+        jButtonEstrella1A.setSelected(true);
+        jButtonEstrella2A.setSelected(true);
+        jButtonEstrella3A.setSelected(true);
+        jButtonEstrella4A.setSelected(false);
+        jButtonEstrella5A.setSelected(false);
+    }//GEN-LAST:event_jButtonEstrella3AActionPerformed
 
-    private void jButtonAEstrella2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAEstrella2ActionPerformed
-        jButtonAEstrella1.setSelected(true);
-        jButtonAEstrella2.setSelected(true);
-        jButtonAEstrella3.setSelected(false);
-        jButtonAEstrella4.setSelected(false);
-        jButtonAEstrella5.setSelected(false);
-    }//GEN-LAST:event_jButtonAEstrella2ActionPerformed
+    private void jButtonEstrella2AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEstrella2AActionPerformed
+        jButtonEstrella1A.setSelected(true);
+        jButtonEstrella2A.setSelected(true);
+        jButtonEstrella3A.setSelected(false);
+        jButtonEstrella4A.setSelected(false);
+        jButtonEstrella5A.setSelected(false);
+    }//GEN-LAST:event_jButtonEstrella2AActionPerformed
 
-    private void jButtonAEstrella1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAEstrella1ActionPerformed
-        jButtonAEstrella1.setSelected(true);
-        jButtonAEstrella2.setSelected(false);
-        jButtonAEstrella3.setSelected(false);
-        jButtonAEstrella4.setSelected(false);
-        jButtonAEstrella5.setSelected(false);
-    }//GEN-LAST:event_jButtonAEstrella1ActionPerformed
+    private void jButtonEstrella1AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEstrella1AActionPerformed
+        jButtonEstrella2A.setSelected(false);
+        jButtonEstrella3A.setSelected(false);
+        jButtonEstrella4A.setSelected(false);
+        jButtonEstrella5A.setSelected(false);
+    }//GEN-LAST:event_jButtonEstrella1AActionPerformed
 
     private void jComboTipoAlojamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboTipoAlojamientoActionPerformed
         // TODO add your handling code here:
@@ -964,12 +1436,8 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextDestinoActionPerformed
 
     private void jButtonInfoTranporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInfoTranporteActionPerformed
-        // TODO add your handling code here:
+       // TODO add your handling code here:
     }//GEN-LAST:event_jButtonInfoTranporteActionPerformed
-
-    private void jButtonCrearAgente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCrearAgente1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonCrearAgente1ActionPerformed
 
     private void jTextPrecioAlojamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextPrecioAlojamientoActionPerformed
         // TODO add your handling code here:
@@ -982,7 +1450,165 @@ public class Principal extends javax.swing.JFrame {
     private void jButtonCrearAgenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCrearAgenciaActionPerformed
         // Imprime por consola ponderacPrecio-ponderacCategoría
         System.out.println((jSliderPonderacion.getValue()/10.0)+"-"+((10-jSliderPonderacion.getValue())/10.0));
+        jDialogAgenciaCreada.setVisible(true);
     }//GEN-LAST:event_jButtonCrearAgenciaActionPerformed
+
+    private void jButtonCrearAlojamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCrearAlojamientoActionPerformed
+     // Imprime por consola nombre-ciudad-tipo-categoria-precioDia
+ 
+        if ((!"".equals(jTextNombreA.getText()))&&(!"".equals(jTextCiudad.getText()))&&(jTextPrecioDiaA.getValue()!=null)&&(!agenciasAñadidasA.isEmpty())) {
+      //      String nombre = jTextNombreA.getText();
+       //     String parametros = new String();
+         //   Object args[] = new Object[1];    
+     //       parametros =  jTextNombreA.getText()+","+
+   //           jTextCiudad.getText()+","+
+     //          jComboTipoCrearAlojamiento.getSelectedItem()+","+
+     //          obtenerCategoria(jButtonCrearEstrella5A,jButtonCrearEstrella4A, jButtonCrearEstrella3A,jButtonCrearEstrella2A,jButtonCrearEstrella1A)+","+
+     //          jTextPrecioDiaA.getValue()+","+
+     //          listar(descuentosA)+","+
+     //           listar(agenciasAñadidasA);
+   //         args[0]=parametros;
+ //           AgentController lugar = cc.createNewAgent("inProcess", "agents.Lugar", args); 
+//
+ //           lugar.start(); 
+//       Object reference = new Object(); 
+//Object args[] = new Object[1]; 
+//args[0]=reference; 
+//AgentController dummy = cc.createNewAgent("inProcess", "jade.tools.DummyAgent.DummyAgent", args); 
+// Fire up the agen
+//dummy.start(); 
+           System.out.println(
+                jTextNombreA.getText()+","+
+               jTextCiudad.getText()+","+
+               jComboTipoCrearAlojamiento.getSelectedItem()+","+
+                obtenerCategoria(jButtonCrearEstrella5A,jButtonCrearEstrella4A, jButtonCrearEstrella3A,jButtonCrearEstrella2A,jButtonCrearEstrella1A)+","+
+               jTextPrecioDiaA.getValue()+","+
+               listar(descuentosA)+","+
+               listar(agenciasAñadidasA)
+           );
+            jLabelAdvertenciaNombreA.setVisible(false);
+            jLabelAdvertenciaCiudad.setVisible(false);
+            jLabelAdvertenciaCrearPrecioA.setVisible(false);
+            jLabelAdvertenciaDescuentoA.setVisible(false);
+            jLabelAdvertenciaSinAgenciasA.setVisible(false);
+        } else {
+            if ("".equals(jTextNombreA.getText())){
+                jLabelAdvertenciaNombreA.setVisible(true);
+            } else {
+                jLabelAdvertenciaNombreA.setVisible(false);
+            }
+            if ("".equals(jTextCiudad.getText())){
+                jLabelAdvertenciaCiudad.setVisible(true);
+            } else {
+                 jLabelAdvertenciaCiudad.setVisible(false);
+            }
+            if (jTextPrecioDiaA.getValue()==null){
+                jLabelAdvertenciaCrearPrecioA.setVisible(true);
+            } else {
+                jLabelAdvertenciaCrearPrecioA.setVisible(false);
+            }
+            if (agenciasAñadidasA.isEmpty()){
+                jLabelAdvertenciaSinAgenciasA.setVisible(true);
+            } else {
+                jLabelAdvertenciaSinAgenciasA.setVisible(false);
+            }
+        }
+
+       
+   
+
+    }//GEN-LAST:event_jButtonCrearAlojamientoActionPerformed
+
+    private void jTextCiudadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextCiudadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextCiudadActionPerformed
+
+    private void jComboTipoCrearAlojamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboTipoCrearAlojamientoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboTipoCrearAlojamientoActionPerformed
+
+    private void jButtonCrearEstrella1AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCrearEstrella1AActionPerformed
+        jButtonCrearEstrella1A.setSelected(true);
+        jButtonCrearEstrella2A.setSelected(false);
+        jButtonCrearEstrella3A.setSelected(false);
+        jButtonCrearEstrella4A.setSelected(false);
+        jButtonCrearEstrella5A.setSelected(false);
+    }//GEN-LAST:event_jButtonCrearEstrella1AActionPerformed
+
+    private void jButtonCrearEstrella2AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCrearEstrella2AActionPerformed
+        jButtonCrearEstrella1A.setSelected(true);
+        jButtonCrearEstrella2A.setSelected(true);
+        jButtonCrearEstrella3A.setSelected(false);
+        jButtonCrearEstrella4A.setSelected(false);
+        jButtonCrearEstrella5A.setSelected(false);
+    }//GEN-LAST:event_jButtonCrearEstrella2AActionPerformed
+
+    private void jButtonCrearEstrella3AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCrearEstrella3AActionPerformed
+        jButtonCrearEstrella1A.setSelected(true);
+        jButtonCrearEstrella2A.setSelected(true);
+        jButtonCrearEstrella3A.setSelected(true);
+        jButtonCrearEstrella4A.setSelected(false);
+        jButtonCrearEstrella5A.setSelected(false);
+    }//GEN-LAST:event_jButtonCrearEstrella3AActionPerformed
+
+    private void jButtonCrearEstrella4AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCrearEstrella4AActionPerformed
+        jButtonCrearEstrella1A.setSelected(true);
+        jButtonCrearEstrella2A.setSelected(true);
+        jButtonCrearEstrella3A.setSelected(true);
+        jButtonCrearEstrella4A.setSelected(true);
+        jButtonCrearEstrella5A.setSelected(false);
+    }//GEN-LAST:event_jButtonCrearEstrella4AActionPerformed
+
+    private void jButtonCrearEstrella5AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCrearEstrella5AActionPerformed
+        jButtonCrearEstrella1A.setSelected(true);
+        jButtonCrearEstrella2A.setSelected(true);
+        jButtonCrearEstrella3A.setSelected(true);
+        jButtonCrearEstrella4A.setSelected(true);
+        jButtonCrearEstrella5A.setSelected(true);
+    }//GEN-LAST:event_jButtonCrearEstrella5AActionPerformed
+
+    private void jTextPrecioDiaAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextPrecioDiaAActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextPrecioDiaAActionPerformed
+
+    private void jButtonAñadirDescAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAñadirDescAActionPerformed
+        String descuento = jSpinnerCantDiasA.getValue().toString()+"-"+jSpinnerDescuentoMinA.getValue().toString()+"-"+jSpinnerDescuentoMaxA.getValue().toString();
+        descuentosA.addElement(descuento);
+        jListDescuentosA.setModel(descuentosA);
+    }//GEN-LAST:event_jButtonAñadirDescAActionPerformed
+
+    private void jButtonRemoverDescAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoverDescAActionPerformed
+        if (!jListDescuentosA.isSelectionEmpty()){
+            descuentosA.removeElement(jListDescuentosA.getSelectedValue());
+            jListDescuentosA.setModel(descuentosA);
+        }
+    }//GEN-LAST:event_jButtonRemoverDescAActionPerformed
+
+    private void jButtonAñadirAgenciaAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAñadirAgenciaAActionPerformed
+        if(!jListAgenciasDisponiblesA.isSelectionEmpty()){
+            agenciasAñadidasA.addElement(jListAgenciasDisponiblesA.getSelectedValue());
+            jListAgenciasAñadidasA.setModel(agenciasAñadidasA);
+            agenciasDisponiblesA.removeElement(jListAgenciasDisponiblesA.getSelectedValue());
+            jListAgenciasDisponiblesA.setModel(agenciasDisponiblesA);
+        }
+    }//GEN-LAST:event_jButtonAñadirAgenciaAActionPerformed
+
+    private void jButtonRemoverAgenciaAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoverAgenciaAActionPerformed
+        if(!jListAgenciasAñadidasA.isSelectionEmpty()){
+            agenciasDisponiblesA.addElement(jListAgenciasAñadidasA.getSelectedValue());
+            jListAgenciasDisponiblesA.setModel(agenciasDisponiblesA);
+            agenciasAñadidasA.removeElement(jListAgenciasAñadidasA.getSelectedValue());
+            jListAgenciasAñadidasA.setModel(agenciasAñadidasA);
+        }
+    }//GEN-LAST:event_jButtonRemoverAgenciaAActionPerformed
+
+    private void jButtonAceptarAgenciaCreadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarAgenciaCreadaActionPerformed
+       jDialogAgenciaCreada.dispose();
+    }//GEN-LAST:event_jButtonAceptarAgenciaCreadaActionPerformed
+
+    private void jTextNombreAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextNombreAActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextNombreAActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1020,36 +1646,57 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JRadioButton jButtonAEstrella1;
-    private javax.swing.JRadioButton jButtonAEstrella2;
-    private javax.swing.JRadioButton jButtonAEstrella3;
-    private javax.swing.JRadioButton jButtonAEstrella4;
-    private javax.swing.JRadioButton jButtonAEstrella5;
+    private javax.swing.JButton jButtonAceptarAgenciaCreada;
     private javax.swing.JToggleButton jButtonAgencia;
     private javax.swing.JToggleButton jButtonAlojamiento;
+    private javax.swing.JButton jButtonAñadirAgenciaA;
+    private javax.swing.JButton jButtonAñadirDescA;
     private javax.swing.JButton jButtonCrearAgencia;
     private javax.swing.JButton jButtonCrearAgente;
-    private javax.swing.JButton jButtonCrearAgente1;
+    private javax.swing.JButton jButtonCrearAlojamiento;
+    private javax.swing.JRadioButton jButtonCrearEstrella1A;
+    private javax.swing.JRadioButton jButtonCrearEstrella2A;
+    private javax.swing.JRadioButton jButtonCrearEstrella3A;
+    private javax.swing.JRadioButton jButtonCrearEstrella4A;
+    private javax.swing.JRadioButton jButtonCrearEstrella5A;
+    private javax.swing.JRadioButton jButtonEstrella1A;
+    private javax.swing.JRadioButton jButtonEstrella1T;
+    private javax.swing.JRadioButton jButtonEstrella2A;
+    private javax.swing.JRadioButton jButtonEstrella2T;
+    private javax.swing.JRadioButton jButtonEstrella3A;
+    private javax.swing.JRadioButton jButtonEstrella3T;
+    private javax.swing.JRadioButton jButtonEstrella4A;
+    private javax.swing.JRadioButton jButtonEstrella4T;
+    private javax.swing.JRadioButton jButtonEstrella5A;
+    private javax.swing.JRadioButton jButtonEstrella5T;
     private javax.swing.JButton jButtonInfoAlojamiento;
     private javax.swing.JButton jButtonInfoTranporte;
-    private javax.swing.JRadioButton jButtonTEstrella1;
-    private javax.swing.JRadioButton jButtonTEstrella2;
-    private javax.swing.JRadioButton jButtonTEstrella3;
-    private javax.swing.JRadioButton jButtonTEstrella4;
-    private javax.swing.JRadioButton jButtonTEstrella5;
+    private javax.swing.JButton jButtonRemoverAgenciaA;
+    private javax.swing.JButton jButtonRemoverDescA;
     private javax.swing.JToggleButton jButtonTransporte;
     private javax.swing.JToggleButton jButtonTurista;
     private javax.swing.JComboBox jComboTipoAlojamiento;
+    private javax.swing.JComboBox jComboTipoCrearAlojamiento;
     private javax.swing.JComboBox jComboTipoTransporte;
+    private javax.swing.JDialog jDialogAgenciaCreada;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1057,16 +1704,28 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelAdvertenciaCiudad;
+    private javax.swing.JLabel jLabelAdvertenciaCrearPrecioA;
+    private javax.swing.JLabel jLabelAdvertenciaDescuentoA;
     private javax.swing.JLabel jLabelAdvertenciaDestino;
+    private javax.swing.JLabel jLabelAdvertenciaNombreA;
     private javax.swing.JLabel jLabelAdvertenciaPrecioA;
     private javax.swing.JLabel jLabelAdvertenciaPrecioT;
+    private javax.swing.JLabel jLabelAdvertenciaSinAgenciasA;
+    private javax.swing.JLabel jLabelAgenciaCreada;
+    private javax.swing.JList jListAgenciasAñadidasA;
+    private javax.swing.JList jListAgenciasDisponiblesA;
+    private javax.swing.JList jListDescuentosA;
     private javax.swing.JMenu jMenu;
     private javax.swing.JMenuBar jMenuBar;
     private javax.swing.JCheckBoxMenuItem jMenuItemAdmin;
     private javax.swing.JMenuItem jMenuItemJADE;
     private javax.swing.JMenuItem jMenuItemSalir;
     private javax.swing.JPanel jPanelAgencia;
+    private javax.swing.JScrollPane jPanelAgenciasAñadidas;
+    private javax.swing.JScrollPane jPanelAgenciasDisponiblesA;
     private javax.swing.JPanel jPanelAlojamiento;
+    private javax.swing.JScrollPane jPanelDescuentosA;
     private javax.swing.JPanel jPanelTransporte;
     private javax.swing.JPanel jPanelTurista;
     private javax.swing.JToolBar.Separator jSeparator1;
@@ -1074,11 +1733,19 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JToolBar.Separator jSeparator3;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
+    private javax.swing.JSeparator jSeparator8;
+    private javax.swing.JSeparator jSeparator9;
     private javax.swing.JSlider jSliderPonderacion;
     private javax.swing.JSpinner jSpinnerCantDias;
+    private javax.swing.JSpinner jSpinnerCantDiasA;
     private javax.swing.JSpinner jSpinnerCantPersonas;
+    private javax.swing.JSpinner jSpinnerDescuentoMaxA;
+    private javax.swing.JSpinner jSpinnerDescuentoMinA;
+    private javax.swing.JTextField jTextCiudad;
     private javax.swing.JTextField jTextDestino;
+    private javax.swing.JTextField jTextNombreA;
     private javax.swing.JFormattedTextField jTextPrecioAlojamiento;
+    private javax.swing.JFormattedTextField jTextPrecioDiaA;
     private javax.swing.JFormattedTextField jTextPrecioTransporte;
     private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
