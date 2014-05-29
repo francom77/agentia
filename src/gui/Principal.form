@@ -107,7 +107,7 @@
                           <Component id="jButtonAceptarNegociacionFinalizada" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="88" max="32767" attributes="0"/>
+                  <EmptySpace pref="121" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -118,7 +118,7 @@
                   <Component id="jLabelNegociacionFinalizada" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jLabelMensajeNegociacion" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="41" max="32767" attributes="0"/>
+                  <EmptySpace pref="57" max="32767" attributes="0"/>
                   <Component id="jButtonAceptarNegociacionFinalizada" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               </Group>
@@ -127,12 +127,6 @@
       </Layout>
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabelNegociacionFinalizada">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/gui/icons/Accept16.png"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="  Negociaci&#xf3;n finalizada con &#xe9;xito."/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="jButtonAceptarNegociacionFinalizada">
           <Properties>
@@ -572,7 +566,7 @@
                       <Component id="jTextPrecioTransporte" alignment="2" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel9" alignment="2" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="separate" pref="127" max="32767" attributes="0"/>
+                  <EmptySpace type="separate" pref="70" max="32767" attributes="0"/>
                   <Component id="jButtonCrearAgente" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>

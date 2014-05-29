@@ -200,9 +200,6 @@ public class Principal extends javax.swing.JFrame {
         jDialogNegociacionFinalizada.setPreferredSize(new java.awt.Dimension(300, 130));
         jDialogNegociacionFinalizada.setResizable(false);
 
-        jLabelNegociacionFinalizada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Accept16.png"))); // NOI18N
-        jLabelNegociacionFinalizada.setText("  Negociación finalizada con éxito.");
-
         jButtonAceptarNegociacionFinalizada.setText("Aceptar");
         jButtonAceptarNegociacionFinalizada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -224,7 +221,7 @@ public class Principal extends javax.swing.JFrame {
                     .addGroup(jDialogNegociacionFinalizadaLayout.createSequentialGroup()
                         .addGap(108, 108, 108)
                         .addComponent(jButtonAceptarNegociacionFinalizada)))
-                .addContainerGap(88, Short.MAX_VALUE))
+                .addContainerGap(121, Short.MAX_VALUE))
         );
         jDialogNegociacionFinalizadaLayout.setVerticalGroup(
             jDialogNegociacionFinalizadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -233,7 +230,7 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(jLabelNegociacionFinalizada)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabelMensajeNegociacion)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
                 .addComponent(jButtonAceptarNegociacionFinalizada)
                 .addGap(18, 18, 18))
         );
@@ -1193,21 +1190,21 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
   
     
-    public void negociacionFinalizada(String mensaje, boolean hayOferta){
-        if (hayOferta){           
-            jLabelMensajeNegociacion.setText(mensaje);
-//          Franco, fijate si este tamaño es suficiente o demasiado para lo que quieras mostrar. Cambialo.
-            jDialogNegociacionFinalizada.setSize(300, 400);
-        }else{
-            jLabelNegociacionFinalizada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Delete16.png")));
-            jLabelNegociacionFinalizada.setText("  Negociación finalizada sin ofertas.");
-//          jLabelMensajeNegociacion.setText(mensaje);
-            jLabelMensajeNegociacion.setText(null);
-        }
-        jDialogNegociacionFinalizada.setVisible(true);
+public void negociacionFinalizada(String mensaje){
+    if (mensaje.equals("no-hay-ofertas-compatibles")){
+        jLabelNegociacionFinalizada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Delete16.png")));
+        jLabelNegociacionFinalizada.setText("  Negociación finalizada sin ofertas.");
+        jLabelMensajeNegociacion.setText(null);
         jDialogNegociacionFinalizada.setSize(300, 130);
+    }else{
+        jLabelNegociacionFinalizada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Accept16.png")));
+        jLabelNegociacionFinalizada.setText("  Negociación finalizada con éxito.");
+        jLabelMensajeNegociacion.setText(mensaje);
+//      Franco, fijate si este tamaño es suficiente o demasiado para lo que quieras mostrar. Cambialo.
+        jDialogNegociacionFinalizada.setSize(300, 400);
     }
-    
+jDialogNegociacionFinalizada.setVisible(true);
+}
     
     //Acá se buscan las agencias disponibles en el DF
     //Agencia.getAID.getLocalName();
@@ -1268,11 +1265,8 @@ public class Principal extends javax.swing.JFrame {
             jButtonAgencia.setSelected(false);
             jButtonTransporte.setSelected(false);
             jButtonAlojamiento.setSelected(false);
-
         }
-         
     }
-    
     }//GEN-LAST:event_jMenuItemAdminActionPerformed
     
     private void jButtonTuristaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTuristaActionPerformed
@@ -1366,8 +1360,8 @@ public class Principal extends javax.swing.JFrame {
             //Aclaración: Los elementos de args no tienen un espacio al inicio. 
             //El método toString de Arrays inserta un espacio despúes de las comas de separación del arreglo.
 //            Pruebas del Dialogo negaciación fializada:
-//            negociacionFinalizada("Descripción de la oferta",true);
-//            negociacionFinalizada("No importa el mensaje",false);
+//              negociacionFinalizada("Descripción de la oferta");
+//              negociacionFinalizada("no-hay-ofertas-compatibles");            
         } else {
             if ("".equals(jTextDestino.getText())){
                 jLabelAdvertenciaDestino.setVisible(true);
