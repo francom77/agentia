@@ -7,11 +7,8 @@
 package gui;
 
 import javax.swing.DefaultListModel;
-import javax.swing.JRadioButton;
-import jade.core.Runtime; 
-import jade.core.Profile; 
-import jade.core.ProfileImpl; 
-import jade.wrapper.*; 
+import javax.swing.JRadioButton; 
+import java.util.Arrays;
 
 /**
  *
@@ -19,10 +16,18 @@ import jade.wrapper.*;
  */
 public class Principal extends javax.swing.JFrame {
 
+    //Definición de List Models para los Scroll panels de agencias
+    private final DefaultListModel modelDescuentosA = new DefaultListModel();
+    private DefaultListModel modelAgenciasDisponiblesA;
+    private final DefaultListModel modelAgenciasSelecionadasA = new DefaultListModel();
+    //Contador de agencias creadas por la interfaz. Se crean con el nombre "AgenciaInterfazX".
+    private int contAgenciasInterfaz;
+
     /**
      * Creates new form Principal
      */
     public Principal() {
+        this.contAgenciasInterfaz = 1;
         initComponents();
     }
   
@@ -38,6 +43,13 @@ public class Principal extends javax.swing.JFrame {
         jDialogAgenciaCreada = new javax.swing.JDialog();
         jLabelAgenciaCreada = new javax.swing.JLabel();
         jButtonAceptarAgenciaCreada = new javax.swing.JButton();
+        jDialogNegociacionFinalizada = new javax.swing.JDialog();
+        jLabelNegociacionFinalizada = new javax.swing.JLabel();
+        jButtonAceptarNegociacionFinalizada = new javax.swing.JButton();
+        jLabelMensajeNegociacion = new javax.swing.JLabel();
+        jDialogAlojamientoCreado = new javax.swing.JDialog();
+        jLabelAlojamientoCreado = new javax.swing.JLabel();
+        jButtonAceptarAlojamientoCreado = new javax.swing.JButton();
         jToolBar1 = new javax.swing.JToolBar();
         jSeparator3 = new javax.swing.JToolBar.Separator();
         jButtonTurista = new javax.swing.JToggleButton();
@@ -83,11 +95,9 @@ public class Principal extends javax.swing.JFrame {
         jLabelAdvertenciaPrecioA = new javax.swing.JLabel();
         jLabelAdvertenciaPrecioT = new javax.swing.JLabel();
         jPanelAgencia = new javax.swing.JPanel();
-        jLabel10 = new javax.swing.JLabel();
-        jSliderPonderacion = new javax.swing.JSlider();
         jButtonCrearAgencia = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
+        jComboTipoAgencia = new javax.swing.JComboBox();
         jPanelTransporte = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         jPanelAlojamiento = new javax.swing.JPanel();
@@ -116,15 +126,15 @@ public class Principal extends javax.swing.JFrame {
         jLabel24 = new javax.swing.JLabel();
         jPanelDescuentosA = new javax.swing.JScrollPane();
         jListDescuentosA = new javax.swing.JList();
-        jButtonAñadirDescA = new javax.swing.JButton();
+        jButtonAgregarDescA = new javax.swing.JButton();
         jButtonRemoverDescA = new javax.swing.JButton();
         jLabel25 = new javax.swing.JLabel();
         jSeparator9 = new javax.swing.JSeparator();
         jPanelAgenciasDisponiblesA = new javax.swing.JScrollPane();
         jListAgenciasDisponiblesA = new javax.swing.JList();
-        jPanelAgenciasAñadidas = new javax.swing.JScrollPane();
-        jListAgenciasAñadidasA = new javax.swing.JList();
-        jButtonAñadirAgenciaA = new javax.swing.JButton();
+        jPanelAgenciasSelecionadas = new javax.swing.JScrollPane();
+        jListAgenciasSelecionadasA = new javax.swing.JList();
+        jButtonAgregarAgenciaA = new javax.swing.JButton();
         jButtonRemoverAgenciaA = new javax.swing.JButton();
         jLabelAdvertenciaDescuentoA = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -147,7 +157,7 @@ public class Principal extends javax.swing.JFrame {
         jDialogAgenciaCreada.setResizable(false);
 
         jLabelAgenciaCreada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Accept24.png"))); // NOI18N
-        jLabelAgenciaCreada.setText("Agencia creada con éxito");
+        jLabelAgenciaCreada.setText("  Agencia creada con éxito.");
 
         jButtonAceptarAgenciaCreada.setText("Aceptar");
         jButtonAceptarAgenciaCreada.addActionListener(new java.awt.event.ActionListener() {
@@ -181,6 +191,94 @@ public class Principal extends javax.swing.JFrame {
         );
 
         jDialogAgenciaCreada.getAccessibleContext().setAccessibleParent(this);
+
+        jDialogNegociacionFinalizada.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        jDialogNegociacionFinalizada.setTitle("Información");
+        jDialogNegociacionFinalizada.setMaximumSize(new java.awt.Dimension(300, 400));
+        jDialogNegociacionFinalizada.setMinimumSize(new java.awt.Dimension(300, 130));
+        jDialogNegociacionFinalizada.setModal(true);
+        jDialogNegociacionFinalizada.setPreferredSize(new java.awt.Dimension(300, 130));
+        jDialogNegociacionFinalizada.setResizable(false);
+
+        jLabelNegociacionFinalizada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Accept16.png"))); // NOI18N
+        jLabelNegociacionFinalizada.setText("  Negociación finalizada con éxito.");
+
+        jButtonAceptarNegociacionFinalizada.setText("Aceptar");
+        jButtonAceptarNegociacionFinalizada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAceptarNegociacionFinalizadaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jDialogNegociacionFinalizadaLayout = new javax.swing.GroupLayout(jDialogNegociacionFinalizada.getContentPane());
+        jDialogNegociacionFinalizada.getContentPane().setLayout(jDialogNegociacionFinalizadaLayout);
+        jDialogNegociacionFinalizadaLayout.setHorizontalGroup(
+            jDialogNegociacionFinalizadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialogNegociacionFinalizadaLayout.createSequentialGroup()
+                .addGroup(jDialogNegociacionFinalizadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDialogNegociacionFinalizadaLayout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addGroup(jDialogNegociacionFinalizadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelMensajeNegociacion)
+                            .addComponent(jLabelNegociacionFinalizada)))
+                    .addGroup(jDialogNegociacionFinalizadaLayout.createSequentialGroup()
+                        .addGap(108, 108, 108)
+                        .addComponent(jButtonAceptarNegociacionFinalizada)))
+                .addContainerGap(88, Short.MAX_VALUE))
+        );
+        jDialogNegociacionFinalizadaLayout.setVerticalGroup(
+            jDialogNegociacionFinalizadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialogNegociacionFinalizadaLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jLabelNegociacionFinalizada)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabelMensajeNegociacion)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addComponent(jButtonAceptarNegociacionFinalizada)
+                .addGap(18, 18, 18))
+        );
+
+        jDialogAlojamientoCreado.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        jDialogAlojamientoCreado.setTitle("Información");
+        jDialogAlojamientoCreado.setMaximumSize(new java.awt.Dimension(300, 130));
+        jDialogAlojamientoCreado.setMinimumSize(new java.awt.Dimension(300, 130));
+        jDialogAlojamientoCreado.setModal(true);
+        jDialogAlojamientoCreado.setPreferredSize(new java.awt.Dimension(300, 130));
+        jDialogAlojamientoCreado.setResizable(false);
+
+        jLabelAlojamientoCreado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Accept24.png"))); // NOI18N
+        jLabelAlojamientoCreado.setText("  Alojamiento creado con éxito.");
+
+        jButtonAceptarAlojamientoCreado.setText("Aceptar");
+        jButtonAceptarAlojamientoCreado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAceptarAlojamientoCreadoActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jDialogAlojamientoCreadoLayout = new javax.swing.GroupLayout(jDialogAlojamientoCreado.getContentPane());
+        jDialogAlojamientoCreado.getContentPane().setLayout(jDialogAlojamientoCreadoLayout);
+        jDialogAlojamientoCreadoLayout.setHorizontalGroup(
+            jDialogAlojamientoCreadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialogAlojamientoCreadoLayout.createSequentialGroup()
+                .addGroup(jDialogAlojamientoCreadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDialogAlojamientoCreadoLayout.createSequentialGroup()
+                        .addGap(111, 111, 111)
+                        .addComponent(jButtonAceptarAlojamientoCreado))
+                    .addGroup(jDialogAlojamientoCreadoLayout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jLabelAlojamientoCreado)))
+                .addGap(118, 118, 118))
+        );
+        jDialogAlojamientoCreadoLayout.setVerticalGroup(
+            jDialogAlojamientoCreadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialogAlojamientoCreadoLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jLabelAlojamientoCreado)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonAceptarAlojamientoCreado)
+                .addGap(45, 45, 45))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SMA Agentes de Turismo");
@@ -458,11 +556,11 @@ public class Principal extends javax.swing.JFrame {
         jLabelAdvertenciaDestino.setVisible(false);
 
         jLabelAdvertenciaPrecioA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Alert16.png"))); // NOI18N
-        jLabelAdvertenciaPrecioA.setToolTipText("Este campo no puede ser vacío");
+        jLabelAdvertenciaPrecioA.setToolTipText("Este campo no puede quedar vacío");
         jLabelAdvertenciaPrecioA.setVisible(false);
 
         jLabelAdvertenciaPrecioT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Alert16.png"))); // NOI18N
-        jLabelAdvertenciaPrecioT.setToolTipText("Este campo no puede ser vacío");
+        jLabelAdvertenciaPrecioT.setToolTipText("Este campo no puede quedar vacío");
         jLabelAdvertenciaPrecioT.setVisible(false);
 
         javax.swing.GroupLayout jPanelTuristaLayout = new javax.swing.GroupLayout(jPanelTurista);
@@ -553,7 +651,7 @@ public class Principal extends javax.swing.JFrame {
         jPanelTuristaLayout.setVerticalGroup(
             jPanelTuristaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelTuristaLayout.createSequentialGroup()
-                .addGap(11, 11, 11)
+                .addContainerGap()
                 .addGroup(jPanelTuristaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel14)
                     .addComponent(jTextDestino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -619,16 +717,6 @@ public class Principal extends javax.swing.JFrame {
         jPanelAgencia.setName(""); // NOI18N
         jPanelAgencia.setPreferredSize(new java.awt.Dimension(264, 472));
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel10.setText("Ponderación");
-
-        jSliderPonderacion.setMajorTickSpacing(1);
-        jSliderPonderacion.setMaximum(10);
-        jSliderPonderacion.setMinorTickSpacing(1);
-        jSliderPonderacion.setPaintTicks(true);
-        jSliderPonderacion.setValue(5);
-        jSliderPonderacion.setName(""); // NOI18N
-
         jButtonCrearAgencia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Wheel16.png"))); // NOI18N
         jButtonCrearAgencia.setText("Crear Agencia");
         jButtonCrearAgencia.setToolTipText("");
@@ -639,39 +727,30 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Precio");
+        jLabel16.setText("Seleccione tipo de agencia");
 
-        jLabel16.setText("Categoría");
+        jComboTipoAgencia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "VIP", "Medio", "Económico" }));
 
         javax.swing.GroupLayout jPanelAgenciaLayout = new javax.swing.GroupLayout(jPanelAgencia);
         jPanelAgencia.setLayout(jPanelAgenciaLayout);
         jPanelAgenciaLayout.setHorizontalGroup(
             jPanelAgenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelAgenciaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanelAgenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSliderPonderacion, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAgenciaLayout.createSequentialGroup()
+                .addGroup(jPanelAgenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButtonCrearAgencia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanelAgenciaLayout.createSequentialGroup()
-                        .addComponent(jLabel10)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanelAgenciaLayout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel16)))
+                        .addComponent(jLabel16)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                        .addComponent(jComboTipoAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanelAgenciaLayout.setVerticalGroup(
             jPanelAgenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelAgenciaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelAgenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel16))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSliderPonderacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel16)
+                    .addComponent(jComboTipoAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonCrearAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -725,7 +804,7 @@ public class Principal extends javax.swing.JFrame {
         });
 
         jLabelAdvertenciaCiudad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Alert16.png"))); // NOI18N
-        jLabelAdvertenciaCiudad.setToolTipText("Este campo no puede ser vacío");
+        jLabelAdvertenciaCiudad.setToolTipText("Este campo no puede quedar vacío");
         jLabelAdvertenciaCiudad.setVisible(false);
 
         jLabel11.setText("Tipo");
@@ -804,7 +883,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel20.setName(""); // NOI18N
 
         jLabelAdvertenciaCrearPrecioA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Alert16.png"))); // NOI18N
-        jLabelAdvertenciaCrearPrecioA.setToolTipText("Este campo no puede ser vacío");
+        jLabelAdvertenciaCrearPrecioA.setToolTipText("Este campo no puede quedar vacío");
         jLabelAdvertenciaCrearPrecioA.setVisible(false);
 
         jLabel21.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -832,13 +911,13 @@ public class Principal extends javax.swing.JFrame {
 
         jPanelDescuentosA.setViewportView(jListDescuentosA);
 
-        jButtonAñadirDescA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Add16.png"))); // NOI18N
-        jButtonAñadirDescA.setMaximumSize(new java.awt.Dimension(40, 25));
-        jButtonAñadirDescA.setMinimumSize(new java.awt.Dimension(40, 25));
-        jButtonAñadirDescA.setPreferredSize(new java.awt.Dimension(30, 25));
-        jButtonAñadirDescA.addActionListener(new java.awt.event.ActionListener() {
+        jButtonAgregarDescA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Add16.png"))); // NOI18N
+        jButtonAgregarDescA.setMaximumSize(new java.awt.Dimension(40, 25));
+        jButtonAgregarDescA.setMinimumSize(new java.awt.Dimension(40, 25));
+        jButtonAgregarDescA.setPreferredSize(new java.awt.Dimension(30, 25));
+        jButtonAgregarDescA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAñadirDescAActionPerformed(evt);
+                jButtonAgregarDescAActionPerformed(evt);
             }
         });
 
@@ -860,16 +939,16 @@ public class Principal extends javax.swing.JFrame {
         jListAgenciasDisponiblesA.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jPanelAgenciasDisponiblesA.setViewportView(jListAgenciasDisponiblesA);
 
-        jListAgenciasAñadidasA.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jPanelAgenciasAñadidas.setViewportView(jListAgenciasAñadidasA);
+        jListAgenciasSelecionadasA.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jPanelAgenciasSelecionadas.setViewportView(jListAgenciasSelecionadasA);
 
-        jButtonAñadirAgenciaA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Add16.png"))); // NOI18N
-        jButtonAñadirAgenciaA.setMaximumSize(new java.awt.Dimension(40, 25));
-        jButtonAñadirAgenciaA.setMinimumSize(new java.awt.Dimension(40, 25));
-        jButtonAñadirAgenciaA.setPreferredSize(new java.awt.Dimension(30, 25));
-        jButtonAñadirAgenciaA.addActionListener(new java.awt.event.ActionListener() {
+        jButtonAgregarAgenciaA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Add16.png"))); // NOI18N
+        jButtonAgregarAgenciaA.setMaximumSize(new java.awt.Dimension(40, 25));
+        jButtonAgregarAgenciaA.setMinimumSize(new java.awt.Dimension(40, 25));
+        jButtonAgregarAgenciaA.setPreferredSize(new java.awt.Dimension(30, 25));
+        jButtonAgregarAgenciaA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAñadirAgenciaAActionPerformed(evt);
+                jButtonAgregarAgenciaAActionPerformed(evt);
             }
         });
 
@@ -896,7 +975,7 @@ public class Principal extends javax.swing.JFrame {
         });
 
         jLabelAdvertenciaNombreA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Alert16.png"))); // NOI18N
-        jLabelAdvertenciaNombreA.setToolTipText("Este campo no puede ser vacío");
+        jLabelAdvertenciaNombreA.setToolTipText("Este campo no puede quedar vacío");
         jLabelAdvertenciaNombreA.setVisible(false);
 
         jLabelAdvertenciaSinAgenciasA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Alert16.png"))); // NOI18N
@@ -961,7 +1040,7 @@ public class Principal extends javax.swing.JFrame {
                         .addGroup(jPanelAlojamientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(jLabelAdvertenciaDescuentoA)
                             .addComponent(jButtonRemoverDescA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonAñadirDescA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jButtonAgregarDescA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanelDescuentosA, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                     .addGroup(jPanelAlojamientoLayout.createSequentialGroup()
@@ -970,9 +1049,9 @@ public class Principal extends javax.swing.JFrame {
                         .addGroup(jPanelAlojamientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(jLabelAdvertenciaSinAgenciasA)
                             .addComponent(jButtonRemoverAgenciaA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonAñadirAgenciaA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jButtonAgregarAgenciaA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanelAgenciasAñadidas, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                        .addComponent(jPanelAgenciasSelecionadas, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanelAlojamientoLayout.setVerticalGroup(
@@ -1013,7 +1092,7 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(jPanelAlojamientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanelAlojamientoLayout.createSequentialGroup()
                         .addGroup(jPanelAlojamientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(jButtonAñadirDescA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonAgregarDescA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jSpinnerCantDiasA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel22))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1035,13 +1114,13 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanelAlojamientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanelAlojamientoLayout.createSequentialGroup()
-                        .addComponent(jButtonAñadirAgenciaA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonAgregarAgenciaA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonRemoverAgenciaA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabelAdvertenciaSinAgenciasA))
                     .addComponent(jPanelAgenciasDisponiblesA, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jPanelAgenciasAñadidas, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanelAgenciasSelecionadas, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonCrearAlojamiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -1112,20 +1191,24 @@ public class Principal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    // Get a hold on JADE runtime 
-//    Runtime rt = Runtime.instance(); 
-    // Create a default profile 
- //   Profile p = new ProfileImpl(); 
-    // Create a new non-main container, connecting to the default 
-    // main container (i.e. on this host, port 1099) 
- //   ContainerController cc = rt.createAgentContainer(p); 
+  
     
-    //Definición de List Models para los Scroll Panels de agencias
-    private final DefaultListModel descuentosA = new DefaultListModel();
-    private DefaultListModel agenciasDisponiblesA;
-    private final DefaultListModel agenciasAñadidasA = new DefaultListModel();
+    public void negociacionFinalizada(String mensaje, boolean hayOferta){
+        if (hayOferta){           
+            jLabelMensajeNegociacion.setText(mensaje);
+//          Franco, fijate si este tamaño es suficiente o demasiado para lo que quieras mostrar. Cambialo.
+            jDialogNegociacionFinalizada.setSize(300, 400);
+        }else{
+            jLabelNegociacionFinalizada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Delete16.png")));
+            jLabelNegociacionFinalizada.setText("  Negociación finalizada sin ofertas.");
+//          jLabelMensajeNegociacion.setText(mensaje);
+            jLabelMensajeNegociacion.setText(null);
+        }
+        jDialogNegociacionFinalizada.setVisible(true);
+        jDialogNegociacionFinalizada.setSize(300, 130);
+    }
     
-         
+    
     //Acá se buscan las agencias disponibles en el DF
     //Agencia.getAID.getLocalName();
     private void agregarAgenciasDisponibles(DefaultListModel agenciasDisponibles){
@@ -1135,62 +1218,19 @@ public class Principal extends javax.swing.JFrame {
         agenciasDisponibles.addElement("Agencia 4");
     }
     
-    
-    
-    //Se lista el contenido de los Scroll panels de Agencias y Descuentos, separados por "," u con marca final "---"
-    private String listar(DefaultListModel lista){
-    String listado = new String();  
-    if (!lista.isEmpty()){
-        int i=0;
-        while (i<lista.size()){
-            listado += lista.get(i).toString();
-            listado += ",";
+    //Se lista el contenido de los Scroll panels de agencias y descuentos en un Object[], con marca final "---"
+    private Object[] agregarListado(DefaultListModel modeloAListar, Object[] argsIncompleto, int p){
+    int i=0;
+    if (!modeloAListar.isEmpty()){
+        while (i<modeloAListar.size()){
+            argsIncompleto[i+p]=modeloAListar.get(i);
             i++;
         }
     }
-    listado += "---";
-    return listado;
-    }
-      /**        
-                
-    if (args != null && args.length > 0) {
-
-			ciudad = (String) args[0];
-			System.out.println("La ciudad es "+ciudad);
-
-			tipo = (String) args[1];
-			System.out.println("El tipo es "+ tipo);
-
-			categoria = Integer.parseInt((String) args[2]);
-			System.out.println("La categoria es "+categoria);
-
-			precio = Float.parseFloat((String)args[3]);
-			System.out.println("El precio es "+precio);
-
-			descuentos = new ArrayList<Descuento>();
-
-			//se asume que los parametros desde la posicion 4 hasta una marca --- son los descuentos
-
-			int i=4;
-			while (!args[i].equals("---")){
-
-				//obteninedo los valores de cant, menor descuento y mayor descuento
-				String descuentoString = (String) args[i];
-				String[] descuentoArray = descuentoString.split("-");
-				int cant = Integer.parseInt(descuentoArray[0]);
-				int menorDescuento = Integer.parseInt(descuentoArray[1]);
-				int mayorDescuento = Integer.parseInt(descuentoArray[2]);
-
-				Descuento descuento = new Descuento(cant, menorDescuento, mayorDescuento);
-
-				descuentos.add(descuento);
-
-				i++;
-			}
-                        **/
+    argsIncompleto[i+p]="---";
+    return argsIncompleto;
     
-    
-    
+    }  
     //Obtener categoría de los Radio Button de las estrellas.
     private String obtenerCategoria(JRadioButton estrella5, JRadioButton estrella4, JRadioButton estrella3, JRadioButton estrella2, JRadioButton estrella1){
         if (estrella5.isSelected()){
@@ -1208,7 +1248,7 @@ public class Principal extends javax.swing.JFrame {
         if (estrella1.isSelected()){
             return "1";
         }
-        return "Indefinido";
+        return "indefinido";
     }  
     
     private void jMenuItemAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAdminActionPerformed
@@ -1291,10 +1331,10 @@ public class Principal extends javax.swing.JFrame {
             jButtonTurista.setSelected(false);
             jButtonTransporte.setSelected(false);
             jButtonAgencia.setSelected(false);
-            agenciasDisponiblesA = new DefaultListModel();
-            agregarAgenciasDisponibles(agenciasDisponiblesA);
-            jListAgenciasDisponiblesA.setModel(agenciasDisponiblesA);
-            agenciasAñadidasA.clear();
+            modelAgenciasDisponiblesA = new DefaultListModel();
+            agregarAgenciasDisponibles(modelAgenciasDisponiblesA);
+            jListAgenciasDisponiblesA.setModel(modelAgenciasDisponiblesA);
+            modelAgenciasSelecionadasA.clear();
         } else {
         jButtonAlojamiento.setSelected(true);    
         }
@@ -1305,25 +1345,29 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonInfoAlojamientoActionPerformed
 
     private void jButtonCrearAgenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCrearAgenteActionPerformed
-// Imprime por consola destino-cantPersonas-cantDias-
-//                     tipoAlojamiento-categoriaAlojamiento-precioAlojamiento
-//                     tipoTransporte-categoriaTransporte-precioTransporte
-        
         if ((!"".equals(jTextDestino.getText()))&&(jTextPrecioAlojamiento.getValue()!=null)&&(jTextPrecioTransporte.getValue()!=null)) {
-            System.out.println(
-                jTextDestino.getText()+","+
-                jSpinnerCantPersonas.getValue()+","+
-                jSpinnerCantDias.getValue()+","+
-                jComboTipoAlojamiento.getSelectedItem()+","+
-                obtenerCategoria(jButtonEstrella5A,jButtonEstrella4A, jButtonEstrella3A,jButtonEstrella2A,jButtonEstrella1A)+","+
-                jTextPrecioAlojamiento.getValue()+","+
-                jComboTipoTransporte.getSelectedItem()+","+
-                obtenerCategoria(jButtonEstrella5T,jButtonEstrella4T, jButtonEstrella3T,jButtonEstrella2T,jButtonEstrella1T)+","+
-                jTextPrecioTransporte.getValue()
-            );
             jLabelAdvertenciaDestino.setVisible(false);
             jLabelAdvertenciaPrecioA.setVisible(false);
             jLabelAdvertenciaPrecioT.setVisible(false);
+            String nombreAgente = "TuristaInterfaz";
+            Object[] args = new Object[9];
+            args[0]= jTextDestino.getText().toLowerCase();
+            args[1]= jSpinnerCantPersonas.getValue();
+            args[2]= jSpinnerCantDias.getValue();
+            args[3]= jComboTipoAlojamiento.getSelectedItem().toString().toLowerCase();
+            args[4]= obtenerCategoria(jButtonEstrella5A,jButtonEstrella4A, jButtonEstrella3A,jButtonEstrella2A,jButtonEstrella1A);
+            args[5]= jTextPrecioAlojamiento.getValue();
+            args[6]= jComboTipoTransporte.getSelectedItem().toString().toLowerCase();
+            args[7]= obtenerCategoria(jButtonEstrella5T,jButtonEstrella4T, jButtonEstrella3T,jButtonEstrella2T,jButtonEstrella1T);
+            args[8]= jTextPrecioTransporte.getValue();
+            //Acá debería crearse el agente con los parámetros:
+            //createNewAgent(nombreAgente,"nombre de la clase del agente",args);
+            System.out.println("Validación de datos OK. Nombre del agente: "+nombreAgente +" Parámetros: "+ Arrays.toString(args));
+            //Aclaración: Los elementos de args no tienen un espacio al inicio. 
+            //El método toString de Arrays inserta un espacio despúes de las comas de separación del arreglo.
+//            Pruebas del Dialogo negaciación fializada:
+//            negociacionFinalizada("Descripción de la oferta",true);
+//            negociacionFinalizada("No importa el mensaje",false);
         } else {
             if ("".equals(jTextDestino.getText())){
                 jLabelAdvertenciaDestino.setVisible(true);
@@ -1448,49 +1492,48 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemJADEActionPerformed
 
     private void jButtonCrearAgenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCrearAgenciaActionPerformed
-        // Imprime por consola ponderacPrecio-ponderacCategoría
-        System.out.println((jSliderPonderacion.getValue()/10.0)+"-"+((10-jSliderPonderacion.getValue())/10.0));
+        String nombreAgente = "AgenciaInterfaz"+contAgenciasInterfaz;
+        Object[] args = new Object[2];
+        switch (jComboTipoAgencia.getSelectedItem().toString()) {
+            case "VIP": args[0]= 0.2;
+                        args[1]= 0.8;
+                        break;
+            case "Medio": args[0]= 0.5;
+                          args[1]= 0.5;
+                          break;
+            case "Económico": args[0]= 0.8;
+                              args[1]= 0.2;
+        }
+        contAgenciasInterfaz ++;
+        //Acá debería crearse el agente con los parámetros:
+        //createNewAgent(nombreAgente,"nombre de la clase del agente",args);
+        System.out.println("Datos recibidos de la interfaz: Nombre del agente: "+nombreAgente +" Parámetros: "+ Arrays.toString(args));
+        //Aclaración: Los elementos de args no tienen un espacio al inicio. 
+        //El método toString de Arrays inserta un espacio despúes de las comas de separación del arreglo.
         jDialogAgenciaCreada.setVisible(true);
     }//GEN-LAST:event_jButtonCrearAgenciaActionPerformed
 
     private void jButtonCrearAlojamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCrearAlojamientoActionPerformed
-     // Imprime por consola nombre-ciudad-tipo-categoria-precioDia
- 
-        if ((!"".equals(jTextNombreA.getText()))&&(!"".equals(jTextCiudad.getText()))&&(jTextPrecioDiaA.getValue()!=null)&&(!agenciasAñadidasA.isEmpty())) {
-      //      String nombre = jTextNombreA.getText();
-       //     String parametros = new String();
-         //   Object args[] = new Object[1];    
-     //       parametros =  jTextNombreA.getText()+","+
-   //           jTextCiudad.getText()+","+
-     //          jComboTipoCrearAlojamiento.getSelectedItem()+","+
-     //          obtenerCategoria(jButtonCrearEstrella5A,jButtonCrearEstrella4A, jButtonCrearEstrella3A,jButtonCrearEstrella2A,jButtonCrearEstrella1A)+","+
-     //          jTextPrecioDiaA.getValue()+","+
-     //          listar(descuentosA)+","+
-     //           listar(agenciasAñadidasA);
-   //         args[0]=parametros;
- //           AgentController lugar = cc.createNewAgent("inProcess", "agents.Lugar", args); 
-//
- //           lugar.start(); 
-//       Object reference = new Object(); 
-//Object args[] = new Object[1]; 
-//args[0]=reference; 
-//AgentController dummy = cc.createNewAgent("inProcess", "jade.tools.DummyAgent.DummyAgent", args); 
-// Fire up the agen
-//dummy.start(); 
-           System.out.println(
-                jTextNombreA.getText()+","+
-               jTextCiudad.getText()+","+
-               jComboTipoCrearAlojamiento.getSelectedItem()+","+
-                obtenerCategoria(jButtonCrearEstrella5A,jButtonCrearEstrella4A, jButtonCrearEstrella3A,jButtonCrearEstrella2A,jButtonCrearEstrella1A)+","+
-               jTextPrecioDiaA.getValue()+","+
-               listar(descuentosA)+","+
-               listar(agenciasAñadidasA)
-           );
+        if ((!"".equals(jTextNombreA.getText()))&&(!"".equals(jTextCiudad.getText()))&&(jTextPrecioDiaA.getValue()!=null)&&(!modelAgenciasSelecionadasA.isEmpty())) {
             jLabelAdvertenciaNombreA.setVisible(false);
             jLabelAdvertenciaCiudad.setVisible(false);
             jLabelAdvertenciaCrearPrecioA.setVisible(false);
             jLabelAdvertenciaDescuentoA.setVisible(false);
             jLabelAdvertenciaSinAgenciasA.setVisible(false);
+            String nombreAgente = jTextNombreA.getText();
+            Object[] args = new Object[6+modelDescuentosA.getSize()+ modelAgenciasSelecionadasA.getSize()];
+            args[0]= jTextCiudad.getText().toLowerCase();
+            args[1]= jComboTipoCrearAlojamiento.getSelectedItem().toString().toLowerCase();
+            args[2]= obtenerCategoria(jButtonCrearEstrella5A,jButtonCrearEstrella4A, jButtonCrearEstrella3A,jButtonCrearEstrella2A,jButtonCrearEstrella1A);
+            args[3]= jTextPrecioDiaA.getValue();
+            agregarListado(modelDescuentosA,args,4);
+            agregarListado(modelAgenciasSelecionadasA,args,5+modelDescuentosA.getSize());
+            //Acá debería crearse el agente con los parámetros:
+            //createNewAgent(nombreAgente,"nombre de la clase del agente",args);
+            System.out.println("Validación de datos OK. Nombre del agente: "+nombreAgente +" Parámetros: "+ Arrays.toString(args));
+            //Aclaración: Los elementos de args no tienen un espacio al inicio. 
+            //El método toString de Arrays inserta un espacio despúes de las comas de separación del arreglo.
+            jDialogAlojamientoCreado.setVisible(true);
         } else {
             if ("".equals(jTextNombreA.getText())){
                 jLabelAdvertenciaNombreA.setVisible(true);
@@ -1507,16 +1550,13 @@ public class Principal extends javax.swing.JFrame {
             } else {
                 jLabelAdvertenciaCrearPrecioA.setVisible(false);
             }
-            if (agenciasAñadidasA.isEmpty()){
+            if (modelAgenciasSelecionadasA.isEmpty()){
                 jLabelAdvertenciaSinAgenciasA.setVisible(true);
             } else {
                 jLabelAdvertenciaSinAgenciasA.setVisible(false);
             }
         }
-
-       
    
-
     }//GEN-LAST:event_jButtonCrearAlojamientoActionPerformed
 
     private void jTextCiudadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextCiudadActionPerformed
@@ -1571,34 +1611,34 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextPrecioDiaAActionPerformed
 
-    private void jButtonAñadirDescAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAñadirDescAActionPerformed
+    private void jButtonAgregarDescAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarDescAActionPerformed
         String descuento = jSpinnerCantDiasA.getValue().toString()+"-"+jSpinnerDescuentoMinA.getValue().toString()+"-"+jSpinnerDescuentoMaxA.getValue().toString();
-        descuentosA.addElement(descuento);
-        jListDescuentosA.setModel(descuentosA);
-    }//GEN-LAST:event_jButtonAñadirDescAActionPerformed
+        modelDescuentosA.addElement(descuento);
+        jListDescuentosA.setModel(modelDescuentosA);
+    }//GEN-LAST:event_jButtonAgregarDescAActionPerformed
 
     private void jButtonRemoverDescAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoverDescAActionPerformed
         if (!jListDescuentosA.isSelectionEmpty()){
-            descuentosA.removeElement(jListDescuentosA.getSelectedValue());
-            jListDescuentosA.setModel(descuentosA);
+            modelDescuentosA.removeElement(jListDescuentosA.getSelectedValue());
+            jListDescuentosA.setModel(modelDescuentosA);
         }
     }//GEN-LAST:event_jButtonRemoverDescAActionPerformed
 
-    private void jButtonAñadirAgenciaAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAñadirAgenciaAActionPerformed
+    private void jButtonAgregarAgenciaAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarAgenciaAActionPerformed
         if(!jListAgenciasDisponiblesA.isSelectionEmpty()){
-            agenciasAñadidasA.addElement(jListAgenciasDisponiblesA.getSelectedValue());
-            jListAgenciasAñadidasA.setModel(agenciasAñadidasA);
-            agenciasDisponiblesA.removeElement(jListAgenciasDisponiblesA.getSelectedValue());
-            jListAgenciasDisponiblesA.setModel(agenciasDisponiblesA);
+            modelAgenciasSelecionadasA.addElement(jListAgenciasDisponiblesA.getSelectedValue());
+            jListAgenciasSelecionadasA.setModel(modelAgenciasSelecionadasA);
+            modelAgenciasDisponiblesA.removeElement(jListAgenciasDisponiblesA.getSelectedValue());
+            jListAgenciasDisponiblesA.setModel(modelAgenciasDisponiblesA);
         }
-    }//GEN-LAST:event_jButtonAñadirAgenciaAActionPerformed
+    }//GEN-LAST:event_jButtonAgregarAgenciaAActionPerformed
 
     private void jButtonRemoverAgenciaAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoverAgenciaAActionPerformed
-        if(!jListAgenciasAñadidasA.isSelectionEmpty()){
-            agenciasDisponiblesA.addElement(jListAgenciasAñadidasA.getSelectedValue());
-            jListAgenciasDisponiblesA.setModel(agenciasDisponiblesA);
-            agenciasAñadidasA.removeElement(jListAgenciasAñadidasA.getSelectedValue());
-            jListAgenciasAñadidasA.setModel(agenciasAñadidasA);
+        if(!jListAgenciasSelecionadasA.isSelectionEmpty()){
+            modelAgenciasDisponiblesA.addElement(jListAgenciasSelecionadasA.getSelectedValue());
+            jListAgenciasDisponiblesA.setModel(modelAgenciasDisponiblesA);
+            modelAgenciasSelecionadasA.removeElement(jListAgenciasSelecionadasA.getSelectedValue());
+            jListAgenciasSelecionadasA.setModel(modelAgenciasSelecionadasA);
         }
     }//GEN-LAST:event_jButtonRemoverAgenciaAActionPerformed
 
@@ -1609,6 +1649,14 @@ public class Principal extends javax.swing.JFrame {
     private void jTextNombreAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextNombreAActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextNombreAActionPerformed
+
+    private void jButtonAceptarNegociacionFinalizadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarNegociacionFinalizadaActionPerformed
+        jDialogNegociacionFinalizada.dispose();
+    }//GEN-LAST:event_jButtonAceptarNegociacionFinalizadaActionPerformed
+
+    private void jButtonAceptarAlojamientoCreadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarAlojamientoCreadoActionPerformed
+        jDialogAlojamientoCreado.dispose();
+    }//GEN-LAST:event_jButtonAceptarAlojamientoCreadoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1636,7 +1684,7 @@ public class Principal extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+    
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -1647,10 +1695,12 @@ public class Principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAceptarAgenciaCreada;
+    private javax.swing.JButton jButtonAceptarAlojamientoCreado;
+    private javax.swing.JButton jButtonAceptarNegociacionFinalizada;
     private javax.swing.JToggleButton jButtonAgencia;
+    private javax.swing.JButton jButtonAgregarAgenciaA;
+    private javax.swing.JButton jButtonAgregarDescA;
     private javax.swing.JToggleButton jButtonAlojamiento;
-    private javax.swing.JButton jButtonAñadirAgenciaA;
-    private javax.swing.JButton jButtonAñadirDescA;
     private javax.swing.JButton jButtonCrearAgencia;
     private javax.swing.JButton jButtonCrearAgente;
     private javax.swing.JButton jButtonCrearAlojamiento;
@@ -1675,12 +1725,13 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton jButtonRemoverDescA;
     private javax.swing.JToggleButton jButtonTransporte;
     private javax.swing.JToggleButton jButtonTurista;
+    private javax.swing.JComboBox jComboTipoAgencia;
     private javax.swing.JComboBox jComboTipoAlojamiento;
     private javax.swing.JComboBox jComboTipoCrearAlojamiento;
     private javax.swing.JComboBox jComboTipoTransporte;
     private javax.swing.JDialog jDialogAgenciaCreada;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
+    private javax.swing.JDialog jDialogAlojamientoCreado;
+    private javax.swing.JDialog jDialogNegociacionFinalizada;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -1713,8 +1764,11 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelAdvertenciaPrecioT;
     private javax.swing.JLabel jLabelAdvertenciaSinAgenciasA;
     private javax.swing.JLabel jLabelAgenciaCreada;
-    private javax.swing.JList jListAgenciasAñadidasA;
+    private javax.swing.JLabel jLabelAlojamientoCreado;
+    private javax.swing.JLabel jLabelMensajeNegociacion;
+    private javax.swing.JLabel jLabelNegociacionFinalizada;
     private javax.swing.JList jListAgenciasDisponiblesA;
+    private javax.swing.JList jListAgenciasSelecionadasA;
     private javax.swing.JList jListDescuentosA;
     private javax.swing.JMenu jMenu;
     private javax.swing.JMenuBar jMenuBar;
@@ -1722,8 +1776,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemJADE;
     private javax.swing.JMenuItem jMenuItemSalir;
     private javax.swing.JPanel jPanelAgencia;
-    private javax.swing.JScrollPane jPanelAgenciasAñadidas;
     private javax.swing.JScrollPane jPanelAgenciasDisponiblesA;
+    private javax.swing.JScrollPane jPanelAgenciasSelecionadas;
     private javax.swing.JPanel jPanelAlojamiento;
     private javax.swing.JScrollPane jPanelDescuentosA;
     private javax.swing.JPanel jPanelTransporte;
@@ -1735,7 +1789,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
-    private javax.swing.JSlider jSliderPonderacion;
     private javax.swing.JSpinner jSpinnerCantDias;
     private javax.swing.JSpinner jSpinnerCantDiasA;
     private javax.swing.JSpinner jSpinnerCantPersonas;
