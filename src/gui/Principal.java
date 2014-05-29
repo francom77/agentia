@@ -6,10 +6,11 @@
 
 package gui;
 
+import jade.Boot;
 import javax.swing.DefaultListModel;
 import javax.swing.JRadioButton; 
 import java.util.Arrays;
-
+import jade.Boot;
 /**
  *
  * @author Cecilia
@@ -29,6 +30,11 @@ public class Principal extends javax.swing.JFrame {
     public Principal() {
         this.contAgenciasInterfaz = 1;
         initComponents();
+        //si se quiere pasar mas parámetros se hace un String [N] y para cada uno se pone el parámetro deseado.
+        String[] param = new String[ 1 ];
+        param[ 0 ] = "-gui";
+        Boot.main(param);
+        
     }
   
     /**
