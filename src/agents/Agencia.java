@@ -400,8 +400,14 @@ public class Agencia extends Agent {
 			}
 
 			float  valorMejorOferta  = calcularValorOfertaLugar(this.mejorOfertaLugar);
-			int califPrecioASuperar = (int) Math.ceil((valorMejorOferta - pesoCalif*Integer.parseInt(ofertaActual[2]))/0.8);
+			int califPrecioASuperar = (int) Math.ceil((valorMejorOferta - pesoCalif*Integer.parseInt(ofertaActual[2]))/pesoPrecio);
+			
+			System.out.println("Valor mejor oferta:" + valorMejorOferta);
+			System.out.println("Peso calif:" + pesoCalif);
+			System.out.println("Valor mejor oferta:" + valorMejorOferta);
 
+
+			System.out.println("precio a superar:" + califPrecioASuperar);
 
 			if (califPrecioASuperar <= 5){
 				//no tienen la misma, se devuelve un valor segun la categoria caclulada
