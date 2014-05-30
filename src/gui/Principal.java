@@ -6,11 +6,16 @@
 
 package gui;
 
-import jade.Boot;
 import javax.swing.DefaultListModel;
 import javax.swing.JRadioButton; 
 import java.util.Arrays;
 import jade.Boot;
+import jade.core.Runtime; 
+import jade.core.Profile; 
+import jade.core.ProfileImpl; 
+import jade.wrapper.*; 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author Cecilia
@@ -23,6 +28,7 @@ public class Principal extends javax.swing.JFrame {
     private final DefaultListModel modelAgenciasSelecionadasA = new DefaultListModel();
     //Contador de agencias creadas por la interfaz. Se crean con el nombre "AgenciaInterfazX".
     private int contAgenciasInterfaz;
+    private final ContainerController containerInterfaz;
 
     /**
      * Creates new form Principal
@@ -31,10 +37,13 @@ public class Principal extends javax.swing.JFrame {
         this.contAgenciasInterfaz = 1;
         initComponents();
         //si se quiere pasar mas parámetros se hace un String [N] y para cada uno se pone el parámetro deseado.
-        String[] param = new String[ 1 ];
-        param[ 0 ] = "-gui";
-        Boot.main(param);
-        
+        String[] args = new String[1];
+        args[0] = "-gui";
+        Boot.main(args);
+        Runtime rt = Runtime.instance(); 
+        Profile p = new ProfileImpl();
+        // Create a new non-main container, connecting to the default main container (i.e. on this host, port 1099) 
+        containerInterfaz = rt.createAgentContainer(p);
     }
   
     /**
@@ -200,10 +209,8 @@ public class Principal extends javax.swing.JFrame {
 
         jDialogNegociacionFinalizada.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         jDialogNegociacionFinalizada.setTitle("Información");
-        jDialogNegociacionFinalizada.setMaximumSize(new java.awt.Dimension(300, 400));
         jDialogNegociacionFinalizada.setMinimumSize(new java.awt.Dimension(300, 130));
         jDialogNegociacionFinalizada.setModal(true);
-        jDialogNegociacionFinalizada.setPreferredSize(new java.awt.Dimension(300, 130));
         jDialogNegociacionFinalizada.setResizable(false);
 
         jButtonAceptarNegociacionFinalizada.setText("Aceptar");
@@ -243,10 +250,8 @@ public class Principal extends javax.swing.JFrame {
 
         jDialogAlojamientoCreado.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         jDialogAlojamientoCreado.setTitle("Información");
-        jDialogAlojamientoCreado.setMaximumSize(new java.awt.Dimension(300, 130));
         jDialogAlojamientoCreado.setMinimumSize(new java.awt.Dimension(300, 130));
         jDialogAlojamientoCreado.setModal(true);
-        jDialogAlojamientoCreado.setPreferredSize(new java.awt.Dimension(300, 130));
         jDialogAlojamientoCreado.setResizable(false);
 
         jLabelAlojamientoCreado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Accept24.png"))); // NOI18N
@@ -347,21 +352,10 @@ public class Principal extends javax.swing.JFrame {
 
         jPanelTurista.setPreferredSize(new java.awt.Dimension(264, 472));
 
-        jTextDestino.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextDestinoActionPerformed(evt);
-            }
-        });
-
         jLabel2.setText("Tipo");
         jLabel2.setFocusable(false);
 
         jComboTipoAlojamiento.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Indefinido", "Hotel", "Hostel", "Departamento", "Cabaña" }));
-        jComboTipoAlojamiento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboTipoAlojamientoActionPerformed(evt);
-            }
-        });
 
         jLabel3.setText("Categoría");
         jLabel3.setFocusable(false);
@@ -478,11 +472,6 @@ public class Principal extends javax.swing.JFrame {
         });
 
         jComboTipoTransporte.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Indefinido", "Colectivo", "Avión" }));
-        jComboTipoTransporte.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboTipoTransporteActionPerformed(evt);
-            }
-        });
 
         jButtonCrearAgente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Communicate16.png"))); // NOI18N
         jButtonCrearAgente.setText("Consultar agencias");
@@ -543,12 +532,6 @@ public class Principal extends javax.swing.JFrame {
 
         jTextPrecioAlojamiento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#,##0.00"))));
         jTextPrecioAlojamiento.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        jTextPrecioAlojamiento.setToolTipText("");
-        jTextPrecioAlojamiento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextPrecioAlojamientoActionPerformed(evt);
-            }
-        });
 
         jTextPrecioTransporte.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#,##0.00"))));
         jTextPrecioTransporte.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
@@ -711,7 +694,7 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(jLabelAdvertenciaPrecioT)
                     .addComponent(jTextPrecioTransporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 127, Short.MAX_VALUE)
+                .addGap(18, 70, Short.MAX_VALUE)
                 .addComponent(jButtonCrearAgente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -722,7 +705,6 @@ public class Principal extends javax.swing.JFrame {
 
         jButtonCrearAgencia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Wheel16.png"))); // NOI18N
         jButtonCrearAgencia.setText("Crear Agencia");
-        jButtonCrearAgencia.setToolTipText("");
         jButtonCrearAgencia.setPreferredSize(new java.awt.Dimension(155, 36));
         jButtonCrearAgencia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -788,7 +770,6 @@ public class Principal extends javax.swing.JFrame {
 
         jButtonCrearAlojamiento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Home16.png"))); // NOI18N
         jButtonCrearAlojamiento.setText("Crear Alojamiento");
-        jButtonCrearAlojamiento.setToolTipText("");
         jButtonCrearAlojamiento.setPreferredSize(new java.awt.Dimension(155, 36));
         jButtonCrearAlojamiento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -800,12 +781,6 @@ public class Principal extends javax.swing.JFrame {
         jLabel18.setFocusable(false);
         jLabel18.setOpaque(true);
 
-        jTextCiudad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextCiudadActionPerformed(evt);
-            }
-        });
-
         jLabelAdvertenciaCiudad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Alert16.png"))); // NOI18N
         jLabelAdvertenciaCiudad.setToolTipText("Este campo no puede quedar vacío");
         jLabelAdvertenciaCiudad.setVisible(false);
@@ -814,11 +789,6 @@ public class Principal extends javax.swing.JFrame {
         jLabel11.setFocusable(false);
 
         jComboTipoCrearAlojamiento.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Hotel", "Hostel", "Departamento", "Cabaña" }));
-        jComboTipoCrearAlojamiento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboTipoCrearAlojamientoActionPerformed(evt);
-            }
-        });
 
         jLabel19.setText("Categoría");
         jLabel19.setFocusable(false);
@@ -873,11 +843,6 @@ public class Principal extends javax.swing.JFrame {
         jTextPrecioDiaA.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#,##0.00"))));
         jTextPrecioDiaA.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         jTextPrecioDiaA.setToolTipText("");
-        jTextPrecioDiaA.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextPrecioDiaAActionPerformed(evt);
-            }
-        });
 
         jLabel20.setText("Precio por día");
         jLabel20.setFocusable(false);
@@ -970,12 +935,6 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel12.setText("Nombre");
-
-        jTextNombreA.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextNombreAActionPerformed(evt);
-            }
-        });
 
         jLabelAdvertenciaNombreA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Alert16.png"))); // NOI18N
         jLabelAdvertenciaNombreA.setToolTipText("Este campo no puede quedar vacío");
@@ -1124,7 +1083,7 @@ public class Principal extends javax.swing.JFrame {
                         .addComponent(jLabelAdvertenciaSinAgenciasA))
                     .addComponent(jPanelAgenciasDisponiblesA, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(jPanelAgenciasSelecionadas, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
                 .addComponent(jButtonCrearAlojamiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -1195,8 +1154,7 @@ public class Principal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
   
-    
-public void negociacionFinalizada(String mensaje){
+ public void negociacionFinalizada(String mensaje){
     if (mensaje.equals("no-hay-ofertas-compatibles")){
         jLabelNegociacionFinalizada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Delete16.png")));
         jLabelNegociacionFinalizada.setText("  Negociación finalizada sin ofertas.");
@@ -1290,7 +1248,7 @@ jDialogNegociacionFinalizada.setVisible(true);
     }//GEN-LAST:event_jButtonTuristaActionPerformed
     
     private void jMenuItemSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSalirActionPerformed
-    System.exit(0);      
+        System.exit(0);      
     }//GEN-LAST:event_jMenuItemSalirActionPerformed
 
     private void jButtonAgenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgenciaActionPerformed
@@ -1385,12 +1343,7 @@ jDialogNegociacionFinalizada.setVisible(true);
                 jLabelAdvertenciaPrecioT.setVisible(false);
             }
         }
-
     }//GEN-LAST:event_jButtonCrearAgenteActionPerformed
-
-    private void jComboTipoTransporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboTipoTransporteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboTipoTransporteActionPerformed
 
     private void jButtonEstrella5TActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEstrella5TActionPerformed
         jButtonEstrella1T.setSelected(true);
@@ -1471,21 +1424,9 @@ jDialogNegociacionFinalizada.setVisible(true);
         jButtonEstrella5A.setSelected(false);
     }//GEN-LAST:event_jButtonEstrella1AActionPerformed
 
-    private void jComboTipoAlojamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboTipoAlojamientoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboTipoAlojamientoActionPerformed
-
-    private void jTextDestinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextDestinoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextDestinoActionPerformed
-
     private void jButtonInfoTranporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInfoTranporteActionPerformed
        // TODO add your handling code here:
     }//GEN-LAST:event_jButtonInfoTranporteActionPerformed
-
-    private void jTextPrecioAlojamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextPrecioAlojamientoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextPrecioAlojamientoActionPerformed
 
     private void jMenuItemJADEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemJADEActionPerformed
         // TODO add your handling code here:
@@ -1494,23 +1435,27 @@ jDialogNegociacionFinalizada.setVisible(true);
     private void jButtonCrearAgenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCrearAgenciaActionPerformed
         String nombreAgente = "AgenciaInterfaz"+contAgenciasInterfaz;
         Object[] args = new Object[2];
-        switch (jComboTipoAgencia.getSelectedItem().toString()) {
-            case "VIP": args[0]= 0.2;
-                        args[1]= 0.8;
-                        break;
-            case "Medio": args[0]= 0.5;
-                          args[1]= 0.5;
-                          break;
-            case "Económico": args[0]= 0.8;
-                              args[1]= 0.2;
+        switch (jComboTipoAgencia.getSelectedIndex()) {
+            case 0: args[0]= 0.8;
+                    args[1]= 0.2;
+                    break;
+            case 1: args[0]= 0.5;
+                    args[1]= 0.5;
+                    break;
+            case 2: args[0]= 0.2;
+                    args[1]= 0.8;
+                    break;
         }
         contAgenciasInterfaz ++;
-        //Acá debería crearse el agente con los parámetros:
-        //createNewAgent(nombreAgente,"nombre de la clase del agente",args);
         System.out.println("Datos recibidos de la interfaz: Nombre del agente: "+nombreAgente +" Parámetros: "+ Arrays.toString(args));
         //Aclaración: Los elementos de args no tienen un espacio al inicio. 
         //El método toString de Arrays inserta un espacio despúes de las comas de separación del arreglo.
-        jDialogAgenciaCreada.setVisible(true);
+        try {
+            containerInterfaz.createNewAgent(nombreAgente, "agents.Agencia", args);
+        } catch (StaleProxyException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         jDialogAgenciaCreada.setVisible(true);
     }//GEN-LAST:event_jButtonCrearAgenciaActionPerformed
 
     private void jButtonCrearAlojamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCrearAlojamientoActionPerformed
@@ -1556,16 +1501,7 @@ jDialogNegociacionFinalizada.setVisible(true);
                 jLabelAdvertenciaSinAgenciasA.setVisible(false);
             }
         }
-   
     }//GEN-LAST:event_jButtonCrearAlojamientoActionPerformed
-
-    private void jTextCiudadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextCiudadActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextCiudadActionPerformed
-
-    private void jComboTipoCrearAlojamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboTipoCrearAlojamientoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboTipoCrearAlojamientoActionPerformed
 
     private void jButtonCrearEstrella1AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCrearEstrella1AActionPerformed
         jButtonCrearEstrella1A.setSelected(true);
@@ -1607,10 +1543,6 @@ jDialogNegociacionFinalizada.setVisible(true);
         jButtonCrearEstrella5A.setSelected(true);
     }//GEN-LAST:event_jButtonCrearEstrella5AActionPerformed
 
-    private void jTextPrecioDiaAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextPrecioDiaAActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextPrecioDiaAActionPerformed
-
     private void jButtonAgregarDescAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarDescAActionPerformed
         String descuento = jSpinnerCantDiasA.getValue().toString()+"-"+jSpinnerDescuentoMinA.getValue().toString()+"-"+jSpinnerDescuentoMaxA.getValue().toString();
         modelDescuentosA.addElement(descuento);
@@ -1645,10 +1577,6 @@ jDialogNegociacionFinalizada.setVisible(true);
     private void jButtonAceptarAgenciaCreadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarAgenciaCreadaActionPerformed
        jDialogAgenciaCreada.dispose();
     }//GEN-LAST:event_jButtonAceptarAgenciaCreadaActionPerformed
-
-    private void jTextNombreAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextNombreAActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextNombreAActionPerformed
 
     private void jButtonAceptarNegociacionFinalizadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarNegociacionFinalizadaActionPerformed
         jDialogNegociacionFinalizada.dispose();
