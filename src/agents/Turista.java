@@ -1,5 +1,6 @@
 package agents;
 
+import gui.Principal;
 import jade.core.AID;
 import jade.core.Agent;
 import jade.core.behaviours.Behaviour;
@@ -47,7 +48,6 @@ public class Turista extends Agent {
 			requerimientoTuristaTransporte[4] = (String) args[8];
 
 			Float [] pesosLugar = this.calcularPesos(Integer.parseInt(requerimientoTuristaLugar[2]));
-			System.out.println(requerimientoTuristaTransporte[2]);
 			Float [] pesosTransporte = this.calcularPesos(Integer.parseInt(requerimientoTuristaTransporte[2]));
 
 			pesoCalifLugar = pesosLugar[0];
@@ -178,9 +178,8 @@ public class Turista extends Agent {
 				order.setConversationId("agencia-trade");
 				order.setReplyWith("acept"+System.currentTimeMillis());
 				myAgent.send(order);
-				
 				System.out.println(mejorOferta +"  Agencia:" + mejorAgencia.getLocalName());
-				step = 3;
+                                step = 3;
 				break;
 			}
 		}
@@ -245,7 +244,13 @@ public class Turista extends Agent {
 		public boolean done() {
 			if (step == 2 && mejorAgencia == null) {
 				System.out.println("No hay ofertas disponibles");
+                                Principal.setRespuesta("No hay ofertas disponibles");
+                                myAgent.doDelete();
 			}
+                        if (step == 3){
+                                Principal.setRespuesta(mejorOferta +"  Agencia:" + mejorAgencia.getLocalName());
+                                myAgent.doDelete();
+                        }
 			return ((step == 2 && mejorAgencia == null) || step == 3);
 		}
 	}

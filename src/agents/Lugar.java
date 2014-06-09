@@ -35,17 +35,9 @@ public class Lugar extends Agent {
 		if (args != null && args.length > 0) {
 
 			ciudad = (String) args[0];
-			System.out.println("La ciudad es "+ciudad);
-
 			tipo = (String) args[1];
-			System.out.println("El tipo es "+ tipo);
-
 			categoria = Integer.parseInt((String) args[2]);
-			System.out.println("La categoria es "+categoria);
-
 			precio = Float.parseFloat((String)args[3]);
-			System.out.println("El precio es "+precio);
-
 			descuentos = new ArrayList<Descuento>();
 
 			//se asume que los parametros desde la posicion 4 hasta una marca --- son los descuentos
@@ -143,7 +135,7 @@ public class Lugar extends Agent {
 
 
 				if (tipoCond && categoriaCond) {
-					//El lugar cumple con el tipo (hotel, cabaña, etc) y la categoria deseada, proponer precio.
+					//El lugar cumple con el tipo (hotel, cabaï¿½a, etc) y la categoria deseada, proponer precio.
 					reply.setPerformative(ACLMessage.PROPOSE);
 					reply.setContent(String.valueOf(precio) +"@"+tipo+"@"+categoria);
 				}

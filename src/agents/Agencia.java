@@ -1,5 +1,6 @@
 package agents;
 
+import gui.Principal;
 import jade.core.AID;
 import jade.core.Agent;
 import jade.core.behaviours.Behaviour;
@@ -39,7 +40,9 @@ public class Agencia extends Agent {
 			fe.printStackTrace();
 		}
 
-
+                //Agregando en la lista de Agencias Disponibles de Interfaz
+                Principal.agregarAgenciasDisponibles(this.getAID().getLocalName());
+                
 		//agregando comportamiento para servir requerimientos
 		addBehaviour(new ServidorDeRequerimientos());
 	}
@@ -52,6 +55,8 @@ public class Agencia extends Agent {
 		catch (FIPAException fe) {
 			fe.printStackTrace();
 		}
+                //Quitando de la lista de Agencias Disponibles de Interfaz
+                Principal.eliminarAgenciasDisponibles(this.getAID().getLocalName());
 	}
 
 
@@ -420,7 +425,7 @@ public class Agencia extends Agent {
 
 				} 
 			} else {
-				//se devuelve un valor negativo de precio a superar para forzar el refuse ya que nunca va a poder obtener una calificación mayor a 5.
+				//se devuelve un valor negativo de precio a superar para forzar el refuse ya que nunca va a poder obtener una calificaciï¿½n mayor a 5.
 				return -100;
 			}
 
@@ -508,7 +513,7 @@ public class Agencia extends Agent {
 
 				} 
 			} else {
-				//se devuelve un valor negativo de precio a superar para forzar el refuse ya que nunca va a poder obtener una calificación mayor a 5.
+				//se devuelve un valor negativo de precio a superar para forzar el refuse ya que nunca va a poder obtener una calificaciï¿½n mayor a 5.
 				return -100;
 			}
 

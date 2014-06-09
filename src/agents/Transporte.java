@@ -31,17 +31,9 @@ public class Transporte extends Agent {
 		if (args != null && args.length > 0) {
 
 			destino = (String) args[0];
-			System.out.println("El destino es "+destino);
-
 			tipo = (String) args[1];
-			System.out.println("El tipo es "+ tipo);
-
 			categoria = Integer.parseInt((String) args[2]);
-			System.out.println("La categoria es "+categoria);
-
 			precio = Float.parseFloat((String)args[3]);
-			System.out.println("El precio es "+precio);
-
 			descuentos = new ArrayList<Descuento>();
 
 			//se asume que los parametros desde la posicion 4 hasta una marca --- son los descuentos
