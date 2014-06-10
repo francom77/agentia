@@ -248,7 +248,7 @@ public class Turista extends Agent {
                                 myAgent.doDelete();
 			}
                         if (step == 3){
-                                Principal.setRespuesta(mejorOferta +"  Agencia:" + mejorAgencia.getLocalName());
+                                Principal.setRespuesta(mejorOferta + "---" + mejorAgencia.getLocalName());
                                 myAgent.doDelete();
                         }
 			return ((step == 2 && mejorAgencia == null) || step == 3);
