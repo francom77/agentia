@@ -256,7 +256,7 @@ public class Agencia extends Agent {
 				if (respuestaLugar != null) {
 					// se recibe el gracias
 					if (respuestaLugar.getPerformative() == ACLMessage.INFORM) {
-						System.out.println("Lugar elegido, agente: "+respuestaLugar.getSender().getName());
+						System.out.println("Lugar elegido por Agencia "+getAID().getName()+": "+respuestaLugar.getSender().getName());
 					}
 
 					step = 4;
@@ -356,7 +356,7 @@ public class Agencia extends Agent {
 				if (respuestaTransporte != null) {
 					// se recibe el gracias
 					if (respuestaTransporte.getPerformative() == ACLMessage.INFORM) {
-						System.out.println("Transporte elegido, agente: "+respuestaTransporte.getSender().getName());
+						System.out.println("Transporte elegido por Agencia "+getAID().getName()+": "+respuestaTransporte.getSender().getName());
 					}
 
 					step = 8;
@@ -406,13 +406,6 @@ public class Agencia extends Agent {
 
 			float  valorMejorOferta  = calcularValorOfertaLugar(this.mejorOfertaLugar);
 			int califPrecioASuperar = (int) Math.ceil((valorMejorOferta - pesoCalif*Integer.parseInt(ofertaActual[2]))/pesoPrecio);
-			
-			System.out.println("Valor mejor oferta:" + valorMejorOferta);
-			System.out.println("Peso calif:" + pesoCalif);
-			System.out.println("Valor mejor oferta:" + valorMejorOferta);
-
-
-			System.out.println("precio a superar:" + califPrecioASuperar);
 
 			if (califPrecioASuperar <= 5){
 				//no tienen la misma, se devuelve un valor segun la categoria caclulada

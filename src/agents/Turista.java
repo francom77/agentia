@@ -178,7 +178,6 @@ public class Turista extends Agent {
 				order.setConversationId("agencia-trade");
 				order.setReplyWith("acept"+System.currentTimeMillis());
 				myAgent.send(order);
-				System.out.println(mejorOferta +"  Agencia:" + mejorAgencia.getLocalName());
                                 step = 3;
 				break;
 			}
@@ -243,7 +242,6 @@ public class Turista extends Agent {
 		
 		public boolean done() {
 			if (step == 2 && mejorAgencia == null) {
-				System.out.println("No hay ofertas disponibles");
                                 Principal.setRespuesta("No hay ofertas disponibles");
                                 myAgent.doDelete();
 			}

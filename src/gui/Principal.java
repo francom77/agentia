@@ -38,8 +38,7 @@ public class Principal extends javax.swing.JFrame {
      /**
      * Creates new form Principal
      */
-    public Principal() {
-        this.modelDescuentosT = new DefaultListModel();       
+    public Principal() {     
         initComponents();
         //si se quiere pasar mas parámetros se hace un String [N] y para cada uno se pone el parámetro deseado.
         String[] args = new String[1];
@@ -47,7 +46,7 @@ public class Principal extends javax.swing.JFrame {
         Boot.main(args);
         Runtime rt = Runtime.instance(); 
         Profile p = new ProfileImpl();
-        // Creación de un nuevo containar, conectado al main creado por Jade Gui. Cambiar por createMainContainer() si se quiere interfaz autónoma.
+        // Creación de un nuevo container, conectado al main creado por Jade Gui. Cambiar por createMainContainer() si se quiere interfaz autónoma.
         containerInterfaz = rt.createAgentContainer(p);
     }
   
@@ -71,6 +70,19 @@ public class Principal extends javax.swing.JFrame {
         jLabelMensajeAgencia = new javax.swing.JLabel();
         jLabelInfoAlojamiento = new javax.swing.JLabel();
         jLabelInfoTransporte = new javax.swing.JLabel();
+        jDialogError = new javax.swing.JDialog();
+        jLabelError = new javax.swing.JLabel();
+        jButtonAceptarError = new javax.swing.JButton();
+        jDialogAcercaDe = new javax.swing.JDialog();
+        jLabelAcercaDe = new javax.swing.JLabel();
+        jButtonAcercaDe = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel36 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel37 = new javax.swing.JLabel();
+        jLabel38 = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
+        jSeparator5 = new javax.swing.JSeparator();
         jToolBar1 = new javax.swing.JToolBar();
         jSeparator3 = new javax.swing.JToolBar.Separator();
         jButtonTurista = new javax.swing.JToggleButton();
@@ -99,7 +111,7 @@ public class Principal extends javax.swing.JFrame {
         jButtonEstrellaT4 = new javax.swing.JRadioButton();
         jButtonEstrellaT5 = new javax.swing.JRadioButton();
         jComboTipoTransporte = new javax.swing.JComboBox();
-        jButtonCrearAgente = new javax.swing.JButton();
+        jButtonConsultarAgencias = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jSeparator7 = new javax.swing.JSeparator();
@@ -200,16 +212,18 @@ public class Principal extends javax.swing.JFrame {
         jLabelAdvertenciaNombreA = new javax.swing.JLabel();
         jLabelAdvertenciaSinAgenciasA = new javax.swing.JLabel();
         jMenuBar = new javax.swing.JMenuBar();
-        jMenu = new javax.swing.JMenu();
+        jMenuOpciones = new javax.swing.JMenu();
         jMenuItemAdmin = new javax.swing.JCheckBoxMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         jMenuItemSalir = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
+        jMenuSimulaciones = new javax.swing.JMenu();
         jMenuItemEscenario = new javax.swing.JMenuItem();
         jSeparator4 = new javax.swing.JPopupMenu.Separator();
         jMenuItemTurista1 = new javax.swing.JMenuItem();
         jMenuItemTurista2 = new javax.swing.JMenuItem();
         jMenuItemTurista3 = new javax.swing.JMenuItem();
+        jMenuAyuda = new javax.swing.JMenu();
+        jMenuItemAcercaDe = new javax.swing.JMenuItem();
 
         jDialogAgenteCreado.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         jDialogAgenteCreado.setTitle("Información");
@@ -318,8 +332,127 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(18, 18, 18))
         );
 
+        jDialogError.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        jDialogError.setTitle("Error");
+        jDialogError.setMinimumSize(new java.awt.Dimension(300, 130));
+        jDialogError.setModal(true);
+        jDialogError.setResizable(false);
+
+        jLabelError.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Delete16.png"))); // NOI18N
+
+        jButtonAceptarError.setText("Aceptar");
+        jButtonAceptarError.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAceptarErrorActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jDialogErrorLayout = new javax.swing.GroupLayout(jDialogError.getContentPane());
+        jDialogError.getContentPane().setLayout(jDialogErrorLayout);
+        jDialogErrorLayout.setHorizontalGroup(
+            jDialogErrorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialogErrorLayout.createSequentialGroup()
+                .addGroup(jDialogErrorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDialogErrorLayout.createSequentialGroup()
+                        .addGap(111, 111, 111)
+                        .addComponent(jButtonAceptarError))
+                    .addGroup(jDialogErrorLayout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jLabelError)))
+                .addGap(118, 118, 118))
+        );
+        jDialogErrorLayout.setVerticalGroup(
+            jDialogErrorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialogErrorLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jLabelError)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonAceptarError)
+                .addGap(45, 45, 45))
+        );
+
+        jDialogAcercaDe.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        jDialogAcercaDe.setTitle("Acerca de");
+        jDialogAcercaDe.setFocusCycleRoot(false);
+        jDialogAcercaDe.setMinimumSize(new java.awt.Dimension(430, 300));
+        jDialogAcercaDe.setModal(true);
+        jDialogAcercaDe.setResizable(false);
+
+        jLabelAcercaDe.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabelAcercaDe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Info24.png"))); // NOI18N
+        jLabelAcercaDe.setText("   Servicios Turísticos SMA");
+
+        jButtonAcercaDe.setText("Cerrar");
+        jButtonAcercaDe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAcercaDeActionPerformed(evt);
+            }
+        });
+
+        jLabel10.setText("Final Realase");
+
+        jLabel36.setText("Servicios Turísticos SMA fue derarrllado por:");
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel1.setText("Damián Agoston Schrotlin, Franco Escobar, María Soto Parra");
+
+        jLabel37.setText("Ingeniería en Sistemas de Información, U.T.N. F.R.Re");
+
+        jLabel38.setText("French 414, Resistencia, Chaco, Argentina");
+
+        jLabel39.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
+        jLabel39.setText("{agostondamian,fmescobar,msotoparra}@gmail.com");
+
+        javax.swing.GroupLayout jDialogAcercaDeLayout = new javax.swing.GroupLayout(jDialogAcercaDe.getContentPane());
+        jDialogAcercaDe.getContentPane().setLayout(jDialogAcercaDeLayout);
+        jDialogAcercaDeLayout.setHorizontalGroup(
+            jDialogAcercaDeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialogAcercaDeLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(jDialogAcercaDeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDialogAcercaDeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                        .addComponent(jButtonAcercaDe)
+                        .addComponent(jLabel39)
+                        .addComponent(jLabel38)
+                        .addComponent(jLabel37)
+                        .addComponent(jLabel1)
+                        .addComponent(jLabel36))
+                    .addGroup(jDialogAcercaDeLayout.createSequentialGroup()
+                        .addComponent(jLabelAcercaDe)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel10)))
+                .addContainerGap(30, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialogAcercaDeLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jSeparator5)
+                .addContainerGap())
+        );
+        jDialogAcercaDeLayout.setVerticalGroup(
+            jDialogAcercaDeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialogAcercaDeLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(jDialogAcercaDeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelAcercaDe)
+                    .addComponent(jLabel10))
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel36)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel37)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel38)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel39)
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addComponent(jButtonAcercaDe)
+                .addGap(16, 16, 16))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("SMA Agentes de Turismo");
+        setTitle("Servicios Turísticos SMA");
         setResizable(false);
 
         jToolBar1.setFloatable(false);
@@ -503,13 +636,13 @@ public class Principal extends javax.swing.JFrame {
 
         jComboTipoTransporte.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Indefinido", "Colectivo", "Avión" }));
 
-        jButtonCrearAgente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Communicate16.png"))); // NOI18N
-        jButtonCrearAgente.setText(" Consultar agencias");
-        jButtonCrearAgente.setPreferredSize(new java.awt.Dimension(155, 36));
-        jButtonCrearAgente.setRequestFocusEnabled(false);
-        jButtonCrearAgente.addActionListener(new java.awt.event.ActionListener() {
+        jButtonConsultarAgencias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/icons/Communicate16.png"))); // NOI18N
+        jButtonConsultarAgencias.setText(" Consultar agencias");
+        jButtonConsultarAgencias.setPreferredSize(new java.awt.Dimension(155, 36));
+        jButtonConsultarAgencias.setRequestFocusEnabled(false);
+        jButtonConsultarAgencias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCrearAgenteActionPerformed(evt);
+                jButtonConsultarAgenciasActionPerformed(evt);
             }
         });
 
@@ -570,7 +703,7 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(jLabel13)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator7))
-            .addComponent(jButtonCrearAgente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jButtonConsultarAgencias, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanelTuristaLayout.createSequentialGroup()
                 .addGroup(jPanelTuristaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -688,7 +821,7 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(jTextPrecioTransporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonCrearAgente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonConsultarAgencias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -1373,7 +1506,7 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jMenu.setText("Opciones");
+        jMenuOpciones.setText("Opciones");
 
         jMenuItemAdmin.setText("Modo Administrador");
         jMenuItemAdmin.addActionListener(new java.awt.event.ActionListener() {
@@ -1381,8 +1514,8 @@ public class Principal extends javax.swing.JFrame {
                 jMenuItemAdminActionPerformed(evt);
             }
         });
-        jMenu.add(jMenuItemAdmin);
-        jMenu.add(jSeparator2);
+        jMenuOpciones.add(jMenuItemAdmin);
+        jMenuOpciones.add(jSeparator2);
 
         jMenuItemSalir.setText("Salir");
         jMenuItemSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -1390,11 +1523,11 @@ public class Principal extends javax.swing.JFrame {
                 jMenuItemSalirActionPerformed(evt);
             }
         });
-        jMenu.add(jMenuItemSalir);
+        jMenuOpciones.add(jMenuItemSalir);
 
-        jMenuBar.add(jMenu);
+        jMenuBar.add(jMenuOpciones);
 
-        jMenu1.setText("Simulaciones");
+        jMenuSimulaciones.setText("Simulaciones");
 
         jMenuItemEscenario.setText("Inicializar Escenario");
         jMenuItemEscenario.addActionListener(new java.awt.event.ActionListener() {
@@ -1402,37 +1535,49 @@ public class Principal extends javax.swing.JFrame {
                 jMenuItemEscenarioActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItemEscenario);
-        jMenu1.add(jSeparator4);
+        jMenuSimulaciones.add(jMenuItemEscenario);
+        jMenuSimulaciones.add(jSeparator4);
 
-        jMenuItemTurista1.setText("Cargar Turista 1");
+        jMenuItemTurista1.setText("Turista 1");
         jMenuItemTurista1.setEnabled(false);
         jMenuItemTurista1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemTurista1ActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItemTurista1);
+        jMenuSimulaciones.add(jMenuItemTurista1);
 
-        jMenuItemTurista2.setText("Cargar Turista 2");
+        jMenuItemTurista2.setText("Turista 2");
         jMenuItemTurista2.setEnabled(false);
         jMenuItemTurista2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemTurista2ActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItemTurista2);
+        jMenuSimulaciones.add(jMenuItemTurista2);
 
-        jMenuItemTurista3.setText("Cargar Turista 3");
+        jMenuItemTurista3.setText("Turista 3");
         jMenuItemTurista3.setEnabled(false);
         jMenuItemTurista3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemTurista3ActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItemTurista3);
+        jMenuSimulaciones.add(jMenuItemTurista3);
 
-        jMenuBar.add(jMenu1);
+        jMenuBar.add(jMenuSimulaciones);
+
+        jMenuAyuda.setText("Ayuda");
+
+        jMenuItemAcercaDe.setText("Acerca de");
+        jMenuItemAcercaDe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAcercaDeActionPerformed(evt);
+            }
+        });
+        jMenuAyuda.add(jMenuItemAcercaDe);
+
+        jMenuBar.add(jMenuAyuda);
 
         setJMenuBar(jMenuBar);
 
@@ -1737,34 +1882,37 @@ public class Principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonAlojamientoActionPerformed
     
-    private void jButtonCrearAgenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCrearAgenteActionPerformed
+    private void jButtonConsultarAgenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarAgenciasActionPerformed
         if ((!"".equals(jTextDestino.getText()))&&(jTextPrecioAlojamiento.getValue()!=null)&&(jTextPrecioTransporte.getValue()!=null)) {
             jLabelAdvertenciaDestino.setVisible(false);
             jLabelAdvertenciaPrecioA.setVisible(false);
             jLabelAdvertenciaPrecioT.setVisible(false);
-            String nombreAgente = "Turista Interfaz";
-            Object[] args = new Object[9];
-            args[0] = jTextDestino.getText().toLowerCase();
-            args[1] = jComboTipoAlojamiento.getSelectedItem().toString().toLowerCase();
-            args[2] = obtenerCategoria(jButtonEstrellaA5,jButtonEstrellaA4, jButtonEstrellaA3,jButtonEstrellaA2);
-            args[3] = jSpinnerCantDias.getValue().toString();
-            args[4] = jTextPrecioAlojamiento.getValue().toString();
-            args[5] = jComboTipoTransporte.getSelectedItem().toString().toLowerCase();
-            args[6] = obtenerCategoria(jButtonEstrellaT5,jButtonEstrellaT4, jButtonEstrellaT3,jButtonEstrellaT2);
-            args[7] = jSpinnerCantPersonas.getValue().toString();
-            args[8] = jTextPrecioTransporte.getValue().toString();
-            System.out.println("Validación de datos OK. Nombre del agente: "+nombreAgente +" Parámetros: "+ Arrays.toString(args));
-            //Aclaración: Los elementos de args no tienen un espacio al inicio. 
-            //El método toString de Arrays inserta un espacio despúes de las comas de separación del arreglo.
-            try {
-                AgentController turista = containerInterfaz.createNewAgent(nombreAgente, "agents.Turista", args);
-                turista.start();
-            } catch (StaleProxyException ex) {
-                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            if (cantAgenciasDisponibles()!=0) {
+                String nombreAgente = "Turista Interfaz";
+                Object[] args = new Object[9];
+                args[0] = jTextDestino.getText().toLowerCase();
+                args[1] = jComboTipoAlojamiento.getSelectedItem().toString().toLowerCase();
+                args[2] = obtenerCategoria(jButtonEstrellaA5,jButtonEstrellaA4, jButtonEstrellaA3,jButtonEstrellaA2);
+                args[3] = jSpinnerCantDias.getValue().toString();
+                args[4] = jTextPrecioAlojamiento.getValue().toString();
+                args[5] = jComboTipoTransporte.getSelectedItem().toString().toLowerCase();
+                args[6] = obtenerCategoria(jButtonEstrellaT5,jButtonEstrellaT4, jButtonEstrellaT3,jButtonEstrellaT2);
+                args[7] = jSpinnerCantPersonas.getValue().toString();
+                args[8] = jTextPrecioTransporte.getValue().toString();
+                System.out.println("Validación de datos OK. Nombre del agente: "+nombreAgente +" Parámetros: "+ Arrays.toString(args));
+                try {
+                    AgentController turista = containerInterfaz.createNewAgent(nombreAgente, "agents.Turista", args);
+                    turista.start();
+                } catch (StaleProxyException ex) {
+                    Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                while (Principal.getRespuesta()==null) {}
+                negociacionFinalizada(Principal.getRespuesta());
+                Principal.clearRespuesta();
+            } else {
+                jLabelError.setText("  No existen agencias en el SMA.");
+                jDialogError.setVisible(true);
             }
-            while (Principal.getRespuesta()==null) {}
-            negociacionFinalizada(Principal.getRespuesta());
-            Principal.clearRespuesta();
         } else {
             if ("".equals(jTextDestino.getText())){
                 jLabelAdvertenciaDestino.setVisible(true);
@@ -1782,7 +1930,7 @@ public class Principal extends javax.swing.JFrame {
                 jLabelAdvertenciaPrecioT.setVisible(false);
             }
         }
-    }//GEN-LAST:event_jButtonCrearAgenteActionPerformed
+    }//GEN-LAST:event_jButtonConsultarAgenciasActionPerformed
 
     private void jButtonEstrellaT5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEstrellaT5ActionPerformed
         jButtonEstrellaT1.setSelected(true);
@@ -1864,16 +2012,18 @@ public class Principal extends javax.swing.JFrame {
         }
         contAgenciasInterfaz ++;
         System.out.println("Datos recibidos de la interfaz: Nombre del agente: "+nombreAgente +" Parámetros: "+ Arrays.toString(args));
-        //Creación del Agente.
+        //Creación del Agente Agencia.
         try {
             AgentController agencia = containerInterfaz.createNewAgent(nombreAgente, "agents.Agencia", args);
             agencia.start();
+            //Despliegue diálogo de éxito en creación.
+            jLabelAgenteCreado.setText("  Agencia creada con éxito.");
+            jDialogAgenteCreado.setVisible(true);
         } catch (StaleProxyException ex) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            jLabelError.setText("  Hubo un error procesando lo solicitado.");
+            jDialogError.setVisible(true);
         }
-        //Despliegue diálogo de éxito en creación.
-        jLabelAgenteCreado.setText("  Agencia creada con éxito.");
-        jDialogAgenteCreado.setVisible(true);
     }//GEN-LAST:event_jButtonCrearAgenciaActionPerformed
 
     private void jButtonCrearAlojamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCrearAlojamientoActionPerformed
@@ -1891,16 +2041,17 @@ public class Principal extends javax.swing.JFrame {
             agregarListado(modelDescuentosA,args,4);
             agregarListado(modelAgenciasSeleccionadasA,args,5+modelDescuentosA.getSize());
             System.out.println("Validación de datos OK. Nombre del agente: "+nombreAgente +" Parámetros: "+ Arrays.toString(args));
-            //Creación del Agente.
+            //Creación del Agente Lugar.
             try {
                 AgentController lugar = containerInterfaz.createNewAgent(nombreAgente, "agents.Lugar", args);
                 lugar.start();
+                jLabelAgenteCreado.setText("  Alojamiento creado con éxito.");
+                jDialogAgenteCreado.setVisible(true);
             } catch (StaleProxyException ex) {
                 Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+                jLabelError.setText("  Hubo un error procesando lo solicitado.");
+                jDialogError.setVisible(true);
             }
-            //Despliegue diálogo de éxito en creación.
-            jLabelAgenteCreado.setText("  Alojamiento creado con éxito.");
-            jDialogAgenteCreado.setVisible(true);
         } else {
             if ("".equals(jTextNombreA.getText())){
                 jLabelAdvertenciaNombreA.setVisible(true);
@@ -2077,16 +2228,17 @@ public class Principal extends javax.swing.JFrame {
             agregarListado(modelDescuentosT,args,4);
             agregarListado(modelAgenciasSeleccionadasT,args,5+modelDescuentosT.getSize());
             System.out.println("Validación de datos OK. Nombre del agente: "+nombreAgente +" Parámetros: "+ Arrays.toString(args));
-            //Creación del Agente.
+            //Creación del Agente Transporte.
             try {
                 AgentController transporte = containerInterfaz.createNewAgent(nombreAgente, "agents.Transporte", args);
                 transporte.start();
+                jLabelAgenteCreado.setText("  Transporte creado con éxito.");
+                jDialogAgenteCreado.setVisible(true);
             } catch (StaleProxyException ex) {
                 Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+                jLabelError.setText("  Hubo un error procesando lo solicitado.");
+                jDialogError.setVisible(true);
             }
-            //Despliegue diálogo de éxito en creación.
-            jLabelAgenteCreado.setText("  Transporte creado con éxito.");
-            jDialogAgenteCreado.setVisible(true);
         } else {
             if ("".equals(jTextNombreT.getText())){
                 jLabelAdvertenciaNombreT.setVisible(true);
@@ -2591,6 +2743,18 @@ public class Principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuItemTurista3ActionPerformed
 
+    private void jButtonAceptarErrorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarErrorActionPerformed
+        jDialogError.dispose();
+    }//GEN-LAST:event_jButtonAceptarErrorActionPerformed
+
+    private void jButtonAcercaDeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAcercaDeActionPerformed
+        jDialogAcercaDe.dispose();
+    }//GEN-LAST:event_jButtonAcercaDeActionPerformed
+
+    private void jMenuItemAcercaDeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAcercaDeActionPerformed
+        jDialogAcercaDe.setVisible(true);
+    }//GEN-LAST:event_jMenuItemAcercaDeActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2628,15 +2792,17 @@ public class Principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAceptarAgenteCreado;
+    private javax.swing.JButton jButtonAceptarError;
     private javax.swing.JButton jButtonAceptarNegociacionFinalizada;
+    private javax.swing.JButton jButtonAcercaDe;
     private javax.swing.JToggleButton jButtonAgencia;
     private javax.swing.JButton jButtonAgregarAgenciaA;
     private javax.swing.JButton jButtonAgregarAgenciaT;
     private javax.swing.JButton jButtonAgregarDescA;
     private javax.swing.JButton jButtonAgregarDescT;
     private javax.swing.JToggleButton jButtonAlojamiento;
+    private javax.swing.JButton jButtonConsultarAgencias;
     private javax.swing.JButton jButtonCrearAgencia;
-    private javax.swing.JButton jButtonCrearAgente;
     private javax.swing.JButton jButtonCrearAlojamiento;
     private javax.swing.JRadioButton jButtonCrearEstrellaA1;
     private javax.swing.JRadioButton jButtonCrearEstrellaA2;
@@ -2670,8 +2836,12 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JComboBox jComboTipoCrearAlojamiento;
     private javax.swing.JComboBox jComboTipoCrearTransporte;
     private javax.swing.JComboBox jComboTipoTransporte;
+    private javax.swing.JDialog jDialogAcercaDe;
     private javax.swing.JDialog jDialogAgenteCreado;
+    private javax.swing.JDialog jDialogError;
     private javax.swing.JDialog jDialogNegociacionFinalizada;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -2698,12 +2868,17 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelAcercaDe;
     private javax.swing.JLabel jLabelAdvertenciaCiudad;
     private javax.swing.JLabel jLabelAdvertenciaCrearPrecioA;
     private javax.swing.JLabel jLabelAdvertenciaCrearPrecioT;
@@ -2718,6 +2893,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelAdvertenciaSinAgenciasA;
     private javax.swing.JLabel jLabelAdvertenciaSinAgenciasT;
     private javax.swing.JLabel jLabelAgenteCreado;
+    private javax.swing.JLabel jLabelError;
     private javax.swing.JLabel jLabelInfoAlojamiento;
     private javax.swing.JLabel jLabelInfoTransporte;
     private javax.swing.JLabel jLabelMensajeAgencia;
@@ -2730,15 +2906,17 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JList jListAgenciasSelecionadasT;
     private javax.swing.JList jListDescuentosA;
     private javax.swing.JList jListDescuentosT;
-    private javax.swing.JMenu jMenu;
-    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenuAyuda;
     private javax.swing.JMenuBar jMenuBar;
+    private javax.swing.JMenuItem jMenuItemAcercaDe;
     private javax.swing.JCheckBoxMenuItem jMenuItemAdmin;
     private javax.swing.JMenuItem jMenuItemEscenario;
     private javax.swing.JMenuItem jMenuItemSalir;
     private javax.swing.JMenuItem jMenuItemTurista1;
     private javax.swing.JMenuItem jMenuItemTurista2;
     private javax.swing.JMenuItem jMenuItemTurista3;
+    private javax.swing.JMenu jMenuOpciones;
+    private javax.swing.JMenu jMenuSimulaciones;
     private javax.swing.JPanel jPanelAgencia;
     private javax.swing.JScrollPane jPanelAgenciasDisponiblesA;
     private javax.swing.JScrollPane jPanelAgenciasDisponiblesT;
@@ -2755,6 +2933,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JToolBar.Separator jSeparator3;
     private javax.swing.JPopupMenu.Separator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;

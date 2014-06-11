@@ -222,7 +222,6 @@ public class Lugar extends Agent {
 				if (ofertaAceptada != null) {
 					reply.setPerformative(ACLMessage.INFORM);
 					//aqui iria un corrimiento de los descuentos (implementar si queda tiempo)
-					System.out.println(ofertaAceptada);
 					reply.setContent("Gracias");
 				}
 				myAgent.send(reply);
